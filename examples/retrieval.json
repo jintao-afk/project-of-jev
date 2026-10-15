@@ -1,0 +1,6 @@
+{
+  "goal": "从本地资料检索说明决策模块分工的段落。",
+  "input": "决策模块与调用程序如何分工？",
+  "parameters": {"query": "决策模块与调用程序如何分工？", "top_k": 2},
+  "validation": {"required_ids": ["decision-role"]}
+}

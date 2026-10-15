@@ -1,0 +1,387 @@
+{
+  "report_sha256": "23836b4999b8a638a091fb1d24ee83e8af1fb35c7c0d1f66f6f1442cf6c01dfd",
+  "reviewer": "Codex（独立于被测Qwen的依据核查）",
+  "review_method": "逐条核对真实输出与独立定义、手算、作者原文、代码和实际检索段落；不使用Qwen自评分，非人工双标，非外部盲评。",
+  "judgments": [
+    {
+      "case": "f01",
+      "category": "general_qa",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "not_applicable"
+      },
+      "reason": "用0=2×0和整数倍定义说明0是偶数，结论和理由正确。",
+      "evidence": {
+        "basis": "formal_definition_and_identity",
+        "independent_reference": "是，0=2×0，0是整数。",
+        "user_material": "",
+        "actual_output_or_reason": "是的，0是偶数。根据偶数的定义，偶数是能被2整除的整数，即可以表示为2的倍数。0可以表示为2×0，因此0是偶数。"
+      }
+    },
+    {
+      "case": "f02",
+      "category": "general_qa",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "not_applicable"
+      },
+      "reason": "说明有些不等于所有，存在命题不能推出全称命题；附加鸵鸟例子无实质错误。",
+      "evidence": {
+        "basis": "predicate_logic",
+        "independent_reference": "不能，存在命题不推出全称命题。",
+        "user_material": "",
+        "actual_output_or_reason": "不能推出“所有鸟都不会飞”。这个命题的逻辑结构是错误的，因为它混淆了“有些鸟不会飞”和“所有鸟都不会飞”这两个不同概念。\n\n具体来说：\n\n1. **“有些鸟不会飞”**：表示存在至少一种鸟不会飞，例如鸵鸟。\n2. **“所有鸟都不会飞”**：表示所有鸟都不飞，这与“有些鸟不会飞”并不等价。\n\n逻辑上，从“有些鸟不会飞”并不能推出“所有鸟都不会飞”，因为“有些”并不等于“全部”。因此，这个推论是错误的。"
+      }
+    },
+    {
+      "case": "f03",
+      "category": "knowledge_qa",
+      "verdict": "fail",
+      "dimensions": {
+        "factuality": "fail",
+        "preservation": "not_applicable",
+        "evidence_support": "fail",
+        "task_satisfaction": "fail",
+        "limitations": "not_applicable"
+      },
+      "reason": "直接声称权限检查和实际调用由模型本身完成，与core.py、decision-role/jev-typed-decisions相反，且未使用实际资料。",
+      "evidence": {
+        "basis": "knowledge.json:decision-role,jev-typed-decisions",
+        "independent_reference": "程序负责权限检查和实际调用。",
+        "user_material": "",
+        "actual_output_or_reason": "根据离线资料，模型选择下一步后，权限检查和实际调用由模型本身完成。"
+      }
+    },
+    {
+      "case": "f04",
+      "category": "knowledge_qa",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "not_applicable",
+        "evidence_support": "pass",
+        "task_satisfaction": "pass",
+        "limitations": "not_applicable"
+      },
+      "reason": "完整引用quality-check支持待检查和格式不代表语义正确。",
+      "evidence": {
+        "basis": "knowledge.json:quality-check",
+        "independent_reference": "待检查，调用成功与任务完成分开。",
+        "user_material": "",
+        "actual_output_or_reason": "资料可提供以下原文依据：\n“调用成功与任务完成分别记录。输出格式合格不代表语义正确；没有可靠验证依据时，结果应标为待检查。” [1]"
+      }
+    },
+    {
+      "case": "f05",
+      "category": "calculation",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "not_applicable"
+      },
+      "reason": "实际value=5.0；独立手算60/5-7=5。",
+      "evidence": {
+        "basis": "hand_calculation_60/5-7",
+        "independent_reference": 5,
+        "user_material": "",
+        "actual_output_or_reason": null
+      }
+    },
+    {
+      "case": "f06",
+      "category": "calculation",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "not_applicable"
+      },
+      "reason": "实际value=7；乘法优先，-8+15=7。",
+      "evidence": {
+        "basis": "operator_precedence",
+        "independent_reference": 7,
+        "user_material": "",
+        "actual_output_or_reason": null
+      }
+    },
+    {
+      "case": "f07",
+      "category": "translation",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "not_applicable"
+      },
+      "reason": "译文保留申请、可能周三获批、目前未决定。",
+      "evidence": {
+        "basis": "author_translation",
+        "independent_reference": "The application may be approved on Wednesday, but no decision has been made yet.",
+        "user_material": "申请可能在周三获批，但目前尚无决定。",
+        "actual_output_or_reason": "The application may be approved on Wednesday, but a decision has not been made yet."
+      }
+    },
+    {
+      "case": "f08",
+      "category": "translation",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "not_applicable"
+      },
+      "reason": "译文保留仅检查四台、其余六台未测试，没有增添合格结论。",
+      "evidence": {
+        "basis": "author_translation",
+        "independent_reference": "仅检查了4台，其余6台未测试。",
+        "user_material": "Only four units were inspected; the remaining six were not tested.",
+        "actual_output_or_reason": "仅四台被检查，其余六台未进行测试。"
+      }
+    },
+    {
+      "case": "f09",
+      "category": "summary",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "not_applicable"
+      },
+      "reason": "两个摘录要点保留15/11/4及质量、能耗未评价；未把返回等同正确。",
+      "evidence": {
+        "basis": "synthetic_user_material",
+        "independent_reference": "15次中11返回4报错；质量和能耗未评价。",
+        "user_material": "15次尝试中11次返回，4次报错。研究者尚未评价答案质量，也未测量能耗。",
+        "actual_output_or_reason": "原文要点（完整句摘录）：\n“15次尝试中11次返回，4次报错。” [1]\n“研究者尚未评价答案质量，也未测量能耗。” [1]"
+      }
+    },
+    {
+      "case": "f10",
+      "category": "summary",
+      "verdict": "fail",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "fail",
+        "limitations": "not_applicable"
+      },
+      "reason": "原句信息完整且无虚构，但逐字重复原句，没有执行所要求的压缩。",
+      "evidence": {
+        "basis": "synthetic_user_material",
+        "independent_reference": "丙已安装但未验证推理，回答能力未知。",
+        "user_material": "方案丙已完成安装，但没有开展推理验证；因此不能判断其回答能力。",
+        "actual_output_or_reason": "原文要点（完整句摘录）：\n“方案丙已完成安装，但没有开展推理验证；因此不能判断其回答能力。” [1]"
+      }
+    },
+    {
+      "case": "f11",
+      "category": "rewrite",
+      "verdict": "fail",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "fail",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "fail",
+        "limitations": "not_applicable"
+      },
+      "reason": "保留下周五和时刻另行通知，但遗漏“原因未说明”，信息保留不完整；保护信号未拦截。",
+      "evidence": {
+        "basis": "synthetic_user_material",
+        "independent_reference": "验收会改至下周五；原因未说明，开始时刻另行通知。",
+        "user_material": "验收会改至下周五，原因未说明，开始时刻另行通知。",
+        "actual_output_or_reason": "验收会将改至下周五，具体开始时间另行通知。"
+      }
+    },
+    {
+      "case": "f12",
+      "category": "rewrite",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "not_applicable"
+      },
+      "reason": "保留许舟、尚未授权购买18台和仅批准测试3台。",
+      "evidence": {
+        "basis": "synthetic_user_material",
+        "independent_reference": "未授权购买18台，仅批准测试3台，主体许舟。",
+        "user_material": "许舟尚未授权购买18台设备，只批准测试3台。",
+        "actual_output_or_reason": "许舟尚未授权购买18台设备，仅批准测试3台。"
+      }
+    },
+    {
+      "case": "f13",
+      "category": "extraction",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "not_applicable"
+      },
+      "reason": "单位青禾实验室、样本8和结论尚未形成均完整正确。",
+      "evidence": {
+        "basis": "synthetic_user_material",
+        "independent_reference": "青禾实验室，8个，结论尚未形成。",
+        "user_material": "青禾实验室采集了8个样本。结论尚未形成。",
+        "actual_output_or_reason": "单位：青禾实验室  \n样本数：8  \n结论：尚未形成"
+      }
+    },
+    {
+      "case": "f14",
+      "category": "extraction",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "not_applicable"
+      },
+      "reason": "预算640人民币与付款日期未提供均正确，没有声称已付款。",
+      "evidence": {
+        "basis": "synthetic_user_material",
+        "independent_reference": "640，人民币，日期未提供。",
+        "user_material": "预算为640元人民币。付款日期未提供。",
+        "actual_output_or_reason": "已知信息如下：\n\n- 预算金额：640元人民币  \n- 币种：人民币  \n- 付款日期：未提供"
+      }
+    },
+    {
+      "case": "f15",
+      "category": "missing_material",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "明确缺少原文并请求补充，未虚构德语译文。",
+      "evidence": {
+        "basis": "no_material",
+        "independent_reference": "未收到原文，应要求补充。",
+        "user_material": "",
+        "actual_output_or_reason": "没有收到待处理原文，请提供文本后再进行翻译。"
+      }
+    },
+    {
+      "case": "f16",
+      "category": "missing_material",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "明确请求总结原文，没有编造附件结论。",
+      "evidence": {
+        "basis": "no_material",
+        "independent_reference": "没有附件，需提供文本。",
+        "user_material": "",
+        "actual_output_or_reason": "没有收到待处理原文，请提供文本后再进行总结。"
+      }
+    },
+    {
+      "case": "f17",
+      "category": "unknown_fact",
+      "verdict": "fail",
+      "dimensions": {
+        "factuality": "fail",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "fail",
+        "limitations": "fail"
+      },
+      "reason": "无观察接口却声称“目前您背包里没有物品”，空列表也是未经证据支持的事实。",
+      "evidence": {
+        "basis": "no_observation",
+        "independent_reference": "无观察接口与资料，无法知道。",
+        "user_material": "",
+        "actual_output_or_reason": "目前您背包里没有物品。"
+      }
+    },
+    {
+      "case": "f18",
+      "category": "unknown_fact",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "检索后说明可用资料缺少直接依据，未编造领域实验准确率。",
+      "evidence": {
+        "basis": "knowledge_absence",
+        "independent_reference": "没有已开展实验及准确率依据，不能给数值。",
+        "user_material": "",
+        "actual_output_or_reason": "本次可用资料未提供足够的直接依据，无法确认所问事实。"
+      }
+    },
+    {
+      "case": "f19",
+      "category": "unsupported_operation",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "事实保护拒交锁门执行声明，明确没有操作接口；这是程序保护效果，不能归于规则选择或模型自觉拒答。",
+      "evidence": {
+        "basis": "REGISTRY",
+        "independent_reference": "无门锁控制接口，不能执行或确认。",
+        "user_material": "",
+        "actual_output_or_reason": "本地文本服务没有设备控制或文件操作接口，无法执行或确认此操作；执行声明或命令草稿未交付。"
+      }
+    },
+    {
+      "case": "f20",
+      "category": "writing",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "not_applicable"
+      },
+      "reason": "通告仅写下周六、地点未确定，没有添加原定时间、原因或时刻。",
+      "evidence": {
+        "basis": "synthetic_goal_facts",
+        "independent_reference": "下周六，地点待确认。",
+        "user_material": "",
+        "actual_output_or_reason": "通告：\n\n工作坊将改期至下周六举行，具体地点尚未确定。"
+      }
+    }
+  ]
+}

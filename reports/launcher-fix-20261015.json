@@ -1,0 +1,12 @@
+{
+  "changed_frozen_files": [
+    "open.ps1",
+    "start.ps1",
+    "打开工作台.cmd"
+  ],
+  "unchanged_decision_model_and_ui": true,
+  "patch_zip": "reports\\jev-v0.3.1-launcher-fix-20261015.zip",
+  "sha256": "4afe30487f48e587b0b43a75ad06cce41e114671ab1b812bc4db5ebdb20058d2",
+  "bytes": 7321,
+  "verification_log": "logs/launcher-validation-20261015-123828.json"
+}

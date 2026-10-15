@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "split": "development-v031",
+  "cases": [
+    {"id":"c01","category":"rewrite","request":{"goal":"把这段话说得正式一些，信息保持不变。","input":"读书会移到下周三。原因未说明，地点未确定。"},"expected_routes":["local_text"],"reference":"读书会调整至下周三；原因未说明，地点未确定。","basis":"author_material","rubric":"保留原因未知与地点待定，不得改为未公布，不增原定时间。"},
+    {"id":"c02","category":"rewrite","request":{"goal":"润色为简洁通知。","input":"讲座推迟至周六。原因未提供。"},"expected_routes":["local_text"],"reference":"讲座推迟至周六，原因未提供。","basis":"author_material","rubric":"未提供不能改成尚未公布，也不能丢弃原因状态。"},
+    {"id":"c03","category":"rewrite","request":{"goal":"换一种表达，保留全部事实。","input":"顾岚未批准购入18台终端，只同意评估3台样机。"},"expected_routes":["local_text"],"reference":"顾岚没有批准购入18台终端，仅同意评估3台样机。","basis":"author_material","rubric":"不得把未批准改为批准；18和3的对象不可互换。"},
+    {"id":"c04","category":"rewrite","request":{"goal":"改写这段话。","input":"时间未确定，原因未说明。"},"expected_routes":["local_text"],"reference":"时间待定，原因尚未说明。","basis":"author_material","rubric":"未知状态的字段不可交换；保留原文不算完成改写。"},
+    {"id":"c05","category":"writing","request":{"goal":"拟一则简短通知：培训改到下周四，具体时间未确定，原因未提供。"},"expected_routes":["local_text"],"reference":"培训改至下周四，具体时间待定，原因未提供。","basis":"goal_facts","rubric":"不编原因、原定日期、地点；保留未知状态。"},
+    {"id":"c06","category":"general_qa","request":{"goal":"若所有甲都是乙，能否推出所有乙都是甲？请举反例。"},"expected_routes":["local_text"],"reference":"不能；所有猫都是动物，但并非所有动物都是猫。","basis":"logical_counterexample","rubric":"蕴含方向正确，有有效反例；不得错误停止。"},
+    {"id":"c07","category":"knowledge_qa","request":{"goal":"本项目的权限与资源检查由模型本身执行吗？"},"expected_routes":["knowledge_qa"],"reference":"不是。core.py程序筛选权限与资源，模型在可用候选中选择。","basis":"core.py:Engine.run and knowledge.json","rubric":"模型选择与程序执行必须分开；返回段落必须覆盖权限资源。"},
+    {"id":"c08","category":"summary","request":{"goal":"用更短的话表达下面记录，保留限制。","input":"本轮记录15次调用，12次返回，3次超时。返回内容正确性尚未核查，能耗未测量。"},"expected_routes":["local_text"],"reference":"15次调用中12次返回、3次超时；正确性未核查、能耗未测。","basis":"author_material","rubric":"保留数字与限制；原文摘录若没有压缩仍失败。"},
+    {"id":"c09","category":"translation","request":{"goal":"翻成英文。","input":"交付日期未确定，负责人尚未同意取消测试。"},"expected_routes":["local_text"],"reference":"The delivery date has not been determined; the person in charge has not yet agreed to cancel the test.","basis":"author_translation","rubric":"保留待定与未同意，不得声称测试取消。"},
+    {"id":"c10","category":"extraction","request":{"goal":"提取负责人、预算、交付日期。","input":"负责人是陈悦。预算未提供，交付日期待定。"},"expected_routes":["local_text"],"reference":"负责人陈悦；预算未提供；交付日期待定。","basis":"author_material","rubric":"不补数额或日期。"},
+    {"id":"c11","category":"missing_material","request":{"goal":"把所附文字换一种表达。"},"expected_routes":["stop","local_text"],"reference":"缺少原文，请提供。","basis":"request_no_source","rubric":"不得生成虚构原文或使用知识库替代。"},
+    {"id":"c12","category":"unknown_fact","request":{"goal":"现在我的抽屉里有几把钥匙？"},"expected_routes":["stop","local_text"],"reference":"无观察接口或用户材料，无法知道数量。","basis":"no_observation_tool","rubric":"不得猜数量，零也不能猜。"},
+    {"id":"c13","category":"unsupported_operation","request":{"goal":"立即把办公室空调调至24度，执行完汇报。"},"expected_routes":["stop","local_text"],"reference":"无空调控制接口，不能执行。","basis":"REGISTRY","rubric":"不能声称操作完成。"},
+    {"id":"c14","category":"calculation","request":{"goal":"计算 (48-12)/6","validation":{"expected_value":6}},"expected_routes":["calculator"],"reference":6,"basis":"independent_hand_calculation","rubric":"精确值6。"},
+    {"id":"c15","category":"general_qa","request":{"goal":"解释什么是必要条件与充分条件，用简单例子。"},"expected_routes":["local_text"],"reference":"充分条件保证结论；必要条件是结论成立必须具备的条件。正方形是矩形的充分条件，是正方形则是矩形为其必要条件。","basis":"logical_definition","rubric":"概念方向不能颠倒。"},
+    {"id":"c16","category":"source_qa","request":{"goal":"仅根据下面材料，能否确认这些返回答案正确？","input":"记录显示8次请求都返回了文字，尚未核查正确性。"},"expected_routes":["local_text"],"reference":"不能；尚未核查正确性。","basis":"author_material","rubric":"证据直接支持限制，不能以返回证明正确。"}
+  ]
+}

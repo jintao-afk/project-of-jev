@@ -1,0 +1,43 @@
+[
+  {
+    "id": "decision-role",
+    "text": "决策模块比较可用的模型与工具，输出候选编号与选项分数。调用程序负责参数检查、实际执行与结果反馈。"
+  },
+  {
+    "id": "fallback-role",
+    "text": "远端大模型可用于复杂推理与失败恢复。请求远端服务需要网络、凭据和调用额度；返回结果仍需验证。"
+  },
+  {
+    "id": "edge-definition",
+    "text": "本项目的端侧主线是把决策、状态管理及可用工具放在本地设备上运行。商用 Jev API 是联网对照，不能作为本地部署的证据。"
+  },
+  {
+    "id": "quality-check",
+    "text": "调用成功与任务完成分别记录。输出格式合格不代表语义正确；没有可靠验证依据时，结果应标为待检查。"
+  },
+  {
+    "id": "jev-definition",
+    "source": "https://docs.typesafe.ai/models",
+    "text": "Jev 是 TypeSafe 提供的 System One 决策模型。它根据输入状态和预先定义的问题作判断，可用于候选选择、评估与路由。商用 Jev 通过网络 API 提供服务。"
+  },
+  {
+    "id": "jev-typed-decisions",
+    "source": "https://docs.typesafe.ai/api",
+    "text": "Jev 接口接受 state 和 typed questions，返回结构化 answers。Choice 从候选中选择并返回选项概率；Noul 表示是或否；Score 用于评分。它的角色可以是为系统选择下一步，实际调用与权限检查由程序完成。"
+  },
+  {
+    "id": "anyjev-definition",
+    "source": "https://github.com/nokia-applied-research/AnyJev",
+    "text": "AnyJev 是独立的开放项目，可用现有语言模型实现类型化决策与选项概率读出。本项目离线模式使用 AnyJev 加 Qwen3 实现本地决策。AnyJev 和 Qwen 权重不能称为商用 Jev 的权重，本地运行结果不能证明商用 Jev 可离线部署。"
+  },
+  {
+    "id": "jev-input-limits",
+    "source": "https://docs.typesafe.ai/models",
+    "text": "所查 Jev 官方模型文档说明其输入为文本，可先把图像、音频、视频处理成文本或结构化字段再送入。对于当前模型版本、价格或最新研究，离线资料可能过期，需要重新联网核实。"
+  },
+  {
+    "id": "local-components",
+    "source": "project:config.json",
+    "text": "项目离线升级方案使用 Qwen3-1.7B 完成决策与一般文字问答，BGE 中文检索模型查找本地资料，计算程序处理受限算式。检索问答依次执行检索和本地生成；模型输出仍需检查。"
+  }
+]

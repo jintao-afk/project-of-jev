@@ -1,0 +1,13 @@
+.venv/
+models/*
+!models/model-lock.json
+.cache/
+logs/
+__pycache__/
+.env
+*.local.json
+!environment-lock.local.json
+.repair-backups/
+*.py[cod]
+.env.*
+reports/*.zip

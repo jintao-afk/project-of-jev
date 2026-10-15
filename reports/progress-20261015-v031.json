@@ -1,0 +1,260 @@
+{
+  "version": "0.3.1",
+  "created_at": "2026-10-15T04:27:23.100792+00:00",
+  "model_identity": "Independent AnyJev + Qwen3-1.7B; not commercial Jev weights",
+  "development": {
+    "baseline-v030": {
+      "record": "logs\\evaluations\\v031-baseline-v030-20261015-120656-396458.json",
+      "sha256": "fb8a7dd419501b00cdd35a6825af7fa2a466a08db19af8f6b390b9f0d0b6af3e",
+      "cases": 16,
+      "initial_decision_cases": null,
+      "initial_route_matches": 8,
+      "reviewed_cases": 4,
+      "controller_adjustments": 1,
+      "final_route_matches": 13,
+      "successful_calls": 12,
+      "verified_complete_cases": 1,
+      "text_service_generations": null,
+      "generation_recovery_cases": null,
+      "latency_ms": {
+        "min": 111.23,
+        "median": 690.345,
+        "max": 36848.04
+      },
+      "resource_observations": {
+        "minimum_available_ram_mb": 16092,
+        "worker_peak_cuda_allocated_mb": 3959.94,
+        "scope": "RAM snapshots and cumulative worker Torch allocation peak, not energy or device total"
+      },
+      "remote_attempts": 0,
+      "semantic_pass": 9,
+      "semantic_fail": 6,
+      "semantic_unresolved": 1,
+      "factuality": {
+        "pass": 10,
+        "fail": 1,
+        "unresolved": 0,
+        "not_applicable": 5
+      }
+    },
+    "contract": {
+      "record": "logs\\evaluations\\v031-contract-20261015-121826-442178.json",
+      "sha256": "eedc9b10facdcd7695f6b6f85532fd413e0b6e5b0d6c4c187a5b7a3db62fbf90",
+      "cases": 16,
+      "initial_decision_cases": 14,
+      "initial_route_matches": 7,
+      "reviewed_cases": 6,
+      "controller_adjustments": 2,
+      "final_route_matches": 16,
+      "successful_calls": 14,
+      "verified_complete_cases": 1,
+      "text_service_generations": 14,
+      "generation_recovery_cases": 1,
+      "latency_ms": {
+        "min": 0.44,
+        "median": 1080.15,
+        "max": 12628.41
+      },
+      "resource_observations": {
+        "minimum_available_ram_mb": 14776,
+        "worker_peak_cuda_allocated_mb": 4033.43,
+        "scope": "RAM snapshots and cumulative worker Torch allocation peak, not energy or device total"
+      },
+      "remote_attempts": 0,
+      "semantic_pass": 10,
+      "semantic_fail": 6,
+      "semantic_unresolved": 0,
+      "factuality": {
+        "pass": 10,
+        "fail": 2,
+        "unresolved": 0,
+        "not_applicable": 4
+      }
+    },
+    "rules": {
+      "record": "logs\\evaluations\\v031-rules-20261015-121856-143708.json",
+      "sha256": "15f2171941a671070aec0c92e95fa2a951f80b625304d0b903d93ef448b11dad",
+      "cases": 16,
+      "initial_decision_cases": 14,
+      "initial_route_matches": 13,
+      "reviewed_cases": 0,
+      "controller_adjustments": 1,
+      "final_route_matches": 16,
+      "successful_calls": 14,
+      "verified_complete_cases": 1,
+      "text_service_generations": 14,
+      "generation_recovery_cases": 1,
+      "latency_ms": {
+        "min": 0.42,
+        "median": 393.57,
+        "max": 12503.8
+      },
+      "resource_observations": {
+        "minimum_available_ram_mb": 14675,
+        "worker_peak_cuda_allocated_mb": 4033.6,
+        "scope": "RAM snapshots and cumulative worker Torch allocation peak, not energy or device total"
+      },
+      "remote_attempts": 0,
+      "semantic_pass": 10,
+      "semantic_fail": 6,
+      "semantic_unresolved": 0,
+      "factuality": {
+        "pass": 10,
+        "fail": 2,
+        "unresolved": 0,
+        "not_applicable": 4
+      }
+    },
+    "no-stop-review": {
+      "record": "logs\\evaluations\\v031-no-stop-review-20261015-121917-984644.json",
+      "sha256": "fb9351eefb2792673d076fbb627fdf1756bd4fd93e82edf5f02d66ddf7c57108",
+      "cases": 16,
+      "initial_decision_cases": 14,
+      "initial_route_matches": 7,
+      "reviewed_cases": 0,
+      "controller_adjustments": 2,
+      "final_route_matches": 11,
+      "successful_calls": 8,
+      "verified_complete_cases": 1,
+      "text_service_generations": 8,
+      "generation_recovery_cases": 1,
+      "latency_ms": {
+        "min": 0.43,
+        "median": 349.04,
+        "max": 12502.68
+      },
+      "resource_observations": {
+        "minimum_available_ram_mb": 14731,
+        "worker_peak_cuda_allocated_mb": 4033.6,
+        "scope": "RAM snapshots and cumulative worker Torch allocation peak, not energy or device total"
+      },
+      "remote_attempts": 0,
+      "semantic_pass": 8,
+      "semantic_fail": 8,
+      "semantic_unresolved": 0,
+      "factuality": {
+        "pass": 6,
+        "fail": 1,
+        "unresolved": 0,
+        "not_applicable": 9
+      }
+    },
+    "no-preservation": {
+      "record": "logs\\evaluations\\v031-no-preservation-20261015-121939-338564.json",
+      "sha256": "7a02b1531662ceb3b957617f03454278a8e8211675f2f560869ecc042593bee2",
+      "cases": 16,
+      "initial_decision_cases": 14,
+      "initial_route_matches": 7,
+      "reviewed_cases": 6,
+      "controller_adjustments": 2,
+      "final_route_matches": 16,
+      "successful_calls": 14,
+      "verified_complete_cases": 1,
+      "text_service_generations": 14,
+      "generation_recovery_cases": 1,
+      "latency_ms": {
+        "min": 0.43,
+        "median": 1081.3049999999998,
+        "max": 12595.36
+      },
+      "resource_observations": {
+        "minimum_available_ram_mb": 14703,
+        "worker_peak_cuda_allocated_mb": 4033.43,
+        "scope": "RAM snapshots and cumulative worker Torch allocation peak, not energy or device total"
+      },
+      "remote_attempts": 0,
+      "semantic_pass": 10,
+      "semantic_fail": 6,
+      "semantic_unresolved": 0,
+      "factuality": {
+        "pass": 10,
+        "fail": 2,
+        "unresolved": 0,
+        "not_applicable": 4
+      }
+    }
+  },
+  "holdout": {
+    "contract": {
+      "record": "logs\\evaluations\\v031-contract-20261015-122027-302536.json",
+      "sha256": "fba38c00bae05997f17e2575493fdce2de6f5ba319123c2fcb69c70aa910fee0",
+      "cases": 16,
+      "initial_decision_cases": 14,
+      "initial_route_matches": 11,
+      "reviewed_cases": 2,
+      "controller_adjustments": 1,
+      "final_route_matches": 15,
+      "successful_calls": 14,
+      "verified_complete_cases": 2,
+      "text_service_generations": 12,
+      "generation_recovery_cases": 0,
+      "latency_ms": {
+        "min": 0.43,
+        "median": 640.28,
+        "max": 14209.38
+      },
+      "resource_observations": {
+        "minimum_available_ram_mb": 14659,
+        "worker_peak_cuda_allocated_mb": 4003.58,
+        "scope": "RAM snapshots and cumulative worker Torch allocation peak, not energy or device total"
+      },
+      "remote_attempts": 0,
+      "semantic_pass": 12,
+      "semantic_fail": 4,
+      "semantic_unresolved": 0,
+      "factuality": {
+        "pass": 12,
+        "fail": 0,
+        "unresolved": 0,
+        "not_applicable": 4
+      }
+    },
+    "rules": {
+      "record": "logs\\evaluations\\v031-rules-20261015-122052-011421.json",
+      "sha256": "155a52f85afc96c4126d079d5d4ee43e9f4dd0efe35ef0c1cf2a6a0644eeb4d9",
+      "cases": 16,
+      "initial_decision_cases": 14,
+      "initial_route_matches": 13,
+      "reviewed_cases": 0,
+      "controller_adjustments": 1,
+      "final_route_matches": 16,
+      "successful_calls": 14,
+      "verified_complete_cases": 2,
+      "text_service_generations": 12,
+      "generation_recovery_cases": 0,
+      "latency_ms": {
+        "min": 0.45,
+        "median": 374.255,
+        "max": 14299.36
+      },
+      "resource_observations": {
+        "minimum_available_ram_mb": 14856,
+        "worker_peak_cuda_allocated_mb": 3994.96,
+        "scope": "RAM snapshots and cumulative worker Torch allocation peak, not energy or device total"
+      },
+      "remote_attempts": 0,
+      "semantic_pass": 12,
+      "semantic_fail": 4,
+      "semantic_unresolved": 0,
+      "factuality": {
+        "pass": 12,
+        "fail": 1,
+        "unresolved": 0,
+        "not_applicable": 3
+      }
+    }
+  },
+  "frozen_manifest_sha256": "ab17f6525c71160feb4823826908fe5e275f84d81d19e11d2d29979e8b9e78bc",
+  "frozen_mismatches": [],
+  "historical_release_and_holdout_unchanged": {
+    "evaluation_data/release.json": true,
+    "evaluation_data/final.json": true
+  },
+  "independent_review_limit": "Codex evidence-based authored review; not Qwen self-rating, human double labeling or external blind evaluation.",
+  "service_check": "reports/service-check-v031-20261015-122357.json",
+  "validation": {
+    "targeted_unit_tests": 20,
+    "frontend_replay_checks": 22,
+    "browser_visual_check": "not performed; earlier localhost browser policy denial not bypassed"
+  }
+}

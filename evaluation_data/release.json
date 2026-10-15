@@ -1,0 +1,26 @@
+{
+  "version": "0.3.0",
+  "frozen_at": "2026-10-14T05:13:56.249987+00:00",
+  "holdout_sha256": "43f91c64c2a2d174eadb31df30d035d76675b16b047a0880638c17c9c934b69d",
+  "development_sha256": "a3bda74c8137a21340e0f199021a3a09824097f4330efec02a90f38c36e1283f",
+  "implementation_sha256": {
+    "core.py": "98269d89c1d58adfc4bf21f05b3cc3b65961b75cc03240a0cae5f765ec727b54",
+    "local_models.py": "5b4b44743567a8220ffdbf0bcd9ac8b010b8d015b9d3c9928e186192926452c9",
+    "config.json": "8e5198e92710c1378d98dadba483b3596466841ee32ec33edcd1b9b94040c27d",
+    "request_normalization.py": "45ef456a6c93cf5d163ab2a03825ca430ac64c5e10c69e3e240724273ed66b4a",
+    "model_paths.py": "4d358928402762463659a4d4fb5179fd61fa949da64c38907442a54ed27118e1",
+    "evaluation_runner.py": "c109829bd0c5dbb695c3d2029b09ed23d9fb1c6e801c27b3f60c4361d22eb6ee",
+    "answer_quality.py": "bb3728e9a505d7d8157f0069188e7cabb93d8072e4676b2d1e879edcd2100054",
+    "offline_environment.py": "dc07fe454e99b5bea95d139dec3ac7b57b5369f0420e56aa62f60d261f41e8a2",
+    "knowledge.json": "cb88305aceef9c3cb35ece83f8c1a4522a3cfc13806524683524de23089c94bb",
+    "models/model-lock.json": "082055cc3011a2094f0a176511413673f6c42807f5540fa39d90665f2591220c",
+    "app.py": "244fe4d7ec044941e5bc0f1d1b27e0bbe72b1bbc7e99ee304aa875c4c364486d",
+    "ui.html": "41eda75df3334da8e9f3d75ddeabdf2fb3cf7fd35f90b11fd6b54f7428bbdc97",
+    "start.ps1": "e5bd409ce24f9eb41690eee4ed5229115bbdfd0336f1a434c44d882f9d94adc8",
+    "stop.ps1": "4bc70c8e1ff03181e75e5c69cba7dc4885c40f22585730a29ee9e75abbe26a0c",
+    "evaluate.py": "5f95e70b110b0b3a778e1445c79286d7271d29a9adc5909a86957741ffe519f2"
+  },
+  "policy": "Final results must not tune this version; downgrade to regression before using them for next-version development.",
+  "identity": "Independent AnyJev + Qwen, not commercial Jev",
+  "blinding_limit": "Developer-authored holdout, not external blinded evaluation."
+}

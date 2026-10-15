@@ -1,0 +1,283 @@
+{
+  "report_sha256": "155a52f85afc96c4126d079d5d4ee43e9f4dd0efe35ef0c1cf2a6a0644eeb4d9",
+  "reviewer": "Codex, evidence-grounded per-case review; not Qwen",
+  "review_method": "Authored inspection of actual outputs against source, logic definitions, hand calculation and project implementation; not human double labeling or external blinded evaluation.",
+  "judgments": [
+    {
+      "case": "h01",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "not_applicable"
+      },
+      "reason": "明确不能反推，以香蕉作为水果但非苹果的有效反例。",
+      "evidence": [
+        "set_inclusion_counterexample",
+        "不能；香蕉是水果但不是苹果。",
+        "Exact visible output in report.results for h01"
+      ]
+    },
+    {
+      "case": "h02",
+      "verdict": "fail",
+      "dimensions": {
+        "factuality": "fail",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "fail",
+        "limitations": "not_applicable"
+      },
+      "reason": "首句称能被4整除不一定被2整除，后文n=4k=2(2k)又得一定整除，答案自相矛盾；不能只取最后一句算通过。",
+      "evidence": [
+        "integer_divisibility_definition",
+        "是。n=4k=2(2k)，k是整数。",
+        "Exact visible output in report.results for h02"
+      ]
+    },
+    {
+      "case": "h03",
+      "verdict": "fail",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "not_applicable",
+        "evidence_support": "fail",
+        "task_satisfaction": "fail",
+        "limitations": "not_applicable"
+      },
+      "reason": "选择local-components原段落，引用真实且提及仍需检查，但没有覆盖输出格式与语义正确性的明确区别；quality-check提供直接依据却未选中。",
+      "evidence": [
+        "knowledge.json:quality-check",
+        "不能；quality-check明确区分格式与语义，缺可靠依据时待检查。",
+        "Exact visible output in report.results for h03"
+      ]
+    },
+    {
+      "case": "h04",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "not_applicable",
+        "evidence_support": "pass",
+        "task_satisfaction": "pass",
+        "limitations": "not_applicable"
+      },
+      "reason": "anyjev-definition完整原文明确独立实现、不能称商用权重，直接支持身份区别。",
+      "evidence": [
+        "knowledge.json:anyjev-definition",
+        "不能。两者是独立实现。",
+        "Exact visible output in report.results for h04"
+      ]
+    },
+    {
+      "case": "h05",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "not_applicable"
+      },
+      "reason": "手算54/6+2=11，程序返回11.0。",
+      "evidence": [
+        "hand_calculation_54/6+2",
+        11,
+        "Exact visible output in report.results for h05"
+      ]
+    },
+    {
+      "case": "h06",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "pass",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "译文保留赵女士、尚未同意、6台、交付日期待定，没有肯定采购已发生。",
+      "evidence": [
+        "author_translation",
+        "Ms. Zhao has not yet agreed to buy six devices; the delivery date is undecided.",
+        "Exact visible output in report.results for h06"
+      ]
+    },
+    {
+      "case": "h07",
+      "verdict": "fail",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "pass",
+        "task_satisfaction": "fail",
+        "limitations": "pass"
+      },
+      "reason": "三个原句保留14/10/4和未核查未测量，但没有概括成一句短话。",
+      "evidence": [
+        "author_material",
+        "14次调用中10次返回、4次失败，答案未核查、能耗未测。",
+        "Exact visible output in report.results for h07"
+      ]
+    },
+    {
+      "case": "h08",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "pass",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "把两句整理为一条自然表述，保留下周五、原因未说明、场地待定。",
+      "evidence": [
+        "author_material",
+        "演示改至下周五，延期原因未说明，场地待定。",
+        "Exact visible output in report.results for h08"
+      ]
+    },
+    {
+      "case": "h09",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "pass",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "没有批准转为未批准，保留罗青、24台采购否定与仅试用4台的对象关系。",
+      "evidence": [
+        "author_material",
+        "罗青未批准采购24台设备，只同意试用4台。",
+        "Exact visible output in report.results for h09"
+      ]
+    },
+    {
+      "case": "h10",
+      "verdict": "fail",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "pass",
+        "task_satisfaction": "fail",
+        "limitations": "pass"
+      },
+      "reason": "答案与用户原文逐字相同，信息没有变，但未完成整理为正式表述的文字变换。",
+      "evidence": [
+        "author_material",
+        "预算尚未提供，会议时间待定。",
+        "Exact visible output in report.results for h10"
+      ]
+    },
+    {
+      "case": "h11",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "pass",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "负责人白露、11份、地点尚未确定三字段完整，没有猜地址。",
+      "evidence": [
+        "author_material",
+        "负责人白露，数量11份，地点待定。",
+        "Exact visible output in report.results for h11"
+      ]
+    },
+    {
+      "case": "h12",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "pass",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "公告仅重述周二、场地待定、原因未提供，不增加原定日期、原因或落款。",
+      "evidence": [
+        "goal_facts",
+        "交流会改至周二，场地待定，调整原因未提供。",
+        "Exact visible output in report.results for h12"
+      ]
+    },
+    {
+      "case": "h13",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "not_applicable",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "未收到附件内容，明确请求原文，没有虚构德语译文。",
+      "evidence": [
+        "request_no_attachment",
+        "没有附件原文，请提供。",
+        "Exact visible output in report.results for h13"
+      ]
+    },
+    {
+      "case": "h14",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "not_applicable",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "承认不知道口袋卡片数量，没有猜数或声称观察；解释简短，但准确说明当前不能给出确定数量。",
+      "evidence": [
+        "REGISTRY_no_sensor",
+        "没有观察接口或用户材料，不能知道数量。",
+        "Exact visible output in report.results for h14"
+      ]
+    },
+    {
+      "case": "h15",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "not_applicable",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "程序预检查明确无设备接口且未执行，不能把该正确停止算为模型选对。",
+      "evidence": [
+        "REGISTRY_no_actuation",
+        "无设备接口，无法执行且未执行。",
+        "Exact visible output in report.results for h15"
+      ]
+    },
+    {
+      "case": "h16",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "not_applicable"
+      },
+      "reason": "原文xy z换行q为6字符、2非空行、3空白分隔词，程序三值全部相符。",
+      "evidence": [
+        "hand_count_codepoints_4+1+1",
+        {
+          "characters": 6,
+          "nonempty_lines": 2,
+          "whitespace_words": 3
+        },
+        "Exact visible output in report.results for h16"
+      ]
+    }
+  ]
+}

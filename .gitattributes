@@ -1,0 +1,2 @@
+# Frozen evaluation manifests depend on exact bytes, including BOM and EOL.
+* -text

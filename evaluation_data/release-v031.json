@@ -1,0 +1,38 @@
+{
+  "version": "0.3.1",
+  "frozen_at": "2026-10-15T04:19:41.459448+00:00",
+  "dataset": "evaluation_data/holdout-v031.json",
+  "dataset_sha256": "de9675e5bcbcfdab1a22be481f6a4e24a92546cff66768ec29a8f7e7cfb1d4b6",
+  "development_sha256": "9384f4ccb2021093fa36e433e068c775d3b71e368c0d06c07cea193e9f35f527",
+  "implementation_sha256": {
+    "answer_quality.py": "024144eb2168044a4241623a529fd3fbe46abc426ecd48373c0d4fe78a4dbbcf",
+    "app.py": "244fe4d7ec044941e5bc0f1d1b27e0bbe72b1bbc7e99ee304aa875c4c364486d",
+    "config.json": "07ed6ea32afc23e3b0e8d4f7c2bee0e58f25b514adf3d65c9af4e33a1aefe171",
+    "core.py": "9c6446951e644f19931c80c70467c83e3aec1c3f8586e8466f7ef586d58eaa3c",
+    "environment-lock.local.json": "a29ef80dad3a0d6bbfc0d776abbb379258cbab6b5337f3a83cf0c187d8d28e95",
+    "evaluation_runner.py": "8d030a2a8d7975328d7ddb5a59fe609e67f75d70f9b5bace898369c68af47922",
+    "freeze_iteration.py": "bab838104d1d10a242b269275da0e3bf7a483b0e01c41da3f92c258b68288a4d",
+    "knowledge.json": "cb88305aceef9c3cb35ece83f8c1a4522a3cfc13806524683524de23089c94bb",
+    "local_models.py": "94c1e0ab383cfee368948a8bf01f6385fc625d2c02b84c959f5d1e36d45ab7e8",
+    "model_paths.py": "4d358928402762463659a4d4fb5179fd61fa949da64c38907442a54ed27118e1",
+    "models/model-lock.json": "082055cc3011a2094f0a176511413673f6c42807f5540fa39d90665f2591220c",
+    "offline_environment.py": "dc07fe454e99b5bea95d139dec3ac7b57b5369f0420e56aa62f60d261f41e8a2",
+    "open.ps1": "637bea2329f7b0824ef8866c96dca304f46fabe905632c6aee4b84d5e5c2519e",
+    "request_normalization.py": "45ef456a6c93cf5d163ab2a03825ca430ac64c5e10c69e3e240724273ed66b4a",
+    "run_iteration.py": "baefa622daef430e97427f1c4e2225925d8954bb8802ddee97a2d5b25d25b516",
+    "start.ps1": "e5bd409ce24f9eb41690eee4ed5229115bbdfd0336f1a434c44d882f9d94adc8",
+    "stop.ps1": "4bc70c8e1ff03181e75e5c69cba7dc4885c40f22585730a29ee9e75abbe26a0c",
+    "task_contract.py": "25b3e61a38f79cbc7cf0201e2290e44171a43cea2b090deb268add9ea889a169",
+    "tests/test_contract.py": "1c907efc550ccf0ac0cf105655aa1fcb78d8375b8fafe41af3783358f78dd1db",
+    "tests/test_quality.py": "bdcdd01cc3bb49398dce9c2d73da99db72a7b7691f0e16d90ac1a950f115ed21",
+    "ui.html": "fdd98db1b357d41797b984fe248229525b80443d4b4ab0be45bb86a5db67512f",
+    "打开工作台.cmd": "836a7c7ad950ac1b7e209ff3f8c9df554c80a6e15b9d1d4fa9a44017de9c1852"
+  },
+  "profiles": [
+    "contract",
+    "rules"
+  ],
+  "policy": "No tuning after holdout. Future development using failures requires a new holdout/version.",
+  "identity": "independent AnyJev + Qwen; not commercial Jev",
+  "limits": "Small developer-authored holdout, not external blinded or human double-labeled evaluation."
+}

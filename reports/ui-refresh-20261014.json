@@ -1,0 +1,13 @@
+{
+  "created_at_utc": "2026-10-14T05:58:42.5775697Z",
+  "runtime_version": "0.3.0",
+  "frontend_replay_checks_passed": 20,
+  "archived_original_ui": "D:\\1 jev\\jev-edge-prototype\\.repair-backups\\ui-refresh-20261014-133527\\ui.html",
+  "scope": "frontend only",
+  "original_ui_sha256": "41eda75df3334da8e9f3d75ddeabdf2fb3cf7fd35f90b11fd6b54f7428bbdc97",
+  "external_dependencies_added": 0,
+  "browser_visual_verification": "not completed: browser URL security policy denied observation",
+  "frozen_runtime_files_unchanged": true,
+  "current_ui_sha256": "94a03b95c2a0bbd0bc8f0ab0dcc43b7e77ff6c15e55be63fa0fe0feea99f0440",
+  "original_release_manifest_preserved": true
+}

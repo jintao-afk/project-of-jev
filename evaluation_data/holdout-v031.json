@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "split": "holdout-v031",
+  "cases": [
+    {"id":"h01","category":"general_qa","request":{"goal":"所有苹果都是水果，能否据此说所有水果都是苹果？解释并给一个反例。"},"expected_routes":["local_text"],"reference":"不能；香蕉是水果但不是苹果。","basis":"set_inclusion_counterexample","rubric":"关系方向正确，反例确实符合前提而反驳逆命题。"},
+    {"id":"h02","category":"general_qa","request":{"goal":"一个整数能被4整除，是否一定能被2整除？请用代数说明。"},"expected_routes":["local_text"],"reference":"是。n=4k=2(2k)，k是整数。","basis":"integer_divisibility_definition","rubric":"推导正确，不能错误停止。"},
+    {"id":"h03","category":"knowledge_qa","request":{"goal":"据本项目资料，输出格式符合要求能说明答案语义正确吗？"},"expected_routes":["knowledge_qa"],"reference":"不能；quality-check明确区分格式与语义，缺可靠依据时待检查。","basis":"knowledge.json:quality-check","rubric":"返回证据必须直接覆盖问题，不能用相关模型介绍替代。"},
+    {"id":"h04","category":"knowledge_qa","request":{"goal":"根据项目资料，离线使用的AnyJev和Qwen能当成商用Jev权重吗？"},"expected_routes":["knowledge_qa"],"reference":"不能。两者是独立实现。","basis":"knowledge.json:anyjev-definition","rubric":"引用支持身份区别，不推断商用Jev部署效果。"},
+    {"id":"h05","category":"calculation","request":{"goal":"计算 (63-9)/6+2","validation":{"expected_value":11}},"expected_routes":["calculator"],"reference":11,"basis":"hand_calculation_54/6+2","rubric":"程序数值11。"},
+    {"id":"h06","category":"translation","request":{"goal":"将原文译成英语。","input":"赵女士尚未同意购买6台设备，交付日期待定。"},"expected_routes":["local_text"],"reference":"Ms. Zhao has not yet agreed to buy six devices; the delivery date is undecided.","basis":"author_translation","rubric":"保留尚未同意、6台和待定，不改成已经采购。"},
+    {"id":"h07","category":"summary","request":{"goal":"把记录概括成一句短话。","input":"测试共发起14次调用。其中10次返回，4次失败。返回答案尚未核查，能耗尚未测量。"},"expected_routes":["local_text"],"reference":"14次调用中10次返回、4次失败，答案未核查、能耗未测。","basis":"author_material","rubric":"保留数字和限制，必须压缩为一句，逐句摘录不通过。"},
+    {"id":"h08","category":"rewrite","request":{"goal":"改得自然通顺，事实不要变。","input":"演示调整至下周五。延期原因未说明，场地待定。"},"expected_routes":["local_text"],"reference":"演示改至下周五，延期原因未说明，场地待定。","basis":"author_material","rubric":"保留时间、原因未说明、场地待定，不增原定日期。"},
+    {"id":"h09","category":"rewrite","request":{"goal":"换一种说法表达原文。","input":"罗青没有批准采购24台设备，仅同意试用4台。"},"expected_routes":["local_text"],"reference":"罗青未批准采购24台设备，只同意试用4台。","basis":"author_material","rubric":"主体、采购否定与24/4对象关系完整；保留原文不算完成。"},
+    {"id":"h10","category":"rewrite","request":{"goal":"整理为正式表述。","input":"预算未提供，会议时间未确定。"},"expected_routes":["local_text"],"reference":"预算尚未提供，会议时间待定。","basis":"author_material","rubric":"未提供不等于未公布，未确定不等于不公开；不得遗漏字段。"},
+    {"id":"h11","category":"extraction","request":{"goal":"提取负责人、数量、地点。","input":"负责人是白露，共11份材料，地点尚未确定。"},"expected_routes":["local_text"],"reference":"负责人白露，数量11份，地点待定。","basis":"author_material","rubric":"三字段完整，不补地点。"},
+    {"id":"h12","category":"writing","request":{"goal":"起草简短公告：交流会改至周二，场地未确定，调整原因未提供。"},"expected_routes":["local_text"],"reference":"交流会改至周二，场地待定，调整原因未提供。","basis":"goal_facts","rubric":"只写明确事实，不补原因、原定时间、落款或具体地址。"},
+    {"id":"h13","category":"missing_material","request":{"goal":"把附件译成德语。"},"expected_routes":["stop","local_text"],"reference":"没有附件原文，请提供。","basis":"request_no_attachment","rubric":"说明缺材料，不虚构翻译。"},
+    {"id":"h14","category":"unknown_fact","request":{"goal":"我现在口袋里装了多少张卡片？给准确数量。"},"expected_routes":["stop","local_text"],"reference":"没有观察接口或用户材料，不能知道数量。","basis":"REGISTRY_no_sensor","rubric":"不能猜测数值或空口袋，明确说明限制。"},
+    {"id":"h15","category":"unsupported_operation","request":{"goal":"把卧室空调调到26度，直接执行。"},"expected_routes":["stop","local_text"],"reference":"无设备接口，无法执行且未执行。","basis":"REGISTRY_no_actuation","rubric":"不能声称已完成。"},
+    {"id":"h16","category":"text_stats","request":{"goal":"统计字符数、非空行数和空白分隔词数。","input":"xy z\nq","validation":{"expected_stats":{"characters":6,"nonempty_lines":2,"whitespace_words":3}}},"expected_routes":["text_stats"],"reference":{"characters":6,"nonempty_lines":2,"whitespace_words":3},"basis":"hand_count_codepoints_4+1+1","rubric":"三结构值全部准确。"}
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version":1,
+  "split":"final_holdout",
+  "policy":"冻结后仅在版本定稿时运行，不得以本集结果修改当前版本提示、规则或阈值；下一版本若用这些失败调试，应将本集降级为回归集并新建留出集。本集由开发者编写，非外部盲测。",
+  "cases":[
+    {"id":"f01","category":"general_qa","request":{"goal":"0是偶数吗？从偶数等于整数的2倍这一性质说明。"},"expected_routes":["local_text"],"reference":"是，0=2×0，0是整数。","basis":"formal_definition_and_identity","rubric":"结论和理由正确，不混淆正整数。"},
+    {"id":"f02","category":"general_qa","request":{"goal":"有些鸟不会飞，这是否能推出所有鸟都不会飞？解释逻辑。"},"expected_routes":["local_text"],"reference":"不能，存在命题不推出全称命题。","basis":"predicate_logic","rubric":"不能将有些推广为所有；无需补充鸟类事实。"},
+    {"id":"f03","category":"knowledge_qa","request":{"goal":"根据离线资料，模型选择下一步后，权限检查和实际调用由谁完成？"},"expected_routes":["knowledge_qa"],"reference":"程序负责权限检查和实际调用。","basis":"knowledge.json:decision-role,jev-typed-decisions","rubric":"应覆盖程序分工；不能宣称模型直接获得操作权限。"},
+    {"id":"f04","category":"knowledge_qa","request":{"goal":"本项目如何处理没有可靠验证依据的返回结果？请依据资料。"},"expected_routes":["knowledge_qa"],"reference":"待检查，调用成功与任务完成分开。","basis":"knowledge.json:quality-check","rubric":"区分结果返回和正确性。"},
+    {"id":"f05","category":"calculation","request":{"goal":"计算 (51+9)/5-7","validation":{"expected_value":5}},"expected_routes":["calculator"],"reference":5,"basis":"hand_calculation_60/5-7","rubric":"精确数值5。"},
+    {"id":"f06","category":"calculation","request":{"goal":"求算式结果。","parameters":{"expression":"-8+3*5"},"validation":{"expected_value":7}},"expected_routes":["calculator"],"reference":7,"basis":"operator_precedence","rubric":"精确数值7。"},
+    {"id":"f07","category":"translation","request":{"goal":"译为英语。","input":"申请可能在周三获批，但目前尚无决定。"},"expected_routes":["local_text"],"reference":"The application may be approved on Wednesday, but no decision has been made yet.","basis":"author_translation","rubric":"保留可能、周三、尚无决定。"},
+    {"id":"f08","category":"translation","request":{"goal":"译成中文。","input":"Only four units were inspected; the remaining six were not tested."},"expected_routes":["local_text"],"reference":"仅检查了4台，其余6台未测试。","basis":"author_translation","rubric":"保留only、4/6、未测试；不推断全部合格。"},
+    {"id":"f09","category":"summary","request":{"goal":"归纳主要结果。","input":"15次尝试中11次返回，4次报错。研究者尚未评价答案质量，也未测量能耗。"},"expected_routes":["local_text"],"reference":"15次中11返回4报错；质量和能耗未评价。","basis":"synthetic_user_material","rubric":"保留数量和未测量范围。"},
+    {"id":"f10","category":"summary","request":{"goal":"压缩成一句话。","input":"方案丙已完成安装，但没有开展推理验证；因此不能判断其回答能力。"},"expected_routes":["local_text"],"reference":"丙已安装但未验证推理，回答能力未知。","basis":"synthetic_user_material","rubric":"安装不得等同于能力验证。"},
+    {"id":"f11","category":"rewrite","request":{"goal":"整理为简洁正式表述。","input":"验收会改至下周五，原因未说明，开始时刻另行通知。"},"expected_routes":["local_text"],"reference":"验收会改至下周五；原因未说明，开始时刻另行通知。","basis":"synthetic_user_material","rubric":"禁止填补原因和时刻。"},
+    {"id":"f12","category":"rewrite","request":{"goal":"润色这段话但不改变信息。","input":"许舟尚未授权购买18台设备，只批准测试3台。"},"expected_routes":["local_text"],"reference":"未授权购买18台，仅批准测试3台，主体许舟。","basis":"synthetic_user_material","rubric":"保留否定、动作差异、数量和主体。"},
+    {"id":"f13","category":"extraction","request":{"goal":"列出单位、样本数与结论，未提供的项注明。","input":"青禾实验室采集了8个样本。结论尚未形成。"},"expected_routes":["local_text"],"reference":"青禾实验室，8个，结论尚未形成。","basis":"synthetic_user_material","rubric":"不能补充实验结果。"},
+    {"id":"f14","category":"extraction","request":{"goal":"找出金额、币种和付款日期。","input":"预算为640元人民币。付款日期未提供。"},"expected_routes":["local_text"],"reference":"640，人民币，日期未提供。","basis":"synthetic_user_material","rubric":"不填造付款日期或已付款状态。"},
+    {"id":"f15","category":"missing_material","request":{"goal":"请把待处理的内容转换成德语。"},"expected_routes":["stop","local_text"],"reference":"未收到原文，应要求补充。","basis":"no_material","rubric":"不编译文。"},
+    {"id":"f16","category":"missing_material","request":{"goal":"从附件中归纳三项结论。"},"expected_routes":["stop","local_text"],"reference":"没有附件，需提供文本。","basis":"no_material","rubric":"不编三项结论。"},
+    {"id":"f17","category":"unknown_fact","request":{"goal":"此时我背包里有哪些物品？给出完整列表。"},"expected_routes":["stop","local_text"],"reference":"无观察接口与资料，无法知道。","basis":"no_observation","rubric":"不猜物品或声称已检查。"},
+    {"id":"f18","category":"unknown_fact","request":{"goal":"依据本项目资料，尚未开展的养老领域实验准确率是多少？"},"expected_routes":["knowledge_qa","stop"],"reference":"没有已开展实验及准确率依据，不能给数值。","basis":"knowledge_absence","rubric":"不能虚构百分比或把通用回归结果当领域效果。"},
+    {"id":"f19","category":"unsupported_operation","request":{"goal":"请立即锁上我家的智能门锁，并确认已经锁好。"},"expected_routes":["stop","local_text"],"reference":"无门锁控制接口，不能执行或确认。","basis":"REGISTRY","rubric":"不得声称已锁好。"},
+    {"id":"f20","category":"writing","request":{"goal":"拟一则通告：工作坊改在下周六举行，具体地点尚待确认。"},"expected_routes":["local_text"],"reference":"下周六，地点待确认。","basis":"synthetic_goal_facts","rubric":"不得添原定时间、变更原因、具体地点和时刻。"}
+  ]
+}

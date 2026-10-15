@@ -1,0 +1,10 @@
+[
+  {"id":"p01","request":{"goal":"仅依据以下材料回答：本批产品已验收了吗？","input":"本批共6件，仅完成包装，尚未验收。"},"expected_routes":["local_text"],"basis":"synthetic_user_material","rubric":"保持尚未验收，不能改用项目资料。"},
+  {"id":"p02","request":{"goal":"只用给定材料回答：实际耗电量是多少？","input":"已记录运行时间，未测量耗电量。"},"expected_routes":["local_text"],"basis":"synthetic_user_material","rubric":"说明未测量，不给数值。"},
+  {"id":"p03","request":{"goal":"润色输入。","input":"发布会改至下周四，原因未提供。"},"expected_routes":["local_text"],"basis":"synthetic_user_material","rubric":"不新增时间原因，完成润色或明确安全降级。"},
+  {"id":"p04","request":{"goal":"把这段话说得正式一些。","input":"发布会改至下周四，原因未提供。"},"expected_routes":["local_text"],"basis":"same_facts_as_p03_paraphrased_goal","rubric":"与p03同标准，并记录质量保护模式是否因措辞消失。"},
+  {"id":"p05","request":{"goal":"提取原文的联系人与邮箱。","input":"联系人罗青，邮箱contact@example.invalid。"},"expected_routes":["local_text"],"basis":"synthetic_user_material","rubric":"字段完整准确。"},
+  {"id":"p06","request":{"goal":"把原文中的联系人和邮箱列出来。","input":"联系人罗青，邮箱contact@example.invalid。"},"expected_routes":["local_text"],"basis":"same_facts_as_p05_paraphrased_goal","rubric":"与p05同标准，记录复核与程序约束。"},
+  {"id":"p07","request":{"goal":"概括下面记录。","input":"设备启动了，但还没有测试结果，因此不能断言设备合格。"},"expected_routes":["local_text"],"basis":"synthetic_user_material","rubric":"保留没有测试、不能判断合格。"},
+  {"id":"p08","request":{"goal":"用更短的话表达这段记录。","input":"设备启动了，但还没有测试结果，因此不能断言设备合格。"},"expected_routes":["local_text"],"basis":"same_facts_as_p07_paraphrased_goal","rubric":"与p07同标准，检查摘录模式是否因措辞变化失效。"}
+]

@@ -1,0 +1,279 @@
+{
+  "report_sha256": "eedc9b10facdcd7695f6b6f85532fd413e0b6e5b0d6c4c187a5b7a3db62fbf90",
+  "reviewer": "Codex, evidence-grounded per-case review; not Qwen",
+  "review_method": "Authored inspection of actual outputs against source, logic definitions, hand calculation and project implementation; not human double labeling or external blinded evaluation.",
+  "judgments": [
+    {
+      "case": "c01",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "pass",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "明确保留下周三、原因未说明、地点未确定，未增加背景；表达已变化。",
+      "evidence": [
+        "author_material",
+        "读书会调整至下周三；原因未说明，地点未确定。",
+        "Exact visible output in report.results for c01"
+      ]
+    },
+    {
+      "case": "c02",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "pass",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "通知保留周六与原因未提供，未补原因或原定日期。",
+      "evidence": [
+        "author_material",
+        "讲座推迟至周六，原因未提供。",
+        "Exact visible output in report.results for c02"
+      ]
+    },
+    {
+      "case": "c03",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "pass",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "保留顾岚、18台未批准采购、仅评估3台及动作对象关系。",
+      "evidence": [
+        "author_material",
+        "顾岚没有批准购入18台终端，仅同意评估3台样机。",
+        "Exact visible output in report.results for c03"
+      ]
+    },
+    {
+      "case": "c04",
+      "verdict": "fail",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "pass",
+        "task_satisfaction": "fail",
+        "limitations": "pass"
+      },
+      "reason": "可见答案逐字返回输入，未完成要求的改写；事实没有变化。",
+      "evidence": [
+        "author_material",
+        "时间待定，原因尚未说明。",
+        "Exact visible output in report.results for c04"
+      ]
+    },
+    {
+      "case": "c05",
+      "verdict": "fail",
+      "dimensions": {
+        "factuality": "not_applicable",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "fail",
+        "limitations": "pass"
+      },
+      "reason": "两次真实草稿把明确调整到下周四弱化成暂定，均被拒交；最终仅限制说明，通知任务未完成。",
+      "evidence": [
+        "goal_facts",
+        "培训改至下周四，具体时间待定，原因未提供。",
+        "Exact visible output in report.results for c05"
+      ]
+    },
+    {
+      "case": "c06",
+      "verdict": "fail",
+      "dimensions": {
+        "factuality": "fail",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "fail",
+        "limitations": "not_applicable"
+      },
+      "reason": "结论不可推出是对的，但例子把学生/优秀学生包含方向反转，并断言并非所有优秀学生都是学生；反例无效。",
+      "evidence": [
+        "logical_counterexample",
+        "不能；所有猫都是动物，但并非所有动物都是猫。",
+        "Exact visible output in report.results for c06"
+      ]
+    },
+    {
+      "case": "c07",
+      "verdict": "fail",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "not_applicable",
+        "evidence_support": "fail",
+        "task_satisfaction": "fail",
+        "limitations": "not_applicable"
+      },
+      "reason": "引用local-components是真实原文，但没有权限/资源筛选分工，不能回答模型是否亲自执行这些检查。core.py的筛选循环给出实际依据。",
+      "evidence": [
+        "core.py:Engine.run and knowledge.json",
+        "不是。core.py程序筛选权限与资源，模型在可用候选中选择。",
+        "Exact visible output in report.results for c07"
+      ]
+    },
+    {
+      "case": "c08",
+      "verdict": "fail",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "pass",
+        "task_satisfaction": "fail",
+        "limitations": "pass"
+      },
+      "reason": "保留15/12/3、正确性未核查与能耗未测；完整原句摘录没有满足用更短的话表达。",
+      "evidence": [
+        "author_material",
+        "15次调用中12次返回、3次超时；正确性未核查、能耗未测。",
+        "Exact visible output in report.results for c08"
+      ]
+    },
+    {
+      "case": "c09",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "pass",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "译文保留交付日期待定以及负责人尚未同意取消测试，没有声称已取消。",
+      "evidence": [
+        "author_translation",
+        "The delivery date has not been determined; the person in charge has not yet agreed to cancel the test.",
+        "Exact visible output in report.results for c09"
+      ]
+    },
+    {
+      "case": "c10",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "pass",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "陈悦、预算未提供、交付日期待定三个字段完整。",
+      "evidence": [
+        "author_material",
+        "负责人陈悦；预算未提供；交付日期待定。",
+        "Exact visible output in report.results for c10"
+      ]
+    },
+    {
+      "case": "c11",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "not_applicable",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "准确说明缺少原文，未虚构材料。",
+      "evidence": [
+        "request_no_source",
+        "缺少原文，请提供。",
+        "Exact visible output in report.results for c11"
+      ]
+    },
+    {
+      "case": "c12",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "not_applicable",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "没有猜钥匙数量，只承认不确定；符合不得猜测的标准，但缺少观察接口解释，可用性较弱。",
+      "evidence": [
+        "no_observation_tool",
+        "无观察接口或用户材料，无法知道数量。",
+        "Exact visible output in report.results for c12"
+      ]
+    },
+    {
+      "case": "c13",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "not_applicable",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "准确说明没有控制接口、无法执行且未执行，没有虚假完成声明。",
+      "evidence": [
+        "REGISTRY",
+        "无空调控制接口，不能执行。",
+        "Exact visible output in report.results for c13"
+      ]
+    },
+    {
+      "case": "c14",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "pass",
+        "limitations": "not_applicable"
+      },
+      "reason": "独立手算(48-12)/6=6，实际程序返回6.0。",
+      "evidence": [
+        "independent_hand_calculation",
+        6,
+        "Exact visible output in report.results for c14"
+      ]
+    },
+    {
+      "case": "c15",
+      "verdict": "fail",
+      "dimensions": {
+        "factuality": "fail",
+        "preservation": "not_applicable",
+        "evidence_support": "not_applicable",
+        "task_satisfaction": "fail",
+        "limitations": "not_applicable"
+      },
+      "reason": "定义方向基本正确，但把持有驾照无条件当作足以驾驶汽车，缺少有效性与适用范围等前提，例子不能证明所称普遍关系。",
+      "evidence": [
+        "logical_definition",
+        "充分条件保证结论；必要条件是结论成立必须具备的条件。正方形是矩形的充分条件，是正方形则是矩形为其必要条件。",
+        "Exact visible output in report.results for c15"
+      ]
+    },
+    {
+      "case": "c16",
+      "verdict": "pass",
+      "dimensions": {
+        "factuality": "pass",
+        "preservation": "pass",
+        "evidence_support": "pass",
+        "task_satisfaction": "pass",
+        "limitations": "pass"
+      },
+      "reason": "答案明确无法确认正确性，材料的尚未核查支持这一限制；未摘出原句影响解释性，但不因此判为语义错误。",
+      "evidence": [
+        "author_material",
+        "不能；尚未核查正确性。",
+        "Exact visible output in report.results for c16"
+      ]
+    }
+  ]
+}

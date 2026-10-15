@@ -1,0 +1,6 @@
+{
+  "goal": "用计算工具对给定算式求值。",
+  "input": "(18+24)/6",
+  "parameters": {"expression": "(18+24)/6"},
+  "validation": {"expected_value": 7}
+}
