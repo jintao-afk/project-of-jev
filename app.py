@@ -3,6 +3,8 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
+import hashlib
 import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -18,13 +20,15 @@ def serve(port: int):
         def log_message(self, *_):
             pass
 
-        def send(self, status, data, content_type='application/json; charset=utf-8'):
+        def send(self, status, data, content_type='application/json; charset=utf-8', headers=None):
             body = data if isinstance(data, bytes) else json.dumps(data, ensure_ascii=False).encode('utf-8')
             self.send_response(status)
             self.send_header('Content-Type', content_type)
             self.send_header('Content-Length', str(len(body)))
             self.send_header('Cache-Control', 'no-store')
             self.send_header('X-Content-Type-Options', 'nosniff')
+            for key, value in (headers or {}).items():
+                self.send_header(key, value)
             self.end_headers()
             self.wfile.write(body)
 
@@ -53,7 +57,43 @@ def serve(port: int):
                                'model_lock': engine.model_lock()})
             elif self.path == '/v1/capabilities':
                 from dataclasses import asdict
-                self.send(200, {'capabilities': [asdict(c) for c in REGISTRY]})
+                self.send(200, {'capabilities': [asdict(c) for c in REGISTRY],
+                    'agent': {'mode': 'agent', 'planner': 'local Qwen', 'selector': 'AnyJev + Qwen',
+                        'services': ['calculator', 'text_stats', 'local_text', 'retrieve', 'knowledge_qa', 'dataset_report'],
+                        'continuation': '/v1/tasks/<task_id>/continue', 'history': '/v1/tasks',
+                        'deliverables': ['report.md', 'report.json'],
+                        'limits': {'initial_subtasks': 4, 'total_subtasks': 6, 'replans': 1, 'stop_reviews': 1},
+                        'remote_enabled': False, 'semantic_validation': 'requires independent review'},
+                    'workflows': {'dataset_report': {'input_root': 'workspace/inbox', 'output_root': 'workspace/runs',
+                    'tools': ['inspect', 'read_csv', 'statistics', 'threshold', 'compare', 'local_model_suggestions', 'write_report', 'verify', 'finish', 'stop'],
+                    'limits': {'csv_files': 2, 'bytes_per_csv': 1000000, 'rows_per_csv': 5000}}}})
+            elif self.path == '/v1/tasks':
+                from task_store import TaskStore
+                self.send(200, {'tasks': TaskStore(ROOT).list()})
+            elif re.fullmatch(r'/v1/tasks/[a-f0-9]{32}', self.path):
+                from task_store import TaskStore
+                try:
+                    self.send(200, TaskStore(ROOT).load(self.path.rsplit('/', 1)[1])['report'])
+                except ValueError as exc:
+                    self.send(404, {'error': str(exc)})
+            elif re.fullmatch(r'/v1/artifacts/[a-f0-9]{32}/report\.(md|json)', self.path):
+                _, _, _, run_id, filename = self.path.split('/')
+                base = ROOT / 'workspace/runs'
+                target = base / run_id / filename
+                if not base.resolve().is_relative_to(ROOT.resolve()) or not target.resolve().is_relative_to(base.resolve()) or not target.is_file():
+                    self.send(404, {'error': '没有此任务成果'})
+                    return
+                try:
+                    receipt = json.loads((target.parent / 'delivery.json').read_text('utf-8'))
+                except (OSError, ValueError):
+                    self.send(404, {'error': '本轮成果尚未完成交付核验'})
+                    return
+                content = target.read_bytes()
+                if receipt.get('run_id') != run_id or receipt.get('files', {}).get(filename) != hashlib.sha256(content).hexdigest():
+                    self.send(409, {'error': '成果文件已变化，请重新运行任务'})
+                    return
+                self.send(200, content, 'text/plain; charset=utf-8',
+                    {'Content-Disposition': f'attachment; filename="{run_id}-{filename}"'})
             else:
                 self.send(404, {'error': '没有这个接口'})
 
@@ -61,7 +101,8 @@ def serve(port: int):
             if not self.local_origin():
                 self.send(403, {'error': '仅接受本机访问'})
                 return
-            if self.path != '/v1/run':
+            continuation = re.fullmatch(r'/v1/tasks/([a-f0-9]{32})/continue', self.path)
+            if self.path != '/v1/run' and not continuation:
                 self.send(404, {'error': '没有这个接口'})
                 return
             try:
@@ -76,7 +117,7 @@ def serve(port: int):
                 self.send(409, {'error': '已有处理正在运行，请等本次结束'})
                 return
             try:
-                self.send(200, engine.run(task))
+                self.send(200, engine.continue_task(continuation[1], task) if continuation else engine.run(task))
             except ValueError as exc:
                 self.send(400, {'error': str(exc)})
             except Exception as exc:

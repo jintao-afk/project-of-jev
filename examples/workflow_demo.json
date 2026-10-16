@@ -1,0 +1,5 @@
+{
+  "mode": "workflow",
+  "goal": "分析两份历史运行记录，比较耗时和状态分布，检查超过阈值的记录，生成可核查报告。",
+  "workflow": {"input_dir": "demo", "value_column": "total_ms", "status_column": "status", "threshold": "2000", "include_suggestions": false}
+}

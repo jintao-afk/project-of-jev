@@ -1,0 +1,51 @@
+{
+  "stage": "R1 UI refinement",
+  "created_at_utc": "2026-10-15T11:01:14.746411+00:00",
+  "backend_version": "0.6.0",
+  "checkpoint_type": "UI functional development checkpoint; not semantic or visual acceptance",
+  "current_sha256": {
+    "ui.html": "6f4f28b54f32c147bbe1237fb0ea1b93c5f359dfa0743d13dfcd7407c741027d",
+    "tests/ui_replay.cjs": "c9ab77cdee8262180d374a1acc8160c2a11a591b46ff18ccf6a9107858cb8240",
+    "RELEASE.md": "aa34e96be9ba827b5fd834223ad0c89d6dcca61b06d019529f5afc85502e3ec5",
+    "README.md": "c210439b1f36a747365089c64a5cce4a62c65db25ffa68ef68d61a647b704260",
+    "推进记录.md": "ab9e52eeff52016e3297a537955f33d336c2e7f1695f495e49dcf1cb3b32ab63",
+    "reports/ui-refresh-r1-20261015.md": "39af28132e88bbb8fb23ccec07a3114e831cbb47c754cf842d3187ad26ff67f7",
+    "reports/ui-refresh-r1-20261015.json": "32336319cb952fca2ada71d55771fbd35c65f1247ff52599f6ef6a190b74542c",
+    "evaluation_data/snapshots/r1-ui/SNAPSHOT.md": "a95a906a07acf7df7c5ea9cbd3a69188bdaa53dff66787b6d650759ffab656b2"
+  },
+  "original_r1_reference": "evaluation_data/release-v060-r1.json",
+  "original_r1_manifest_sha256": "c34dd953cb89a3ce0f18fc08b5721468fe266791d5b6b26e4dd3414541ab6fec",
+  "preserved_originals": {
+    "README.md": {
+      "original_sha256": "cffb8e15a905a088d7c8964e35146f77a4ed795878c7c133b256eb70110e9b18",
+      "preserved_at": "evaluation_data/snapshots/r1-ui/README.md",
+      "current_sha256": "c210439b1f36a747365089c64a5cce4a62c65db25ffa68ef68d61a647b704260"
+    },
+    "RELEASE.md": {
+      "original_sha256": "1837a6bd637d9448dbded0d9bcf4bac3a10dbad9528a22400b9dbabce75cacdd",
+      "preserved_at": "evaluation_data/snapshots/r1-ui/RELEASE.md",
+      "current_sha256": "aa34e96be9ba827b5fd834223ad0c89d6dcca61b06d019529f5afc85502e3ec5"
+    },
+    "tests/ui_replay.cjs": {
+      "original_sha256": "7a414b12903d439f8a1a5391cb10265f342c2dfc76a66d78595e99c29506d4c0",
+      "preserved_at": "evaluation_data/snapshots/r1-ui/tests/ui_replay.cjs",
+      "current_sha256": "c9ab77cdee8262180d374a1acc8160c2a11a591b46ff18ccf6a9107858cb8240"
+    },
+    "ui.html": {
+      "original_sha256": "fd45bbe08d8fb14616aa1e59a68c751b7f937cc2bb2f3cf870f13fa318dcdaab",
+      "preserved_at": "evaluation_data/snapshots/r1-ui/ui.html",
+      "current_sha256": "6f4f28b54f32c147bbe1237fb0ea1b93c5f359dfa0743d13dfcd7407c741027d"
+    },
+    "推进记录.md": {
+      "original_sha256": "92ef2d481ef441d36981b860134cd13fa23854582a17411190c7150e21e29e0e",
+      "preserved_at": "evaluation_data/snapshots/r1-ui/推进记录.md",
+      "current_sha256": "ab9e52eeff52016e3297a537955f33d336c2e7f1695f495e49dcf1cb3b32ab63"
+    }
+  },
+  "validation_log": "logs/ui-validation-2026-10-15T10-58-40-575Z.json",
+  "validation_sha256": "ffa8f089df8cfd40862dabf6e66c060de316c9c6027a7f617a16fcca5a4cdf27",
+  "http_record": "logs/ui-service-check-20261015-110114-746411.json",
+  "http_record_sha256": "2a19addd553ebb49d8acb2e2a72e04390689e8cf79f6a6f73bf33daaf61266eb",
+  "passed_ui_checks": 57,
+  "browser_visual_verified": false
+}

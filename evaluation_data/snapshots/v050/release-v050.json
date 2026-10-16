@@ -1,0 +1,30 @@
+{
+  "version": "0.5.0",
+  "created_at_utc": "2026-10-15T07:31:59.821965+00:00",
+  "checkpoint_type": "functional_development_stage_no_holdout_or_effectiveness_comparison",
+  "implementation_sha256": {
+    "agent.py": "ec058f04cf2fa8405dc55bae26f6c972b8c03e6371db2312ad8b9cf29bd64c96",
+    "core.py": "b8a3527a5b7f528c15a98b3cbe9d6e7c31b67839e25328200c8bb1f201d2a794",
+    "local_models.py": "db1e9eae2175c96228005e8b2b90917dc034a2233f52e64255bd90a7c92bd947",
+    "app.py": "6722f825d8c2a3c385fd96d8531d9630d2c2a24a6f76c327c95afc63a127a922",
+    "ui.html": "5dbd5248e3cb8486a1e546ee0752e866d5d3997804aca112152aba7cef573d0e",
+    "config.json": "6d96c4909ebdf25a7f46559c238dfa1dadca638cd719275458e09e352115165f",
+    "workflow.py": "986d8c46fa845f35b2703d5eeca11520a8a0906a6b3bc925cb4b56a6b9fc7540",
+    "answer_quality.py": "024144eb2168044a4241623a529fd3fbe46abc426ecd48373c0d4fe78a4dbbcf",
+    "task_contract.py": "25b3e61a38f79cbc7cf0201e2290e44171a43cea2b090deb268add9ea889a169",
+    "request_normalization.py": "45ef456a6c93cf5d163ab2a03825ca430ac64c5e10c69e3e240724273ed66b4a",
+    "model_paths.py": "4d358928402762463659a4d4fb5179fd61fa949da64c38907442a54ed27118e1",
+    "offline_environment.py": "dc07fe454e99b5bea95d139dec3ac7b57b5369f0420e56aa62f60d261f41e8a2",
+    "models/model-lock.json": "082055cc3011a2094f0a176511413673f6c42807f5540fa39d90665f2591220c",
+    "verify_agent.py": "8fd17e77782d39ea74e7352dcab1fde8fd02b8d3ad807c3aa389c5e305b2c053",
+    "tests/test_agent.py": "633700d812c76bdf9817157bf7e0095dc54b347ef5a9a68493468cd9675ab5ba",
+    "tests/ui_replay.cjs": "943473f80fc9f46a9320a30e3c1f7208396cee26fb6ef7114e21a96dcf27d429",
+    "tests/fixtures/agent-responses.json": "3e792e2c8796f9c9bed02d41b92dc8870192e417017762dde33e1cb44d155d96",
+    "GENERAL_TASKS.md": "ae2f251c09b6299a03c5c5c08ee3a1647adf8d42e65edafe50a271afd9f77bb1",
+    "examples/agent_calculation.json": "ed2b12df71a7f486a4422e929437225397aa304fb466313cd8e4b325c050225f",
+    "examples/agent_summary.json": "b8ac26d573408d0f29eaf4980365f0f77801b47aaf22dd572a6ca8a01a4c1642"
+  },
+  "model_identity": "independent AnyJev + Qwen; not commercial Jev",
+  "semantic_accuracy": null,
+  "historical_v040_snapshot_verified_files": 19
+}

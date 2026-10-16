@@ -1,0 +1,339 @@
+{
+  "stage": "R1 UI refinement",
+  "backend_version": "0.6.0",
+  "recorded_at_utc": "2026-10-15T11:01:14.746411+00:00",
+  "model_identity": "independent AnyJev + Qwen; not commercial Jev",
+  "inference_calls_this_stage": 0,
+  "remote_calls_this_stage": 0,
+  "scope": "frontend information hierarchy and interaction safety; no model/decision/backend changes",
+  "validation": {
+    "passed": 57,
+    "retained_cases": 41,
+    "added_cases": 16,
+    "log": "logs/ui-validation-2026-10-15T10-58-40-575Z.json",
+    "log_sha256": "ffa8f089df8cfd40862dabf6e66c060de316c9c6027a7f617a16fcca5a4cdf27",
+    "source_sha256": "6f4f28b54f32c147bbe1237fb0ea1b93c5f359dfa0743d13dfcd7407c741027d",
+    "test_sha256": "c9ab77cdee8262180d374a1acc8160c2a11a591b46ff18ccf6a9107858cb8240",
+    "response_fixtures_sha256": {
+      "ui-responses.json": "700cd673fd11f131d9e8a68092258a10f47b2bbe875585e97dc29a3c293c9e4b",
+      "agent-responses.json": "3e792e2c8796f9c9bed02d41b92dc8870192e417017762dde33e1cb44d155d96",
+      "r1-responses.json": "84dc8fabcd1eca7b4e9ae435b1c38d89bdac6c31fbd7f3669381e086184956e4"
+    },
+    "fault_injection_scope": "Synthetic network failures and delayed responses test frontend recovery only; they are not real model or network reliability measurements.",
+    "checks": [
+      {
+        "name": "JavaScript syntax, unique IDs and no external assets",
+        "status": "passed"
+      },
+      {
+        "name": "Local readiness label",
+        "status": "passed"
+      },
+      {
+        "name": "Workspace starts with focused composer and optional panels collapsed",
+        "status": "passed"
+      },
+      {
+        "name": "Empty goal blocks request and focuses goal",
+        "status": "passed"
+      },
+      {
+        "name": "Example fills complete task and updates counter",
+        "status": "passed"
+      },
+      {
+        "name": "Invalid JSON object opens advanced settings without request",
+        "status": "passed"
+      },
+      {
+        "name": "Offline request body and completed tool result",
+        "status": "passed"
+      },
+      {
+        "name": "Controls and timer state restored",
+        "status": "passed"
+      },
+      {
+        "name": "Decision tab and score disclaimer",
+        "status": "passed"
+      },
+      {
+        "name": "Keyboard tab navigation and raw record",
+        "status": "passed"
+      },
+      {
+        "name": "Copy exact record",
+        "status": "passed"
+      },
+      {
+        "name": "Expandable trace shows real events",
+        "status": "passed"
+      },
+      {
+        "name": "Needs-review result remains separate from completed",
+        "status": "passed"
+      },
+      {
+        "name": "Text statistics render as three values",
+        "status": "passed"
+      },
+      {
+        "name": "Rejected draft labeled as a guarded fallback",
+        "status": "passed"
+      },
+      {
+        "name": "Missing original requests material rather than showing success",
+        "status": "passed"
+      },
+      {
+        "name": "Stopped request uses actual reason and no fake answer",
+        "status": "passed"
+      },
+      {
+        "name": "Model text rendered literally",
+        "status": "passed"
+      },
+      {
+        "name": "Task contract lists fields without claiming semantic completion",
+        "status": "passed"
+      },
+      {
+        "name": "Contract preflight requests source without a fabricated model decision",
+        "status": "passed"
+      },
+      {
+        "name": "Workflow example declares directory, fields and bounds",
+        "status": "passed"
+      },
+      {
+        "name": "Workflow sends structured offline contract",
+        "status": "passed"
+      },
+      {
+        "name": "Actual multi-step response exposes only local report links and scoped validation",
+        "status": "passed"
+      },
+      {
+        "name": "Report links restrict artifacts to UUID-local routes",
+        "status": "passed"
+      },
+      {
+        "name": "Single task example restores the original material form",
+        "status": "passed"
+      },
+      {
+        "name": "General agent example gives explicit numbered tasks and locks offline selector",
+        "status": "passed"
+      },
+      {
+        "name": "General agent request uses real AnyJev and preserves all user tasks",
+        "status": "passed"
+      },
+      {
+        "name": "General agent displays actual source choices and distinct raw and final service selections",
+        "status": "passed"
+      },
+      {
+        "name": "Source constraint is displayed as a program adjustment rather than model review",
+        "status": "passed"
+      },
+      {
+        "name": "General agent blocked operation shows a real stop and no fake actuation",
+        "status": "passed"
+      },
+      {
+        "name": "R1 dataset example enables attachment and preserves explicit comparison order",
+        "status": "passed"
+      },
+      {
+        "name": "R1 unified request binds CSV contract and stays offline",
+        "status": "passed"
+      },
+      {
+        "name": "R1 delivery exposes parent and child report links while retaining review status",
+        "status": "passed"
+      },
+      {
+        "name": "Agent results show separate step cards and keep technical plan collapsed",
+        "status": "passed"
+      },
+      {
+        "name": "R1 waiting task retains completed work, pending requirement and stage download",
+        "status": "passed"
+      },
+      {
+        "name": "R1 empty supplement never sends a continuation request",
+        "status": "passed"
+      },
+      {
+        "name": "R1 continuation posts only new input to the saved task URL",
+        "status": "passed"
+      },
+      {
+        "name": "R1 resumed delivery keeps previous-stage links distinct from current downloads",
+        "status": "passed"
+      },
+      {
+        "name": "R1 saved history reloads by GET and locks the resumable goal",
+        "status": "passed"
+      },
+      {
+        "name": "R1 new-task example restores goal editing and clears inherited CSV binding",
+        "status": "passed"
+      },
+      {
+        "name": "HTTP error resets state and preserves error record",
+        "status": "passed"
+      },
+      {
+        "name": "Error record remains copyable",
+        "status": "passed"
+      },
+      {
+        "name": "Clear returns to empty workspace",
+        "status": "passed"
+      },
+      {
+        "name": "History navigation preserves an unsubmitted draft and changes accessible navigation state",
+        "status": "passed"
+      },
+      {
+        "name": "History search and status filter operate locally without issuing task requests",
+        "status": "passed"
+      },
+      {
+        "name": "History detail hides the composer and prevents both ordinary and shortcut reruns",
+        "status": "passed"
+      },
+      {
+        "name": "A waiting task moves the one CSV field group beside the continuation action",
+        "status": "passed"
+      },
+      {
+        "name": "Continuation validates required CSV fields inside its visible supplement card",
+        "status": "passed"
+      },
+      {
+        "name": "Returning to workspace restores the complete unsent draft and CSV ownership",
+        "status": "passed"
+      },
+      {
+        "name": "Copying history creates an editable new task without stale continuation or automatic execution",
+        "status": "passed"
+      },
+      {
+        "name": "Sidebar new task clears inherited data, old results and disclosures",
+        "status": "passed"
+      },
+      {
+        "name": "Running task disables navigation and rejects competing user actions",
+        "status": "passed"
+      },
+      {
+        "name": "An HTTP continuation failure reloads the same saved stage and retains retry material",
+        "status": "passed"
+      },
+      {
+        "name": "Unknown continuation outcome blocks retry when latest task cannot be read",
+        "status": "passed"
+      },
+      {
+        "name": "Reopening a confirmed saved stage clears the unknown-outcome retry block",
+        "status": "passed"
+      },
+      {
+        "name": "Lost continuation response loads the newer stage without reusing old supplement",
+        "status": "passed"
+      },
+      {
+        "name": "A late history response cannot replace a newly created composer",
+        "status": "passed"
+      }
+    ]
+  },
+  "http_verification": {
+    "checked_at_utc": "2026-10-15T11:01:14.746411+00:00",
+    "request_scope": "GET / and GET /v1/status on localhost; no inference",
+    "http_status": 200,
+    "served_sha256": "6f4f28b54f32c147bbe1237fb0ea1b93c5f359dfa0743d13dfcd7407c741027d",
+    "version": "0.6.0",
+    "offline_mode": true,
+    "browser_visual_verified": false
+  },
+  "http_record": "logs/ui-service-check-20261015-110114-746411.json",
+  "http_record_sha256": "2a19addd553ebb49d8acb2e2a72e04390689e8cf79f6a6f73bf33daaf61266eb",
+  "static_checks": {
+    "valid_tag_nesting": true,
+    "unique_ids": true,
+    "all_original_ids_retained": true,
+    "no_external_assets": true,
+    "crlf_aware_git_diff_check_exit": 0,
+    "unignored_workspace_files": [
+      "workspace/inbox/demo/README.md",
+      "workspace/inbox/demo/baseline.csv",
+      "workspace/inbox/demo/current.csv",
+      "workspace/inbox/demo/provenance.json"
+    ]
+  },
+  "changed_source_and_guides": {
+    "README.md": {
+      "original_sha256": "cffb8e15a905a088d7c8964e35146f77a4ed795878c7c133b256eb70110e9b18",
+      "preserved_at": "evaluation_data/snapshots/r1-ui/README.md",
+      "current_sha256": "c210439b1f36a747365089c64a5cce4a62c65db25ffa68ef68d61a647b704260"
+    },
+    "RELEASE.md": {
+      "original_sha256": "1837a6bd637d9448dbded0d9bcf4bac3a10dbad9528a22400b9dbabce75cacdd",
+      "preserved_at": "evaluation_data/snapshots/r1-ui/RELEASE.md",
+      "current_sha256": "aa34e96be9ba827b5fd834223ad0c89d6dcca61b06d019529f5afc85502e3ec5"
+    },
+    "tests/ui_replay.cjs": {
+      "original_sha256": "7a414b12903d439f8a1a5391cb10265f342c2dfc76a66d78595e99c29506d4c0",
+      "preserved_at": "evaluation_data/snapshots/r1-ui/tests/ui_replay.cjs",
+      "current_sha256": "c9ab77cdee8262180d374a1acc8160c2a11a591b46ff18ccf6a9107858cb8240"
+    },
+    "ui.html": {
+      "original_sha256": "fd45bbe08d8fb14616aa1e59a68c751b7f937cc2bb2f3cf870f13fa318dcdaab",
+      "preserved_at": "evaluation_data/snapshots/r1-ui/ui.html",
+      "current_sha256": "6f4f28b54f32c147bbe1237fb0ea1b93c5f359dfa0743d13dfcd7407c741027d"
+    },
+    "推进记录.md": {
+      "original_sha256": "92ef2d481ef441d36981b860134cd13fa23854582a17411190c7150e21e29e0e",
+      "preserved_at": "evaluation_data/snapshots/r1-ui/推进记录.md",
+      "current_sha256": "ab9e52eeff52016e3297a537955f33d336c2e7f1695f495e49dcf1cb3b32ab63"
+    }
+  },
+  "unchanged_runtime_sha256": {
+    "agent.py": "f179abef75a14e43ffafb3e0eb712c9dfadc22a8724cfc538a7e4c08add2d10b",
+    "core.py": "84f26e4370671b2bd852e33ef29c80d658626eafb521356d0c3cd720ee472c00",
+    "local_models.py": "c5aef9334d69b325efdf2ca3b773b6912462a5f8ca836b99c746fabfa7951f4d",
+    "app.py": "088e46be75f0e34da073c8c241265280edc12a7cbc46f0328b6024cde029ef75",
+    "config.json": "4c00be7a5f546c2d2e8782591bd3e2790cb7199a1739c60e309eede1a9933663",
+    "workflow.py": "e78dbe0429b2848381d609806c8210121d6c7612317722ba04966ab6dccde031",
+    "answer_quality.py": "024144eb2168044a4241623a529fd3fbe46abc426ecd48373c0d4fe78a4dbbcf",
+    "task_contract.py": "25b3e61a38f79cbc7cf0201e2290e44171a43cea2b090deb268add9ea889a169",
+    "request_normalization.py": "45ef456a6c93cf5d163ab2a03825ca430ac64c5e10c69e3e240724273ed66b4a",
+    "model_paths.py": "4d358928402762463659a4d4fb5179fd61fa949da64c38907442a54ed27118e1",
+    "offline_environment.py": "dc07fe454e99b5bea95d139dec3ac7b57b5369f0420e56aa62f60d261f41e8a2",
+    "services.py": "67eefd0c2fcee5f5c43fd5baa7cebd650972860c3f65b3e762dc83b9b4dc8d10",
+    "delivery.py": "a51a9657b760d902e7c48168574749f64f47cc88dde9c46bcec3bd12e3e36c99",
+    "task_store.py": "f989d5bc224e7f475423dbe31dee284596793d542de65e8f6c6dc9c89e284d0f",
+    "demo_data.py": "386f1a43d3e6d6221e3d067648e2246def8a9f28ab18681c1a182119e5fb74de",
+    "knowledge.json": "cb88305aceef9c3cb35ece83f8c1a4522a3cfc13806524683524de23089c94bb",
+    "models/model-lock.json": "082055cc3011a2094f0a176511413673f6c42807f5540fa39d90665f2591220c"
+  },
+  "remaining_r1_implementation_files_unchanged": 63,
+  "historical_r1_reports_and_validation_hashes_unchanged": true,
+  "browser_visual_verified": false,
+  "semantic_accuracy": null,
+  "limitations": [
+    "DOM double and recorded responses are not browser visual QA",
+    "fault injection is not real model/network recovery evidence",
+    "unsubmitted draft retained only within current page",
+    "no backend or natural-language quality improvement claim"
+  ],
+  "git_handoff": {
+    "agent_git_mutations": false,
+    "suggested_commit": "整理R1工作台交互，优化历史续办与成果展示",
+    "note": "working tree also includes previous uncommitted R1 stage; user reviews, stages, commits and pushes"
+  }
+}

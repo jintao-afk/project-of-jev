@@ -1,0 +1,377 @@
+{
+  "version": "0.5.0",
+  "created_at_utc": "2026-10-15T07:31:59.821965+00:00",
+  "priority": "functional first version; no effectiveness comparison this stage",
+  "smoke_record": "reports\\agent-smoke-v050-20261015-152255-988493.json",
+  "unit_tests": 39,
+  "ui_replay_checks": 32,
+  "ui_replay_record": "logs\\ui-validation-2026-10-15T07-25-11-449Z.json",
+  "launcher_checks": 5,
+  "launcher_record": "logs\\launcher-validation-20261015-152946.json",
+  "single_mode_compatibility": {
+    "run_id": "d7ad37fd19ed4fc4b55c19b0ddae4804",
+    "value": 6.0,
+    "task_complete": true,
+    "remote_attempts": 0
+  },
+  "records": [
+    {
+      "case": "arithmetic",
+      "request": {
+        "mode": "agent",
+        "backend": "anyjev",
+        "goal": "1. 计算 (18+24)/6\n2. 计算 (9+15)*2",
+        "input": "",
+        "parameters": {},
+        "validation": {},
+        "allow_remote": false,
+        "network_available": false
+      },
+      "status": "needs_review",
+      "execution_complete": true,
+      "checks": {
+        "remote_calls_zero": true,
+        "no_semantic_completion_claim": true,
+        "two_explicit_results_7_and_48": true
+      },
+      "services": [
+        "calculator",
+        "calculator"
+      ],
+      "initial_choices": [
+        "plan",
+        "calculator",
+        "calculator",
+        "finish"
+      ],
+      "route_reviews": 0,
+      "replans": 0,
+      "total_ms": 1051.29,
+      "input_bindings": {
+        "s1": "$input",
+        "s2": "$s1"
+      },
+      "program_adjustments": [],
+      "input_source_choices": [
+        {
+          "event": "input_source_decision",
+          "elapsed_ms": 630.09,
+          "subtask_id": "s2",
+          "choice": "$s1",
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "calibrated": false,
+          "probabilities": {
+            "$input": 1.2269202502636204e-06,
+            "$s1": 0.9999987730797498
+          },
+          "prompt_version": "general-agent-choice-v1",
+          "cold_start": false,
+          "duration_with_load_ms": 84.71,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4022.0,
+            "cuda_peak_allocated_mb": 4001.08,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.9999975461594997
+        }
+      ],
+      "resource_peaks": [
+        {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 4022.0,
+          "cuda_peak_allocated_mb": 4001.08,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        }
+      ],
+      "result": {
+        "text": "【s1】计算 (18+24)/6\n7.0\n\n【s2】计算 (9+15)*2\n48",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "reason": "计划内子任务已执行，逐项交付结果；计划覆盖与答案质量仍需核查。",
+      "log_file": "logs\\05bdc44357a648dca9361fe89719d5d8.json",
+      "log_sha256": "b37dab59bca3c3cb6595bf16241048750774866005a790af14e54915961f5646",
+      "semantic_accuracy": null
+    },
+    {
+      "case": "summary-chain",
+      "request": {
+        "mode": "agent",
+        "backend": "anyjev",
+        "goal": "1. 总结原文\n2. 统计上一步总结结果的字符数",
+        "input": "本周完成了12次设备检查。发现2处接线松动，已完成修复。设备能耗尚未测量。",
+        "parameters": {},
+        "validation": {}
+      },
+      "status": "needs_review",
+      "execution_complete": true,
+      "checks": {
+        "remote_calls_zero": true,
+        "no_semantic_completion_claim": true,
+        "summary_to_counter_dependency": true,
+        "source_quote_correspondence_only": true
+      },
+      "services": [
+        "local_text",
+        "text_stats"
+      ],
+      "initial_choices": [
+        "stop",
+        "local_text",
+        "text_stats",
+        "finish"
+      ],
+      "route_reviews": 1,
+      "replans": 0,
+      "total_ms": 2695.09,
+      "input_bindings": {
+        "s1": "$input",
+        "s2": "$s1"
+      },
+      "program_adjustments": [],
+      "input_source_choices": [
+        {
+          "event": "input_source_decision",
+          "elapsed_ms": 2241.88,
+          "subtask_id": "s2",
+          "choice": "$s1",
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "calibrated": false,
+          "probabilities": {
+            "$input": 8.161614282241395e-11,
+            "$s1": 0.999999999918384
+          },
+          "prompt_version": "general-agent-choice-v1",
+          "cold_start": false,
+          "duration_with_load_ms": 88.5,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4022.0,
+            "cuda_peak_allocated_mb": 4001.08,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.9999999998367679
+        }
+      ],
+      "resource_peaks": [
+        {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 4022.0,
+          "cuda_peak_allocated_mb": 4001.08,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        }
+      ],
+      "result": {
+        "text": "【s1】总结原文\n原文要点（完整句摘录）：\n“本周完成了12次设备检查。” [1]\n“发现2处接线松动，已完成修复。” [1]\n“设备能耗尚未测量。” [1]\n\n【s2】统计上一步总结结果的字符数\n{\"characters\": 70, \"nonempty_lines\": 4, \"whitespace_words\": 7}",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "reason": "计划内子任务已执行，逐项交付结果；计划覆盖与答案质量仍需核查。",
+      "log_file": "logs\\09e6b1f923fd440b8c11725956b722ca.json",
+      "log_sha256": "634033d767d0b377a3ea32c4ee82d0b836d4ad557668aabc65e7cb50707dfe5a",
+      "semantic_accuracy": null
+    },
+    {
+      "case": "retrieval-chain",
+      "request": {
+        "mode": "agent",
+        "goal": "1. 检索本地资料中关于决策模块分工的原文\n2. 总结上一步检索结果",
+        "input": ""
+      },
+      "status": "needs_review",
+      "execution_complete": true,
+      "checks": {
+        "remote_calls_zero": true,
+        "no_semantic_completion_claim": true,
+        "local_reference_service_invoked": true,
+        "retrieval_output_bound_to_summary": true
+      },
+      "services": [
+        "retrieve",
+        "local_text"
+      ],
+      "initial_choices": [
+        "plan",
+        "retrieve",
+        "knowledge_qa",
+        "finish"
+      ],
+      "route_reviews": 0,
+      "replans": 0,
+      "total_ms": 1183.29,
+      "input_bindings": {
+        "s1": "$input",
+        "s2": "$s1"
+      },
+      "program_adjustments": [
+        {
+          "event": "controller_override",
+          "elapsed_ms": 799.31,
+          "step": 2,
+          "original_choice": "knowledge_qa",
+          "choice": "local_text",
+          "reason": "原文变换必须处理当前绑定资料，不能用计数或重新检索替代。",
+          "method": "supplied_text_source_policy"
+        }
+      ],
+      "input_source_choices": [
+        {
+          "event": "input_source_decision",
+          "elapsed_ms": 482.34,
+          "subtask_id": "s2",
+          "choice": "$s1",
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "calibrated": false,
+          "probabilities": {
+            "$input": 1.5579096484716157e-10,
+            "$s1": 0.9999999998442091
+          },
+          "prompt_version": "general-agent-choice-v1",
+          "cold_start": false,
+          "duration_with_load_ms": 107.35,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4022.0,
+            "cuda_peak_allocated_mb": 4001.08,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.9999999996884181
+        }
+      ],
+      "resource_peaks": [
+        {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 4022.0,
+          "cuda_peak_allocated_mb": 4001.08,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        }
+      ],
+      "result": {
+        "text": "【s1】检索本地资料中关于决策模块分工的原文\n[decision-role] 决策模块比较可用的模型与工具，输出候选编号与选项分数。调用程序负责参数检查、实际执行与结果反馈。\n[local-components] 项目离线升级方案使用 Qwen3-1.7B 完成决策与一般文字问答，BGE 中文检索模型查找本地资料，计算程序处理受限算式。检索问答依次执行检索和本地生成；模型输出仍需检查。\n\n【s2】总结上一步检索结果\n原文要点（完整句摘录）：\n“[local-components] 项目离线升级方案使用 Qwen3-1.7B 完成决策与一般文字问答，BGE 中文检索模型查找本地资料，计算程序处理受限算式。” [1]",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "reason": "计划内子任务已执行，逐项交付结果；计划覆盖与答案质量仍需核查。",
+      "log_file": "logs\\1ac7f8e00d45437a85617b892c3a1348.json",
+      "log_sha256": "928ee40c71b9c9ee6d021755088b09d02d57921e04d79006a49b78566bd38728",
+      "semantic_accuracy": null
+    },
+    {
+      "case": "unsupported",
+      "request": {
+        "mode": "agent",
+        "goal": "连接我家的摄像头，查看此刻客厅是否有人，并关闭客厅灯。",
+        "input": ""
+      },
+      "status": "stopped",
+      "execution_complete": false,
+      "checks": {
+        "remote_calls_zero": true,
+        "no_semantic_completion_claim": true,
+        "stopped_without_substitute_answer": true
+      },
+      "services": [],
+      "initial_choices": [
+        "stop"
+      ],
+      "route_reviews": 0,
+      "replans": 0,
+      "total_ms": 159.34,
+      "input_bindings": {},
+      "program_adjustments": [],
+      "input_source_choices": [],
+      "resource_peaks": [
+        {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 4022.0,
+          "cuda_peak_allocated_mb": 4001.08,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        }
+      ],
+      "result": {
+        "text": "决策模块判断当前离线能力不足，已停止；未执行设备或联网操作。",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "reason": "决策模块判断当前离线能力不足，已停止；未执行设备或联网操作。",
+      "log_file": "logs\\689f00491de7442fb16170fc6aedb04d.json",
+      "log_sha256": "785946450a0bfba863d1bf2865111bd3af2e2ce2adbdaf654ca0b3143d78947c",
+      "semantic_accuracy": null
+    },
+    {
+      "case": "missing-source",
+      "request": {
+        "mode": "agent",
+        "goal": "把我提供的英文原文翻译成中文，然后统计翻译结果的字符数。",
+        "input": ""
+      },
+      "status": "stopped",
+      "execution_complete": false,
+      "checks": {
+        "remote_calls_zero": true,
+        "no_semantic_completion_claim": true,
+        "stopped_without_substitute_answer": true
+      },
+      "services": [],
+      "initial_choices": [
+        "clarify"
+      ],
+      "route_reviews": 0,
+      "replans": 0,
+      "total_ms": 161.76,
+      "input_bindings": {},
+      "program_adjustments": [],
+      "input_source_choices": [],
+      "resource_peaks": [
+        {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 4022.0,
+          "cuda_peak_allocated_mb": 4001.08,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        }
+      ],
+      "result": {
+        "text": "未收到必要原文，请补充后再运行。",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "reason": "未收到必要原文，请补充后再运行。",
+      "log_file": "logs\\7090438982f546019ff0f3906d65921c.json",
+      "log_sha256": "489325e10a7f6f86b048d99d26b620bd9aaf9b645041ec2eafc20cde160b0c3e",
+      "semantic_accuracy": null
+    }
+  ],
+  "semantic_accuracy": null,
+  "browser_visual_verification": "not_performed",
+  "known_limitations": [
+    "Free goal decomposition may omit objectives, duplicate them, or emit invalid parameters.",
+    "Summary entry initially selected stop and required one generative review.",
+    "Retrieval-to-summary originally selected knowledge_qa; program source policy switched to local_text.",
+    "Retrieval summary omitted the first passage about decision/call responsibilities; exact quote origin is not completeness.",
+    "Second independent calculator task chose prior output as text input, but calculator used its own explicit expression only.",
+    "Replanning and failure branches have fault-injected unit coverage, not proof of robust real model recovery.",
+    "General agent mode does not invoke the separate CSV workflow yet."
+  ]
+}

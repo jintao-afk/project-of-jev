@@ -1,0 +1,9 @@
+{
+  "split":"development",
+  "cases":[
+    {"id":"d-demo","goal":"分析两份历史记录，交付统计对比及严格超过2000的记录。","input_dir":"demo","value_column":"total_ms","status_column":"status","threshold":"2000","expected":"report"},
+    {"id":"d-mixed","goal":"统计数值，明确披露缺失和非法值并生成报告。","input_dir":"development-mixed","fixtures":["tests/fixtures/workflow-dev/mixed.csv"],"value_column":"value","status_column":"status","threshold":"1.1","expected":"report"},
+    {"id":"d-advisory","goal":"统计数值并提出需要人工核查的问题，生成报告。","input_dir":"development-advisory","fixtures":["tests/fixtures/workflow-dev/mixed.csv","tests/fixtures/workflow-dev/reference.md"],"value_column":"value","status_column":"status","include_suggestions":true,"expected":"report_with_unverified_suggestions"},
+    {"id":"d-missing-column","goal":"统计不存在的字段并交付报告。","input_dir":"development-mixed","value_column":"not_present","status_column":"status","expected":"missing_column_stop"}
+  ]
+}

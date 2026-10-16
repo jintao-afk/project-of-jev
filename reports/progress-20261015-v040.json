@@ -1,0 +1,86 @@
+{
+  "version": "0.4.0",
+  "base_commit": "7abcec5",
+  "created_at_utc": "2026-10-15T06:09:36.828140+00:00",
+  "model_identity": "independent AnyJev + Qwen, not commercial Jev",
+  "experiments": {
+    "dev_anyjev": {
+      "record": "logs/evaluations/workflow-dev-anyjev-20261015-135526-149962.json",
+      "record_sha256": "7d5e426fece062f581ffd28f0aebc23c87498d48776bbb205cf513f5d6a090a0",
+      "cases": 4,
+      "contract_passes": 3,
+      "delivered": 3,
+      "remote_attempts": 0,
+      "reviews": 2,
+      "decisions": 28,
+      "states_with_multiple_actions": 8,
+      "peak_worker_cuda_mb": 4035.77,
+      "latencies_ms": {
+        "d-demo": 20072.21,
+        "d-mixed": 1685.56,
+        "d-advisory": 1910.58,
+        "d-missing-column": 612.31
+      }
+    },
+    "dev_rules": {
+      "record": "logs/evaluations/workflow-dev-rules-20261015-135551-019836.json",
+      "record_sha256": "009d744a5d5bf068645fdda47d96d3982ad0d4e7562ef5f619416f2074f1ecbb",
+      "cases": 4,
+      "contract_passes": 4,
+      "delivered": 3,
+      "remote_attempts": 0,
+      "reviews": 0,
+      "decisions": 27,
+      "states_with_multiple_actions": 8,
+      "peak_worker_cuda_mb": 3937.95,
+      "latencies_ms": {
+        "d-demo": 21.05,
+        "d-mixed": 13.57,
+        "d-advisory": 11861.22,
+        "d-missing-column": 1.36
+      }
+    },
+    "final_anyjev": {
+      "record": "logs/evaluations/workflow-final-anyjev-20261015-140141-196798.json",
+      "record_sha256": "d82dccea7dfa4ea175f3e9b9d89758f3c4dd57bdbdcca7f99764f5efd24a78a4",
+      "cases": 4,
+      "contract_passes": 3,
+      "delivered": 2,
+      "remote_attempts": 0,
+      "reviews": 3,
+      "decisions": 20,
+      "states_with_multiple_actions": 5,
+      "peak_worker_cuda_mb": 4021.0,
+      "latencies_ms": {
+        "h-amounts": 13897.06,
+        "h-compare": 4293.81,
+        "h-missing-column": 912.04,
+        "h-no-files": 87.29
+      }
+    },
+    "final_rules": {
+      "record": "logs/evaluations/workflow-final-rules-20261015-140200-919101.json",
+      "record_sha256": "53874ad758abfd4c91be05bc289173890b23ee6459d21ae215acfe2b7e9d65f1",
+      "cases": 4,
+      "contract_passes": 4,
+      "delivered": 2,
+      "remote_attempts": 0,
+      "reviews": 0,
+      "decisions": 20,
+      "states_with_multiple_actions": 4,
+      "peak_worker_cuda_mb": null,
+      "latencies_ms": {
+        "h-amounts": 14.83,
+        "h-compare": 20.14,
+        "h-missing-column": 5.34,
+        "h-no-files": 0.24
+      }
+    }
+  },
+  "frozen_runtime_mismatches": [],
+  "unit_tests_passed": 29,
+  "ui_replay_checks_passed": 27,
+  "real_service_check": "reports/service-check-v040-20261015-140535.json",
+  "semantic_accuracy": null,
+  "scope": "CSV/report mathematical contract only; not a general semantic correctness or planning benchmark."
+}

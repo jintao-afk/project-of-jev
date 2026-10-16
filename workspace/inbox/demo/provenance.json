@@ -1,0 +1,31 @@
+{
+  "method": "CSV extracted from existing real model evaluation reports; development demonstration only",
+  "files": {
+    "baseline.csv": {
+      "csv_sha256": "083fae9ed3c706620f056810e6196ccf87a4701043808f87c6b30ac5daf7d08d",
+      "source": "logs/evaluations/v031-baseline-v030-20261015-120656-396458.json",
+      "source_sha256": "fb8a7dd419501b00cdd35a6825af7fa2a466a08db19af8f6b390b9f0d0b6af3e",
+      "fields": [
+        "case",
+        "status",
+        "total_ms",
+        "invocation_attempts",
+        "successful_calls",
+        "remote_attempts"
+      ]
+    },
+    "current.csv": {
+      "csv_sha256": "05e7a3f8e44d69287044c07162564847304de4692b4b5a962551dc9277cc25c6",
+      "source": "logs/evaluations/v031-contract-20261015-121826-442178.json",
+      "source_sha256": "eedc9b10facdcd7695f6b6f85532fd413e0b6e5b0d6c4c187a5b7a3db62fbf90",
+      "fields": [
+        "case",
+        "status",
+        "total_ms",
+        "invocation_attempts",
+        "successful_calls",
+        "remote_attempts"
+      ]
+    }
+  }
+}

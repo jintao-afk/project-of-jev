@@ -1,0 +1,209 @@
+{
+  "created_at_utc": "2026-10-15T06:59:03.549671+00:00",
+  "version": "0.5.0",
+  "purpose": "development integration smoke, no rules comparison; cases may be used to repair this version",
+  "quality_scope": "specific arithmetic, dependency and limitation checks only, not complete semantic accuracy",
+  "implementation_sha256": {
+    "agent.py": "0240526fe75207a0e6fedac79273e21ebb1957b47f17160523e29aaccf76191a",
+    "core.py": "b8a3527a5b7f528c15a98b3cbe9d6e7c31b67839e25328200c8bb1f201d2a794",
+    "local_models.py": "7d7943b2e7770f83d394ec24d639bc3ea05cda0eff2a88a99bf879379e1bcfae",
+    "app.py": "6722f825d8c2a3c385fd96d8531d9630d2c2a24a6f76c327c95afc63a127a922",
+    "ui.html": "f3f8076672ccf0def123080b070e1084afde4a82b05821fc9d07f7e2ed3e6eb3",
+    "config.json": "6d96c4909ebdf25a7f46559c238dfa1dadca638cd719275458e09e352115165f",
+    "verify_agent.py": "8d737d1d374596fb5110bc2d170dfa232788f8b763844d48c809db1694c79002"
+  },
+  "browser_visual_verification": "not_performed",
+  "records": [
+    {
+      "case": "arithmetic",
+      "request": {
+        "mode": "agent",
+        "backend": "anyjev",
+        "goal": "分别计算 (18+24)/6 和 (9+15)*2，逐项给出结果。",
+        "input": "",
+        "parameters": {},
+        "validation": {},
+        "allow_remote": false,
+        "network_available": false
+      },
+      "status": "needs_review",
+      "execution_complete": true,
+      "checks": {
+        "remote_calls_zero": true,
+        "no_semantic_completion_claim": true,
+        "two_explicit_results_7_and_48": false
+      },
+      "services": [
+        "calculator"
+      ],
+      "initial_choices": [
+        "calculator",
+        "finish"
+      ],
+      "route_reviews": 0,
+      "replans": 0,
+      "total_ms": 16789.0,
+      "result": {
+        "text": "【s1】计算 (18+24)/6\n7.0",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "reason": "计划内子任务已执行，逐项交付结果；计划覆盖与答案质量仍需核查。",
+      "log_file": "logs\\fdff016686d444368c324932e96748ef.json",
+      "log_sha256": "92578ccf2d85a963b0e2eb47f192d738f89b654c433b8557352eb2ca5d94afec",
+      "semantic_accuracy": null
+    },
+    {
+      "case": "summary-chain",
+      "request": {
+        "mode": "agent",
+        "backend": "anyjev",
+        "goal": "先总结原文，再统计总结结果的字符数，分别给出总结和统计值。",
+        "input": "本周完成了12次设备检查。发现2处接线松动，已完成修复。设备能耗尚未测量。",
+        "parameters": {},
+        "validation": {}
+      },
+      "status": "needs_review",
+      "execution_complete": true,
+      "checks": {
+        "remote_calls_zero": true,
+        "no_semantic_completion_claim": true,
+        "summary_to_counter_dependency": false,
+        "source_quote_correspondence_only": true
+      },
+      "services": [
+        "local_text"
+      ],
+      "initial_choices": [
+        "local_text",
+        "finish"
+      ],
+      "route_reviews": 0,
+      "replans": 0,
+      "total_ms": 2720.78,
+      "result": {
+        "text": "【s1】总结原文\n原文要点（完整句摘录）：\n“本周完成了12次设备检查。” [1]\n“发现2处接线松动，已完成修复。” [1]\n“设备能耗尚未测量。” [1]",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "reason": "计划内子任务已执行，逐项交付结果；计划覆盖与答案质量仍需核查。",
+      "log_file": "logs\\3d8b441acbda45a28adf928c6af17917.json",
+      "log_sha256": "548cb7b9feca7449090a5229af72324b6beb39667ebc373a21588d240724dcdb",
+      "semantic_accuracy": null
+    },
+    {
+      "case": "retrieval-chain",
+      "request": {
+        "mode": "agent",
+        "goal": "先检索本地资料中关于决策模块分工的原文，再总结检索结果。",
+        "input": ""
+      },
+      "status": "needs_review",
+      "execution_complete": true,
+      "checks": {
+        "remote_calls_zero": true,
+        "no_semantic_completion_claim": true,
+        "local_reference_service_invoked": true
+      },
+      "services": [
+        "retrieve"
+      ],
+      "initial_choices": [
+        "retrieve",
+        "finish"
+      ],
+      "route_reviews": 0,
+      "replans": 0,
+      "total_ms": 2252.47,
+      "result": {
+        "text": "【s1】检索本地资料中关于决策模块分工的原文\n[decision-role] 决策模块比较可用的模型与工具，输出候选编号与选项分数。调用程序负责参数检查、实际执行与结果反馈。\n[local-components] 项目离线升级方案使用 Qwen3-1.7B 完成决策与一般文字问答，BGE 中文检索模型查找本地资料，计算程序处理受限算式。检索问答依次执行检索和本地生成；模型输出仍需检查。",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "reason": "计划内子任务已执行，逐项交付结果；计划覆盖与答案质量仍需核查。",
+      "log_file": "logs\\cb0de1f4381c43198d30468100a73327.json",
+      "log_sha256": "8dfa6b12ffce5db475408caad92eba701823f889a67cdbbc2eba1d365e850658",
+      "semantic_accuracy": null
+    },
+    {
+      "case": "unsupported",
+      "request": {
+        "mode": "agent",
+        "goal": "连接我家的摄像头，查看此刻客厅是否有人，并关闭客厅灯。",
+        "input": ""
+      },
+      "status": "needs_review",
+      "execution_complete": true,
+      "checks": {
+        "remote_calls_zero": true,
+        "no_semantic_completion_claim": true,
+        "stopped_without_substitute_answer": false
+      },
+      "services": [
+        "retrieve"
+      ],
+      "initial_choices": [
+        "replan",
+        "retrieve",
+        "finish"
+      ],
+      "route_reviews": 0,
+      "replans": 1,
+      "total_ms": 3706.13,
+      "result": {
+        "text": "【s1】文字统计\n[edge-definition] 本项目的端侧主线是把决策、状态管理及可用工具放在本地设备上运行。商用 Jev API 是联网对照，不能作为本地部署的证据。\n[jev-input-limits] 所查 Jev 官方模型文档说明其输入为文本，可先把图像、音频、视频处理成文本或结构化字段再送入。对于当前模型版本、价格或最新研究，离线资料可能过期，需要重新联网核实。",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "reason": "计划内子任务已执行，逐项交付结果；计划覆盖与答案质量仍需核查。",
+      "log_file": "logs\\078795ceed90422493ffb51204260836.json",
+      "log_sha256": "ded435fcab8e5b58000bfd7e19f9b2a88a6c870e60ed661d825b4577c444c3ea",
+      "semantic_accuracy": null
+    },
+    {
+      "case": "missing-source",
+      "request": {
+        "mode": "agent",
+        "goal": "把我提供的英文原文翻译成中文，然后统计翻译结果的字符数。",
+        "input": ""
+      },
+      "status": "needs_review",
+      "execution_complete": true,
+      "checks": {
+        "remote_calls_zero": true,
+        "no_semantic_completion_claim": true,
+        "stopped_without_substitute_answer": false
+      },
+      "services": [
+        "knowledge_qa"
+      ],
+      "initial_choices": [
+        "replan",
+        "knowledge_qa",
+        "finish"
+      ],
+      "route_reviews": 0,
+      "replans": 1,
+      "total_ms": 3493.57,
+      "result": {
+        "text": "【s1】翻译英文原文成中文\n资料可提供以下原文依据：\n“项目离线升级方案使用 Qwen3-1.7B 完成决策与一般文字问答，BGE 中文检索模型查找本地资料，计算程序处理受限算式。检索问答依次执行检索和本地生成；模型输出仍需检查。” [1]",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "reason": "计划内子任务已执行，逐项交付结果；计划覆盖与答案质量仍需核查。",
+      "log_file": "logs\\2e8e344d1016440a81df151f24dde291.json",
+      "log_sha256": "6cf75d9a626509c48ec0c6a0abaf04600d3fe6b2950e6984497ee2b592066284",
+      "semantic_accuracy": null
+    }
+  ]
+}

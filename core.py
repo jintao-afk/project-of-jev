@@ -42,6 +42,7 @@ REGISTRY = [
     Capability('local_text', '本地小语言模型：一般问答、解释、写作、改写、总结和翻译', 'local', 'text'),
     Capability('retrieve', 'BGE 专用模型：从当前本地 knowledge.json 语料中检索相关段落', 'local', 'query'),
     Capability('knowledge_qa', '先检索本地资料，再由小语言模型依据资料回答；适用于 Jev、AnyJev 和项目说明', 'local', 'query'),
+    Capability('dataset_report', '读取用户已附的CSV文件，执行数值统计、阈值检查和两表对比，生成并核验可下载的数据分析报告', 'local', 'dataset'),
     Capability('remote_llm', '远端大模型：本地失败后的复杂文本推理或恢复，需要联网与调用额度', 'remote', 'text'),
     Capability('stop', '没有可行方法、信息不足或资源不够时停止，并保留原因', 'local', '')
 ]
@@ -212,11 +213,81 @@ class Engine:
         self.root = root
         self.config = json.loads((root / 'config.json').read_text(encoding='utf-8'))
         self.local = LocalService(root, self.config)
+        from demo_data import seed
+        seed(root)
 
     def close(self):
         self.local.close()
 
     def run(self, request: dict) -> dict:
+        return self._run_delivery(request)
+
+    def _run_delivery(self, request, previous=None):
+        from task_store import TaskStore
+        from delivery import deliver
+        from copy import deepcopy
+        if not isinstance(request, dict) or any(str(k).startswith('_') for k in request):
+            raise ValueError('任务请求不合格。')
+        request = {**request, 'mode': request.get('mode') or 'single'}
+        validate_task(request)
+        report = self._run_once(request, previous['report'] if previous else None)
+        report.setdefault('mode', request.get('mode', 'single'))
+        report.setdefault('execution_complete', bool(report.get('task_complete') or report.get('result') and report.get('successful_calls')))
+        report['task_id'] = previous['report']['task_id'] if previous else report['run_id']
+        report['revision'] = previous['report']['revision']+1 if previous else 1
+        report['previous_runs'] = [*previous['report'].get('previous_runs', []), previous['report']['run_id']] if previous else []
+        report['previous_stages'] = [*previous['report'].get('previous_stages', []), {
+            'run_id': previous['report']['run_id'], 'revision': previous['report']['revision'],
+            'status': previous['report']['status'], 'artifacts': previous['report'].get('artifacts', [])}] if previous else []
+        report['resumable'] = report['mode']=='agent' and report['revision']<4 and not report['execution_complete'] and bool(
+            report.get('pending_subtasks') or report['status']=='waiting_input')
+        report['goal'] = request['goal']
+        if request.get('dataset'):
+            report['dataset_context'] = request['dataset']
+        report['review_items'] = ['自然语言事实、信息保留和需求覆盖仍需人工核查。',
+            '来源对应与文件哈希不证明资料充分；程序纠正不算模型独立选对。']
+        if report.get('task_complete'):
+            report['review_items'] = ['已通过报告中声明的确定性条件；额外自然语言要求不在自动验收范围。']
+        created = previous['created_at'] if previous else datetime.now(timezone.utc).isoformat()
+        store = TaskStore(self.root)
+        store.ensure_record_size(request, report, created)
+        report = deliver(self.root, report, request)
+        store.save(deepcopy(request), report, created)
+        envelope = self.root/'logs'/(report['run_id']+'-delivery.json')
+        with envelope.open('x', encoding='utf-8') as stream:
+            json.dump(report, stream, ensure_ascii=False, indent=2)
+        return report
+
+    def continue_task(self, task_id, supplement):
+        from task_store import TaskStore
+        if not isinstance(supplement, dict) or set(supplement)-{'input', 'dataset'} or not supplement:
+            raise ValueError('补充资料仅允许input和dataset，不能修改原目标或已完成结果。')
+        previous = TaskStore(self.root).load(task_id)
+        if not previous['report'].get('resumable'):
+            raise ValueError('此任务已交付、不可继续，或已达到3次补充上限。')
+        request = {**previous['request']}
+        if 'input' in supplement:
+            if not isinstance(supplement['input'], str) or not supplement['input'].strip() or len(supplement['input'])>6000:
+                raise ValueError('补充原文须为1至6000字符。')
+            request['input'] = supplement['input']
+        if 'dataset' in supplement:
+            self.prepare('dataset_report', {**request, 'dataset': supplement['dataset']})
+            request['dataset'] = supplement['dataset']
+        return self._run_delivery(request, previous)
+
+    def invoke_local(self, action, task, parameters, timeout):
+        from services import invoke
+        return invoke(self, action, task, parameters, timeout)
+
+    def _run_once(self, request: dict, resume=None) -> dict:
+        if isinstance(request, dict) and request.get('mode') == 'agent':
+            from agent import AgentRunner
+            return AgentRunner(self).run(request, resume=resume)
+        if isinstance(request, dict) and request.get('mode') == 'workflow':
+            from workflow import WorkflowRunner
+            return WorkflowRunner(self.root, self.config, self.local, self.model_ready).run(request)
+        if isinstance(request, dict) and request.get('mode') not in (None, 'single'):
+            raise ValueError('未知任务模式。')
         task, derived = normalize_request(validate_task(request))
         backend = task.get('backend', self.config['decision_backend'])
         start = time.monotonic()
@@ -423,20 +494,8 @@ class Engine:
                         }, os.environ[self.config['remote_key_env']], timeout())
                         result = {'text': response['choices'][0]['message']['content'],
                                   'model': response.get('model', self.config['remote_model']), 'usage': response.get('usage', {})}
-                    elif choice == 'calculator':
-                        result = {'value': safe_calculate(parameters['expression']), 'expression': parameters['expression']}
-                    elif choice == 'text_stats':
-                        content = parameters['text']
-                        result = {'characters': len(content), 'nonempty_lines': sum(bool(s.strip()) for s in content.splitlines()),
-                                  'whitespace_words': len(content.split())}
-                    elif choice == 'local_text':
-                        result = self.local.request('generate', {'goal': task['goal'], 'task_contract': contract, **parameters}, timeout())
-                    elif choice == 'retrieve':
-                        result = self.local.request('retrieve', parameters, timeout())
-                    elif choice == 'knowledge_qa':
-                        result = self.local.request('knowledge_answer', {'goal': task['goal'], **parameters}, timeout())
                     else:
-                        raise ValueError('不允许执行未登记的候选。')
+                        result = self.invoke_local(choice, task, parameters, timeout())
                     if time.monotonic() > deadline:
                         raise TimeoutError('返回时已超过总时间限制，结果未计为完成。')
                     if result.get('generation_attempts'):
@@ -493,6 +552,14 @@ class Engine:
     def prepare(self, action: str, task: dict) -> dict:
         parameters = task.get('parameters', {})
         content = task.get('input', '')
+        if action == 'dataset_report':
+            from workflow import validate_request, scoped_path
+            spec = task.get('dataset')
+            if not isinstance(spec, dict):
+                raise ValueError('需要附加CSV资料目录和字段，不能由模型猜测文件路径。')
+            checked = validate_request({'goal': task['goal'], 'backend': 'anyjev', 'workflow': spec})
+            scoped_path(self.root/'workspace/inbox', checked['input_dir'])
+            return {'dataset': checked}
         if action == 'calculator':
             expression = parameters.get('expression')
             if not isinstance(expression, str):

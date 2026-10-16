@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-16",
+  "scope": "frontend only",
+  "passed_dom_checks": 75,
+  "visual_verification": "not_completed_browser_tool_initialization_failure",
+  "backend_unchanged": true,
+  "files": {
+    "ui.html": "840c9e84148d908371387836293389b6236c65234e11ea6c5a83ff7114ede6d0",
+    "tests/ui_replay.cjs": "d7f1172b5a62eaa2511d9461fbc80025ef184c5d555d247a71fb9ddf12d1a841",
+    "reports/ui-guide-20261016.md": "ea4b02a15de435ac8d7bf78547fbf5bf5dd797a0b9d9e5e78b671538865be997"
+  },
+  "evidence": {
+    "logs/ui-guide-tests-final-20261016.txt": "53f263e54daa2dbbe7a2e8795de4bd644b6b26e060b37b9a949f43a877bdb4e8",
+    "logs/ui-guide-http-final-20261016.json": "ed1ce999dc971157ff11772d55f1546eb0290d8b7b974e9b11ad47d32c25c94d"
+  },
+  "snapshots": {
+    "evaluation_data/snapshots/pre-ui-guide-20261016/manifest.json": "134615c57676c144cb43bf65729d43d86b596244cd7803de3d8a8a8a8a07c417",
+    "evaluation_data/snapshots/pre-ui-guide-20261016/ui.html": "19cf3ff420c3119fde40f9f05dc2596b146ef5d7306aa6185d9cac5d93a74377",
+    "evaluation_data/snapshots/pre-ui-guide-20261016/tests/ui_replay.cjs": "33ece9b190a691fc4840962c07bebb74e942e3769705dd1659e3949834933f24"
+  }
+}

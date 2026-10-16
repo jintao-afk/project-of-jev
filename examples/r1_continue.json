@@ -1,0 +1,6 @@
+{
+  "mode": "agent",
+  "backend": "anyjev",
+  "goal": "1. 计算 (31-7)/3\n2. 翻译补充资料为中文",
+  "input": ""
+}

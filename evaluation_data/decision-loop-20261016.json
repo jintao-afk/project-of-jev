@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-16",
+  "protocol": "result-feedback-v1",
+  "scope": "development verification, not semantic accuracy or holdout evaluation",
+  "current": {
+    "agent.py": "c31265bb0880ac2251315ece114084f6c2681c31e191d5b82d767d889e6b1864",
+    "local_models.py": "fac9b4ad83cd0c87cfbb7ef747b1fce4f7a56f6ff5bb3b52534f4dd1bf63e4a2",
+    "ui.html": "19cf3ff420c3119fde40f9f05dc2596b146ef5d7306aa6185d9cac5d93a74377",
+    "tests/test_agent.py": "9f7212ffbbd52caa5ea1e10349bc921d5820fdd0172b1cbe340e045bbcbb53a0",
+    "tests/test_feedback.py": "87bf956d8fb5804c96c148d0b98d54e68fe2d06651077cd71cade0e47f178889",
+    "verify_feedback.py": "540c2132e82345d735bbe088afadfd173e105dee2d3fe68be3cd0ed73e29bf90",
+    "reports/decision-loop-20261016.md": "dc3474056a6f26b7e990a53b1e43271600bd39ebee6a8efc12735b420debc659"
+  },
+  "previous_source": {
+    "evaluation_data/snapshots/pre-feedback-20261016/agent.py": "f179abef75a14e43ffafb3e0eb712c9dfadc22a8724cfc538a7e4c08add2d10b",
+    "evaluation_data/snapshots/pre-feedback-20261016/local_models.py": "c5aef9334d69b325efdf2ca3b773b6912462a5f8ca836b99c746fabfa7951f4d",
+    "evaluation_data/snapshots/pre-feedback-20261016/test_agent.py": "1550aad901669f900679370a9c67c804db3c6de22dac67561ea9e90ca1ab4f07",
+    "evaluation_data/snapshots/pre-feedback-20261016/ui.html": "4888af1e2e4d0d1451f0fe3d58ba1ec4e22c4e2285bf815dae0efb426d42b390"
+  },
+  "evidence": {
+    "logs/feedback-tests-final-20261016.txt": "e4fc6aaea733de9d97edb241a850e9ca666e6fb231b66ae06a02cf4add9a92fd",
+    "logs/feedback-ui-tests-20261016.txt": "1ebf7eefe06f6274b3600bb9f0944e172ef0d88238958f079b367502662c6ba8",
+    "logs/feedback-smoke-20261016-114227.json": "74a398e0eeec8a67161a902eea6493b019d2d4786878fd04fcf69f28a11a7500",
+    "logs/feedback-smoke-20261016-114347.json": "840140f53b59e8b2383b5e8c35576d4ab1feb748bfd9dc146953b2f2b8b51e97",
+    "logs/feedback-http-final-20261016.json": "a6aeb54f648d5a2e0f391cedeb0eea5249a7795a987b173324986aaf937c2b3d"
+  }
+}

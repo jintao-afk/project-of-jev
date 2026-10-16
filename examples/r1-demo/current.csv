@@ -1,0 +1,5 @@
+sample_id,latency_ms,status
+B01,90,ok
+B02,150,ok
+B03,210,needs_review
+B04,270,ok

@@ -1,0 +1,8 @@
+{
+  "mode": "agent",
+  "backend": "anyjev",
+  "goal": "1. 总结原文\n2. 统计上一步总结结果的字符数",
+  "input": "本周完成了12次设备检查。发现2处接线松动，已完成修复。设备能耗尚未测量。",
+  "parameters": {},
+  "validation": {}
+}

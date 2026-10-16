@@ -1,0 +1,192 @@
+{
+  "created_at_utc": "2026-10-15T07:04:26.650909+00:00",
+  "version": "0.5.0",
+  "purpose": "development integration smoke, no rules comparison; cases may be used to repair this version",
+  "quality_scope": "specific arithmetic, dependency and limitation checks only, not complete semantic accuracy",
+  "implementation_sha256": {
+    "agent.py": "738ecb20c984c5e204f41d0486eb4f64de5cd3a8e00fa884f728f1d848e3d19a",
+    "core.py": "b8a3527a5b7f528c15a98b3cbe9d6e7c31b67839e25328200c8bb1f201d2a794",
+    "local_models.py": "f83525007e823d92e68932867883baf36b3518954445a794cd602a485fb6c5fa",
+    "app.py": "6722f825d8c2a3c385fd96d8531d9630d2c2a24a6f76c327c95afc63a127a922",
+    "ui.html": "f3f8076672ccf0def123080b070e1084afde4a82b05821fc9d07f7e2ed3e6eb3",
+    "config.json": "6d96c4909ebdf25a7f46559c238dfa1dadca638cd719275458e09e352115165f",
+    "verify_agent.py": "8d737d1d374596fb5110bc2d170dfa232788f8b763844d48c809db1694c79002"
+  },
+  "browser_visual_verification": "not_performed",
+  "records": [
+    {
+      "case": "arithmetic",
+      "request": {
+        "mode": "agent",
+        "backend": "anyjev",
+        "goal": "分别计算 (18+24)/6 和 (9+15)*2，逐项给出结果。",
+        "input": "",
+        "parameters": {},
+        "validation": {},
+        "allow_remote": false,
+        "network_available": false
+      },
+      "status": "stopped",
+      "execution_complete": false,
+      "checks": {
+        "remote_calls_zero": true,
+        "no_semantic_completion_claim": true,
+        "two_explicit_results_7_and_48": false
+      },
+      "services": [],
+      "initial_choices": [
+        "plan"
+      ],
+      "route_reviews": 0,
+      "replans": 0,
+      "total_ms": 19232.45,
+      "result": {
+        "text": "两次计划均不符合执行约束，已停止。",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "reason": "两次计划均不符合执行约束，已停止。",
+      "log_file": "logs\\1c666f68c92341d782e7ee7d6c06e141.json",
+      "log_sha256": "a843c561b1f16e04dee46ed5194481c0bda60f78551d7b0732b06fc8beb0b4cf",
+      "semantic_accuracy": null
+    },
+    {
+      "case": "summary-chain",
+      "request": {
+        "mode": "agent",
+        "backend": "anyjev",
+        "goal": "先总结原文，再统计总结结果的字符数，分别给出总结和统计值。",
+        "input": "本周完成了12次设备检查。发现2处接线松动，已完成修复。设备能耗尚未测量。",
+        "parameters": {},
+        "validation": {}
+      },
+      "status": "stopped",
+      "execution_complete": false,
+      "checks": {
+        "remote_calls_zero": true,
+        "no_semantic_completion_claim": true,
+        "summary_to_counter_dependency": false,
+        "source_quote_correspondence_only": false
+      },
+      "services": [],
+      "initial_choices": [
+        "clarify"
+      ],
+      "route_reviews": 0,
+      "replans": 0,
+      "total_ms": 158.64,
+      "result": {
+        "text": "未收到必要原文，请补充后再运行。",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "reason": "未收到必要原文，请补充后再运行。",
+      "log_file": "logs\\b7355e56f76a41afb6c10d8a35808669.json",
+      "log_sha256": "11116362c806e16269736c20bbd0f2b628a28c9668695ade0d6bed4ec00fd07f",
+      "semantic_accuracy": null
+    },
+    {
+      "case": "retrieval-chain",
+      "request": {
+        "mode": "agent",
+        "goal": "先检索本地资料中关于决策模块分工的原文，再总结检索结果。",
+        "input": ""
+      },
+      "status": "stopped",
+      "execution_complete": false,
+      "checks": {
+        "remote_calls_zero": true,
+        "no_semantic_completion_claim": true,
+        "local_reference_service_invoked": false
+      },
+      "services": [],
+      "initial_choices": [
+        "plan"
+      ],
+      "route_reviews": 0,
+      "replans": 0,
+      "total_ms": 3043.06,
+      "result": {
+        "text": "两次计划均不符合执行约束，已停止。",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "reason": "两次计划均不符合执行约束，已停止。",
+      "log_file": "logs\\0f7713589c1c4467bb782c244c0000f3.json",
+      "log_sha256": "56dd4e7077c8876f5ff5eaf02a72a04e08b0af8808b19abfbeea103b3873b48c",
+      "semantic_accuracy": null
+    },
+    {
+      "case": "unsupported",
+      "request": {
+        "mode": "agent",
+        "goal": "连接我家的摄像头，查看此刻客厅是否有人，并关闭客厅灯。",
+        "input": ""
+      },
+      "status": "stopped",
+      "execution_complete": false,
+      "checks": {
+        "remote_calls_zero": true,
+        "no_semantic_completion_claim": true,
+        "stopped_without_substitute_answer": true
+      },
+      "services": [],
+      "initial_choices": [
+        "stop"
+      ],
+      "route_reviews": 0,
+      "replans": 0,
+      "total_ms": 157.46,
+      "result": {
+        "text": "当前离线工具无法完成所需现场观测、设备操作或实时网络请求；未执行这些操作。",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "reason": "当前离线工具无法完成所需现场观测、设备操作或实时网络请求；未执行这些操作。",
+      "log_file": "logs\\c001b9661fe54bd8a854adcf460a69b4.json",
+      "log_sha256": "0d6e0995d7504fb14231b39094fda8246671582c414baf74128ad722401e428a",
+      "semantic_accuracy": null
+    },
+    {
+      "case": "missing-source",
+      "request": {
+        "mode": "agent",
+        "goal": "把我提供的英文原文翻译成中文，然后统计翻译结果的字符数。",
+        "input": ""
+      },
+      "status": "stopped",
+      "execution_complete": false,
+      "checks": {
+        "remote_calls_zero": true,
+        "no_semantic_completion_claim": true,
+        "stopped_without_substitute_answer": true
+      },
+      "services": [],
+      "initial_choices": [
+        "clarify"
+      ],
+      "route_reviews": 0,
+      "replans": 0,
+      "total_ms": 160.5,
+      "result": {
+        "text": "未收到必要原文，请补充后再运行。",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "reason": "未收到必要原文，请补充后再运行。",
+      "log_file": "logs\\7d2e69c3825a4608b39b6290851c606a.json",
+      "log_sha256": "8d525fa4f551df660118930ee6ab7ef4a209ff2396c1810049d52f0ee7cc4dfa",
+      "semantic_accuracy": null
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "created_at_utc": "2026-10-15T07:12:34.800278+00:00",
+  "version": "0.5.0",
+  "purpose": "development integration smoke, no rules comparison; cases may be used to repair this version",
+  "quality_scope": "specific arithmetic, dependency and limitation checks only, not complete semantic accuracy",
+  "implementation_sha256": {
+    "agent.py": "702bcc72b97acc2e75566beafaa3e56baa9f5dc757a66db0b6888b4a036fde74",
+    "core.py": "b8a3527a5b7f528c15a98b3cbe9d6e7c31b67839e25328200c8bb1f201d2a794",
+    "local_models.py": "0eeed09c5d0698c8310971c023abb85a62ec9b58547941907d5be10014398bd1",
+    "app.py": "6722f825d8c2a3c385fd96d8531d9630d2c2a24a6f76c327c95afc63a127a922",
+    "ui.html": "072dad4a76b2442220f3630cfdb7eab7f754d57ab744512c5a1d8a3e6a8419ed",
+    "config.json": "6d96c4909ebdf25a7f46559c238dfa1dadca638cd719275458e09e352115165f",
+    "verify_agent.py": "8bf0942e1d9a15b6f3ddabd991a2c92a85aeaa2307be809e477369c15a2c627d"
+  },
+  "browser_visual_verification": "not_performed",
+  "records": [
+    {
+      "case": "arithmetic",
+      "request": {
+        "mode": "agent",
+        "backend": "anyjev",
+        "goal": "1. 计算 (18+24)/6\n2. 计算 (9+15)*2",
+        "input": "",
+        "parameters": {},
+        "validation": {},
+        "allow_remote": false,
+        "network_available": false
+      },
+      "status": "needs_review",
+      "execution_complete": true,
+      "checks": {
+        "remote_calls_zero": true,
+        "no_semantic_completion_claim": true,
+        "two_explicit_results_7_and_48": true
+      },
+      "services": [
+        "calculator",
+        "calculator"
+      ],
+      "initial_choices": [
+        "plan",
+        "calculator",
+        "calculator",
+        "finish"
+      ],
+      "route_reviews": 0,
+      "replans": 0,
+      "total_ms": 15209.37,
+      "result": {
+        "text": "【s1】计算 (18+24)/6\n7.0\n\n【s2】计算 (9+15)*2\n48",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "reason": "计划内子任务已执行，逐项交付结果；计划覆盖与答案质量仍需核查。",
+      "log_file": "logs\\c3cd32253c274ca2bae46809233d07df.json",
+      "log_sha256": "7f750892a3753876669f916d6e450e21aed2bbf88c15a839c1c90cd432118585",
+      "semantic_accuracy": null
+    },
+    {
+      "case": "summary-chain",
+      "request": {
+        "mode": "agent",
+        "backend": "anyjev",
+        "goal": "1. 总结原文\n2. 统计上一步总结结果的字符数",
+        "input": "本周完成了12次设备检查。发现2处接线松动，已完成修复。设备能耗尚未测量。",
+        "parameters": {},
+        "validation": {}
+      },
+      "status": "stopped",
+      "execution_complete": false,
+      "checks": {
+        "remote_calls_zero": true,
+        "no_semantic_completion_claim": true,
+        "summary_to_counter_dependency": false,
+        "source_quote_correspondence_only": false
+      },
+      "services": [],
+      "initial_choices": [
+        "stop"
+      ],
+      "route_reviews": 0,
+      "replans": 0,
+      "total_ms": 355.25,
+      "result": {
+        "text": "当前离线工具无法完成所需现场观测、设备操作或实时网络请求；未执行这些操作。",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "reason": "当前离线工具无法完成所需现场观测、设备操作或实时网络请求；未执行这些操作。",
+      "log_file": "logs\\583a83cdd3dc46369e3f84ce5646fac9.json",
+      "log_sha256": "85937ad807628f507b3d82f8200e337da3b1d927b1465a6302f651d133a07abf",
+      "semantic_accuracy": null
+    },
+    {
+      "case": "retrieval-chain",
+      "request": {
+        "mode": "agent",
+        "goal": "1. 检索本地资料中关于决策模块分工的原文\n2. 总结上一步检索结果",
+        "input": ""
+      },
+      "status": "needs_review",
+      "execution_complete": true,
+      "checks": {
+        "remote_calls_zero": true,
+        "no_semantic_completion_claim": true,
+        "local_reference_service_invoked": true
+      },
+      "services": [
+        "retrieve",
+        "knowledge_qa"
+      ],
+      "initial_choices": [
+        "plan",
+        "retrieve",
+        "knowledge_qa",
+        "finish"
+      ],
+      "route_reviews": 0,
+      "replans": 0,
+      "total_ms": 2910.76,
+      "result": {
+        "text": "【s1】检索本地资料中关于决策模块分工的原文\n[decision-role] 决策模块比较可用的模型与工具，输出候选编号与选项分数。调用程序负责参数检查、实际执行与结果反馈。\n[local-components] 项目离线升级方案使用 Qwen3-1.7B 完成决策与一般文字问答，BGE 中文检索模型查找本地资料，计算程序处理受限算式。检索问答依次执行检索和本地生成；模型输出仍需检查。\n\n【s2】总结上一步检索结果\n资料可提供以下原文依据：\n“项目离线升级方案使用 Qwen3-1.7B 完成决策与一般文字问答，BGE 中文检索模型查找本地资料，计算程序处理受限算式。检索问答依次执行检索和本地生成；模型输出仍需检查。” [1]",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "reason": "计划内子任务已执行，逐项交付结果；计划覆盖与答案质量仍需核查。",
+      "log_file": "logs\\96c9611e08ca49e3a232db81c26fffa0.json",
+      "log_sha256": "5413b24df54de2cfd09b6d7dfd797b5ad49abda8d47b7100fe2f97314363f482",
+      "semantic_accuracy": null
+    },
+    {
+      "case": "unsupported",
+      "request": {
+        "mode": "agent",
+        "goal": "连接我家的摄像头，查看此刻客厅是否有人，并关闭客厅灯。",
+        "input": ""
+      },
+      "status": "stopped",
+      "execution_complete": false,
+      "checks": {
+        "remote_calls_zero": true,
+        "no_semantic_completion_claim": true,
+        "stopped_without_substitute_answer": true
+      },
+      "services": [],
+      "initial_choices": [
+        "stop"
+      ],
+      "route_reviews": 0,
+      "replans": 0,
+      "total_ms": 154.82,
+      "result": {
+        "text": "当前离线工具无法完成所需现场观测、设备操作或实时网络请求；未执行这些操作。",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "reason": "当前离线工具无法完成所需现场观测、设备操作或实时网络请求；未执行这些操作。",
+      "log_file": "logs\\296cac43220a48ccbcf28ff375d892ee.json",
+      "log_sha256": "50f6102e9dc408c482bb5aa5f2234b880f56762f36d2381211bb794b14795815",
+      "semantic_accuracy": null
+    },
+    {
+      "case": "missing-source",
+      "request": {
+        "mode": "agent",
+        "goal": "把我提供的英文原文翻译成中文，然后统计翻译结果的字符数。",
+        "input": ""
+      },
+      "status": "stopped",
+      "execution_complete": false,
+      "checks": {
+        "remote_calls_zero": true,
+        "no_semantic_completion_claim": true,
+        "stopped_without_substitute_answer": true
+      },
+      "services": [],
+      "initial_choices": [
+        "clarify"
+      ],
+      "route_reviews": 0,
+      "replans": 0,
+      "total_ms": 156.08,
+      "result": {
+        "text": "未收到必要原文，请补充后再运行。",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "reason": "未收到必要原文，请补充后再运行。",
+      "log_file": "logs\\bc2ca7706b194d34b5164f160d754b7d.json",
+      "log_sha256": "0b55ae2d22e56e54d6354980e93356c971361a21ba0fa7e8381b3860dabc1550",
+      "semantic_accuracy": null
+    }
+  ]
+}

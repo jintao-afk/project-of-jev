@@ -1,0 +1,5 @@
+sample_id,latency_ms,status
+A01,120,ok
+A02,180,ok
+A03,,missing
+A04,invalid,bad

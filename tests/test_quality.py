@@ -39,6 +39,17 @@ class QualityTests(unittest.TestCase):
         self.assertEqual(source_units('未批准采购20台，仅允许测试2台。能耗未知。'),
                          ['未批准采购20台，仅允许测试2台。', '能耗未知。'])
 
+    def test_summary_retains_negative_scope_even_if_model_omits_it(self):
+        runtime = Runtime(str(ROOT), {})
+        runtime._generate = lambda *args, **kwargs: {'text': '{"selected":[2]}', 'truncated': False, 'usage': {}}
+        units = [{'source_id': 'user_input', 'source_number': 1, 'quote': '返回率不是正确率。'},
+                 {'source_id': 'user_input', 'source_number': 1, 'quote': '记录共有8条。'}]
+        result = runtime.select_evidence('总结原文，保留限制。', units, summary=True)
+        self.assertEqual(result['evidence_selection']['model_selected'], [2])
+        self.assertEqual(result['evidence_selection']['program_required'], [1])
+        self.assertEqual([e['quote'] for e in result['evidence']], [u['quote'] for u in units])
+        self.assertFalse(result['quality']['semantic_verified'])
+
     def test_partial_checks_cannot_claim_completion(self):
         r = validation({'text': '正确词语但虚构内容', 'sources': [{'id': 'x'}]}, {'contains': ['正确词语']})
         self.assertEqual(r['status'], 'needs_review')

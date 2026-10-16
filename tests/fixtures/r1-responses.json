@@ -1,0 +1,4360 @@
+{
+  "arithmetic": {
+    "run_id": "dbf6ac5f57c94f25894eda8bed670a2f",
+    "mode": "agent",
+    "backend": "anyjev",
+    "status": "needs_review",
+    "execution_complete": true,
+    "reason": "计划内子任务已执行，逐项交付结果；计划覆盖与答案质量仍需核查。",
+    "task_complete": false,
+    "semantic_accuracy": null,
+    "completion_scope": "declared_plan_execution_only",
+    "task_contract": {
+      "operation": "general_agent",
+      "planner": "user numbered requirements",
+      "selector": "AnyJev + Qwen",
+      "max_subtasks": 6
+    },
+    "plans": [
+      {
+        "revision": 1,
+        "source": "user_numbered_requirements",
+        "objectives": [
+          "计算 (31-7)/3",
+          "计算 (2.5+1.5)*4"
+        ],
+        "steps": [
+          {
+            "id": "s1",
+            "goal": "计算 (31-7)/3",
+            "input": "$input",
+            "parameters": {
+              "expression": "(31-7)/3"
+            }
+          },
+          {
+            "id": "s2",
+            "goal": "计算 (2.5+1.5)*4",
+            "input": "$input",
+            "parameters": {
+              "expression": "(2.5+1.5)*4"
+            }
+          }
+        ]
+      }
+    ],
+    "input_bindings": {
+      "s1": "$input",
+      "s2": "$input"
+    },
+    "subtask_results": {
+      "s1": {
+        "goal": "计算 (31-7)/3",
+        "service": "calculator",
+        "result": {
+          "value": 8.0,
+          "expression": "(31-7)/3"
+        },
+        "validation": {
+          "status": "needs_review",
+          "semantic_verified": false,
+          "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+        },
+        "input_provenance": {
+          "source": "$input",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "run_id": "dbf6ac5f57c94f25894eda8bed670a2f",
+          "retained_on_continue": false
+        }
+      },
+      "s2": {
+        "goal": "计算 (2.5+1.5)*4",
+        "service": "calculator",
+        "result": {
+          "value": 16.0,
+          "expression": "(2.5+1.5)*4"
+        },
+        "validation": {
+          "status": "needs_review",
+          "semantic_verified": false,
+          "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+        },
+        "input_provenance": {
+          "source": "$input",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "run_id": "dbf6ac5f57c94f25894eda8bed670a2f",
+          "retained_on_continue": false
+        }
+      }
+    },
+    "pending_subtasks": [],
+    "result": {
+      "text": "【s1】计算 (31-7)/3\n8.0\n\n【s2】计算 (2.5+1.5)*4\n16.0",
+      "quality": {
+        "status": "unverified_agent_results",
+        "semantic_verified": false
+      }
+    },
+    "decision_calls": 3,
+    "replans": 0,
+    "route_reviews": 0,
+    "invocation_attempts": 2,
+    "successful_calls": 2,
+    "remote_attempts": 0,
+    "capability_labels": {
+      "replan": "根据反馈重新规划",
+      "finish": "整理并返回成果",
+      "stop": "说明限制并停止"
+    },
+    "events": [
+      {
+        "event": "run_started",
+        "elapsed_ms": 0.08,
+        "mode": "agent",
+        "backend": "anyjev",
+        "task": {
+          "mode": "agent",
+          "goal": "1. 计算 (31-7)/3\n2. 计算 (2.5+1.5)*4",
+          "input": ""
+        },
+        "configuration": {
+          "version": "0.6.0",
+          "agent_max_steps": 12,
+          "workflow_max_steps": 16,
+          "task_contract_enabled": true,
+          "preservation_checks_enabled": true,
+          "stop_conflict_review_enabled": true,
+          "max_route_reviews": 1,
+          "max_generation_retries": 1,
+          "decision_backend": "anyjev",
+          "decision_model": "Qwen/Qwen3-1.7B",
+          "retrieval_model": "BAAI/bge-small-zh-v1.5",
+          "decision_prior": "content_free",
+          "max_steps": 3,
+          "max_seconds": 300,
+          "call_timeout_seconds": 120,
+          "max_remote_calls": 2,
+          "max_new_tokens": 512,
+          "max_input_tokens": 4096,
+          "provisional_confidence_floor": 0.4,
+          "threshold_calibrated": false,
+          "remote_base_url": "https://api.deepseek.com",
+          "remote_model": "deepseek-flash",
+          "remote_key_env": "DEEPSEEK_API_KEY",
+          "jev_model": "jev-1.13.0",
+          "jev_key_env": "TYPESAFE_API_KEY",
+          "decision_model_dir": "models/qwen3-1.7b",
+          "route_review": true,
+          "offline_mode": true,
+          "reference_topics": [
+            "Jev",
+            "AnyJev",
+            "本项目",
+            "本系统",
+            "这个项目",
+            "这个离线系统"
+          ]
+        },
+        "model_identity": "independent AnyJev + Qwen; not commercial Jev",
+        "available_ram_mb": 20942
+      },
+      {
+        "event": "parameters_derived",
+        "elapsed_ms": 1.61,
+        "subtask_id": "s1",
+        "parameters": [
+          {
+            "parameter": "expression",
+            "source": "goal",
+            "value": "(31-7)/3",
+            "method": "restricted_expression_parser"
+          }
+        ],
+        "note": "程序仅提取用户明确写出的受限算式，服务仍由AnyJev选择。"
+      },
+      {
+        "event": "parameters_derived",
+        "elapsed_ms": 1.63,
+        "subtask_id": "s2",
+        "parameters": [
+          {
+            "parameter": "expression",
+            "source": "goal",
+            "value": "(2.5+1.5)*4",
+            "method": "restricted_expression_parser"
+          }
+        ],
+        "note": "程序仅提取用户明确写出的受限算式，服务仍由AnyJev选择。"
+      },
+      {
+        "event": "plan_accepted",
+        "elapsed_ms": 1.65,
+        "revision": 1,
+        "plan": [
+          {
+            "id": "s1",
+            "goal": "计算 (31-7)/3",
+            "input": "$input",
+            "parameters": {
+              "expression": "(31-7)/3"
+            }
+          },
+          {
+            "id": "s2",
+            "goal": "计算 (2.5+1.5)*4",
+            "input": "$input",
+            "parameters": {
+              "expression": "(2.5+1.5)*4"
+            }
+          }
+        ],
+        "source": "user_numbered_requirements",
+        "note": "编号子任务由用户明确给出；程序解析编号，AnyJev决定输入来源与实际调用。不是模型自动拆解。"
+      },
+      {
+        "event": "input_bound",
+        "elapsed_ms": 1.66,
+        "subtask_id": "s1",
+        "source": "$input",
+        "method": "only_available_source"
+      },
+      {
+        "event": "candidates_filtered",
+        "elapsed_ms": 4.87,
+        "step": 1,
+        "subtask": {
+          "id": "s1",
+          "goal": "计算 (31-7)/3",
+          "input": "$input",
+          "parameters": {
+            "expression": "(31-7)/3"
+          }
+        },
+        "available": [
+          "calculator",
+          "local_text",
+          "retrieve",
+          "knowledge_qa",
+          "replan",
+          "stop"
+        ],
+        "excluded": {
+          "text_stats": "需要 1 至 6000 字符的文本参数或 input。",
+          "dataset_report": "没有用户声明的CSV附件，或本轮附件分析已完成。"
+        }
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 12260.1,
+        "step": 1,
+        "subtask_id": "s1",
+        "choice": "calculator",
+        "duration_ms": 12255.21,
+        "probabilities": {
+          "calculator": 0.9999999974312941,
+          "local_text": 4.4243165965895585e-12,
+          "retrieve": 4.5130576841965866e-10,
+          "knowledge_qa": 5.542611826913084e-11,
+          "replan": 1.8320406484011118e-09,
+          "stop": 2.2550900022358177e-10
+        },
+        "backend": "anyjev",
+        "model": "Qwen/Qwen3-1.7B",
+        "level": "L0",
+        "prior": "content_free",
+        "calibrated": false,
+        "prompt_version": "chinese-capability-routing-v4",
+        "bias_correction": true,
+        "cold_start": true,
+        "load_ms": 10654.09,
+        "resources": {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 3944.0,
+          "cuda_peak_allocated_mb": 3930.4,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        },
+        "confidence": 0.9999999969175529
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 12260.1,
+        "step": 1,
+        "initial_choice": "calculator",
+        "choice": "calculator",
+        "reviewed": false
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 12260.18,
+        "step": 1,
+        "subtask_id": "s1",
+        "action": "calculator",
+        "parameters": {
+          "expression": "(31-7)/3"
+        }
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 12260.26,
+        "step": 1,
+        "subtask_id": "s1",
+        "action": "calculator",
+        "call_success": true,
+        "duration_ms": 0.1,
+        "result": {
+          "value": 8.0,
+          "expression": "(31-7)/3"
+        },
+        "validation": {
+          "status": "needs_review",
+          "semantic_verified": false,
+          "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+        },
+        "available_ram_mb": 15437
+      },
+      {
+        "event": "input_bound",
+        "elapsed_ms": 12260.3,
+        "subtask_id": "s2",
+        "source": "$input",
+        "method": "only_available_source"
+      },
+      {
+        "event": "candidates_filtered",
+        "elapsed_ms": 12262.24,
+        "step": 2,
+        "subtask": {
+          "id": "s2",
+          "goal": "计算 (2.5+1.5)*4",
+          "input": "$input",
+          "parameters": {
+            "expression": "(2.5+1.5)*4"
+          }
+        },
+        "available": [
+          "calculator",
+          "local_text",
+          "retrieve",
+          "knowledge_qa",
+          "replan",
+          "stop"
+        ],
+        "excluded": {
+          "text_stats": "需要 1 至 6000 字符的文本参数或 input。",
+          "dataset_report": "没有用户声明的CSV附件，或本轮附件分析已完成。"
+        }
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 12515.59,
+        "step": 2,
+        "subtask_id": "s2",
+        "choice": "calculator",
+        "duration_ms": 253.33,
+        "probabilities": {
+          "calculator": 0.9999999956236179,
+          "local_text": 4.021652016403591e-12,
+          "retrieve": 8.129641330327532e-10,
+          "knowledge_qa": 1.2361038482352684e-10,
+          "replan": 2.927593487455517e-09,
+          "stop": 5.081925273668339e-10
+        },
+        "backend": "anyjev",
+        "model": "Qwen/Qwen3-1.7B",
+        "level": "L0",
+        "prior": "content_free",
+        "calibrated": false,
+        "prompt_version": "chinese-capability-routing-v4",
+        "bias_correction": true,
+        "cold_start": false,
+        "load_ms": 0,
+        "resources": {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 3944.0,
+          "cuda_peak_allocated_mb": 3932.05,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        },
+        "confidence": 0.9999999947483414
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 12515.6,
+        "step": 2,
+        "initial_choice": "calculator",
+        "choice": "calculator",
+        "reviewed": false
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 12515.67,
+        "step": 2,
+        "subtask_id": "s2",
+        "action": "calculator",
+        "parameters": {
+          "expression": "(2.5+1.5)*4"
+        }
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 12515.74,
+        "step": 2,
+        "subtask_id": "s2",
+        "action": "calculator",
+        "call_success": true,
+        "duration_ms": 0.1,
+        "result": {
+          "value": 16.0,
+          "expression": "(2.5+1.5)*4"
+        },
+        "validation": {
+          "status": "needs_review",
+          "semantic_verified": false,
+          "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+        },
+        "available_ram_mb": 15436
+      },
+      {
+        "event": "candidates_filtered",
+        "elapsed_ms": 12515.76,
+        "step": 3,
+        "subtask": null,
+        "available": [
+          "finish",
+          "stop"
+        ],
+        "excluded": {}
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 12881.95,
+        "step": 3,
+        "subtask_id": null,
+        "choice": "finish",
+        "duration_ms": 366.18,
+        "backend": "anyjev",
+        "model": "Qwen/Qwen3-1.7B",
+        "calibrated": false,
+        "probabilities": {
+          "finish": 0.9999954804830734,
+          "stop": 4.519516926645455e-06
+        },
+        "prompt_version": "general-agent-choice-v1",
+        "cold_start": false,
+        "duration_with_load_ms": 365.56,
+        "resources": {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 4006.0,
+          "cuda_peak_allocated_mb": 3960.65,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        },
+        "confidence": 0.9999909609661468
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 12881.95,
+        "step": 3,
+        "initial_choice": "finish",
+        "choice": "finish",
+        "reviewed": false
+      },
+      {
+        "event": "agent_delivered",
+        "elapsed_ms": 12881.95,
+        "step": 3,
+        "reason": "计划内子任务已执行，逐项交付结果；计划覆盖与答案质量仍需核查。"
+      }
+    ],
+    "total_ms": 12881.98,
+    "model_identity": "independent AnyJev + Qwen; not commercial Jev",
+    "log_file": "D:\\1 jev\\jev-edge-prototype\\logs\\dbf6ac5f57c94f25894eda8bed670a2f.json",
+    "task_id": "dbf6ac5f57c94f25894eda8bed670a2f",
+    "revision": 1,
+    "previous_runs": [],
+    "previous_stages": [],
+    "resumable": false,
+    "goal": "1. 计算 (31-7)/3\n2. 计算 (2.5+1.5)*4",
+    "review_items": [
+      "自然语言事实、信息保留和需求覆盖仍需人工核查。",
+      "来源对应与文件哈希不证明资料充分；程序纠正不算模型独立选对。"
+    ],
+    "artifacts": [
+      {
+        "name": "report.md",
+        "url": "/v1/artifacts/dbf6ac5f57c94f25894eda8bed670a2f/report.md"
+      },
+      {
+        "name": "report.json",
+        "url": "/v1/artifacts/dbf6ac5f57c94f25894eda8bed670a2f/report.json"
+      }
+    ],
+    "delivery": {
+      "integrity_verified": true,
+      "scope": "artifact_bytes_and_record_only; answer quality remains separately declared",
+      "partial": false
+    }
+  },
+  "summary": {
+    "run_id": "4ac0b6cf0722472a872eeff107a7082e",
+    "mode": "agent",
+    "backend": "anyjev",
+    "status": "needs_review",
+    "execution_complete": true,
+    "reason": "计划内子任务已执行，逐项交付结果；计划覆盖与答案质量仍需核查。",
+    "task_complete": false,
+    "semantic_accuracy": null,
+    "completion_scope": "declared_plan_execution_only",
+    "task_contract": {
+      "operation": "general_agent",
+      "planner": "user numbered requirements",
+      "selector": "AnyJev + Qwen",
+      "max_subtasks": 6
+    },
+    "plans": [
+      {
+        "revision": 1,
+        "source": "user_numbered_requirements",
+        "objectives": [
+          "总结原文",
+          "统计上一步总结结果的字符数"
+        ],
+        "steps": [
+          {
+            "id": "s1",
+            "goal": "总结原文",
+            "input": "$input",
+            "parameters": {}
+          },
+          {
+            "id": "s2",
+            "goal": "统计上一步总结结果的字符数",
+            "input": "$input",
+            "parameters": {}
+          }
+        ]
+      }
+    ],
+    "input_bindings": {
+      "s1": "$input",
+      "s2": "$s1"
+    },
+    "subtask_results": {
+      "s1": {
+        "goal": "总结原文",
+        "service": "local_text",
+        "result": {
+          "text": "原文要点（完整句摘录）：\n“巡检记录共有8项。” [1]\n“2项缺少照片，尚未补齐。” [1]\n“原因尚未确认。” [1]",
+          "truncated": false,
+          "model": "Qwen/Qwen3-1.7B",
+          "usage": {
+            "input_tokens": 212,
+            "output_tokens": 13
+          },
+          "answer_mode": "verified_source_quotes",
+          "evidence": [
+            {
+              "source_id": "user_input",
+              "source_number": 1,
+              "quote": "巡检记录共有8项。",
+              "sentence_number": 1
+            },
+            {
+              "source_id": "user_input",
+              "source_number": 1,
+              "quote": "2项缺少照片，尚未补齐。",
+              "sentence_number": 2
+            },
+            {
+              "source_id": "user_input",
+              "source_number": 1,
+              "quote": "原因尚未确认。",
+              "sentence_number": 3
+            }
+          ],
+          "selection_output": "{\"selected\": [1, 2, 3]}",
+          "evidence_selection": {
+            "model_selected": [
+              1,
+              2,
+              3
+            ],
+            "program_required": [
+              2,
+              3
+            ],
+            "final_selected": [
+              1,
+              2,
+              3
+            ],
+            "policy": "preserve_qualifier_sentences"
+          },
+          "evidence_scope": "user_input_only",
+          "quality": {
+            "status": "source_spans_verified",
+            "method": "complete_source_unit_selection_v1",
+            "semantic_verified": false,
+            "limitations": "程序保证原句来源对应；相关性、充分性和资料自身正确性仍需独立核查。"
+          },
+          "generation_attempts": [
+            {
+              "attempt": 1,
+              "kind": "evidence_selection",
+              "raw_text": "{\"selected\": [1, 2, 3]}",
+              "duration_ms": 442.91,
+              "usage": {
+                "input_tokens": 212,
+                "output_tokens": 13
+              },
+              "quality": {
+                "status": "source_spans_verified",
+                "method": "complete_source_unit_selection_v1",
+                "semantic_verified": false,
+                "limitations": "程序保证原句来源对应；相关性、充分性和资料自身正确性仍需独立核查。"
+              },
+              "truncated": false
+            }
+          ],
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4006.0,
+            "cuda_peak_allocated_mb": 3960.65,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        },
+        "validation": {
+          "status": "needs_review",
+          "semantic_verified": false,
+          "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+        },
+        "input_provenance": {
+          "source": "$input",
+          "sha256": "cb82d997b9c604a675e97d3826859b583ded690bcf8c0d3aa8f439348b493520",
+          "run_id": "4ac0b6cf0722472a872eeff107a7082e",
+          "retained_on_continue": false
+        }
+      },
+      "s2": {
+        "goal": "统计上一步总结结果的字符数",
+        "service": "text_stats",
+        "result": {
+          "characters": 61,
+          "nonempty_lines": 4,
+          "whitespace_words": 7
+        },
+        "validation": {
+          "status": "needs_review",
+          "semantic_verified": false,
+          "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+        },
+        "input_provenance": {
+          "source": "$s1",
+          "sha256": "498b73fee443350679080760d2acec1553af5638125cd8b2c00e37deb8bde663",
+          "run_id": "4ac0b6cf0722472a872eeff107a7082e",
+          "retained_on_continue": false
+        }
+      }
+    },
+    "pending_subtasks": [],
+    "result": {
+      "text": "【s1】总结原文\n原文要点（完整句摘录）：\n“巡检记录共有8项。” [1]\n“2项缺少照片，尚未补齐。” [1]\n“原因尚未确认。” [1]\n\n【s2】统计上一步总结结果的字符数\n{\"characters\": 61, \"nonempty_lines\": 4, \"whitespace_words\": 7}",
+      "quality": {
+        "status": "unverified_agent_results",
+        "semantic_verified": false
+      }
+    },
+    "decision_calls": 4,
+    "replans": 0,
+    "route_reviews": 0,
+    "invocation_attempts": 2,
+    "successful_calls": 2,
+    "remote_attempts": 0,
+    "capability_labels": {
+      "replan": "根据反馈重新规划",
+      "finish": "整理并返回成果",
+      "stop": "说明限制并停止"
+    },
+    "events": [
+      {
+        "event": "run_started",
+        "elapsed_ms": 0.06,
+        "mode": "agent",
+        "backend": "anyjev",
+        "task": {
+          "mode": "agent",
+          "goal": "1. 总结原文\n2. 统计上一步总结结果的字符数",
+          "input": "巡检记录共有8项。2项缺少照片，尚未补齐。原因尚未确认。"
+        },
+        "configuration": {
+          "version": "0.6.0",
+          "agent_max_steps": 12,
+          "workflow_max_steps": 16,
+          "task_contract_enabled": true,
+          "preservation_checks_enabled": true,
+          "stop_conflict_review_enabled": true,
+          "max_route_reviews": 1,
+          "max_generation_retries": 1,
+          "decision_backend": "anyjev",
+          "decision_model": "Qwen/Qwen3-1.7B",
+          "retrieval_model": "BAAI/bge-small-zh-v1.5",
+          "decision_prior": "content_free",
+          "max_steps": 3,
+          "max_seconds": 300,
+          "call_timeout_seconds": 120,
+          "max_remote_calls": 2,
+          "max_new_tokens": 512,
+          "max_input_tokens": 4096,
+          "provisional_confidence_floor": 0.4,
+          "threshold_calibrated": false,
+          "remote_base_url": "https://api.deepseek.com",
+          "remote_model": "deepseek-flash",
+          "remote_key_env": "DEEPSEEK_API_KEY",
+          "jev_model": "jev-1.13.0",
+          "jev_key_env": "TYPESAFE_API_KEY",
+          "decision_model_dir": "models/qwen3-1.7b",
+          "route_review": true,
+          "offline_mode": true,
+          "reference_topics": [
+            "Jev",
+            "AnyJev",
+            "本项目",
+            "本系统",
+            "这个项目",
+            "这个离线系统"
+          ]
+        },
+        "model_identity": "independent AnyJev + Qwen; not commercial Jev",
+        "available_ram_mb": 15439
+      },
+      {
+        "event": "plan_accepted",
+        "elapsed_ms": 1.05,
+        "revision": 1,
+        "plan": [
+          {
+            "id": "s1",
+            "goal": "总结原文",
+            "input": "$input",
+            "parameters": {}
+          },
+          {
+            "id": "s2",
+            "goal": "统计上一步总结结果的字符数",
+            "input": "$input",
+            "parameters": {}
+          }
+        ],
+        "source": "user_numbered_requirements",
+        "note": "编号子任务由用户明确给出；程序解析编号，AnyJev决定输入来源与实际调用。不是模型自动拆解。"
+      },
+      {
+        "event": "input_bound",
+        "elapsed_ms": 1.12,
+        "subtask_id": "s1",
+        "source": "$input",
+        "method": "only_available_source"
+      },
+      {
+        "event": "candidates_filtered",
+        "elapsed_ms": 3.72,
+        "step": 1,
+        "subtask": {
+          "id": "s1",
+          "goal": "总结原文",
+          "input": "$input",
+          "parameters": {}
+        },
+        "available": [
+          "text_stats",
+          "local_text",
+          "retrieve",
+          "knowledge_qa",
+          "replan",
+          "stop"
+        ],
+        "excluded": {
+          "calculator": "初版计算服务需要显式 parameters.expression，不由决策模块猜测参数。",
+          "dataset_report": "没有用户声明的CSV附件，或本轮附件分析已完成。"
+        }
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 1000.28,
+        "step": 1,
+        "subtask_id": "s1",
+        "choice": "local_text",
+        "duration_ms": 996.54,
+        "probabilities": {
+          "text_stats": 0.003462079056398627,
+          "local_text": 0.7790275059435897,
+          "retrieve": 0.005536474969071002,
+          "knowledge_qa": 0.0004196798387321975,
+          "replan": 0.0017623082135333566,
+          "stop": 0.20979195197867512
+        },
+        "backend": "anyjev",
+        "model": "Qwen/Qwen3-1.7B",
+        "level": "L0",
+        "prior": "content_free",
+        "calibrated": false,
+        "prompt_version": "chinese-capability-routing-v4",
+        "bias_correction": true,
+        "cold_start": false,
+        "load_ms": 0,
+        "resources": {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 4006.0,
+          "cuda_peak_allocated_mb": 3960.65,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        },
+        "confidence": 0.7348330071323077
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 1000.28,
+        "step": 1,
+        "initial_choice": "local_text",
+        "choice": "local_text",
+        "reviewed": false
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 1000.28,
+        "step": 1,
+        "subtask_id": "s1",
+        "action": "local_text",
+        "parameters": {
+          "text": "巡检记录共有8项。2项缺少照片，尚未补齐。原因尚未确认。"
+        }
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 1444.7,
+        "step": 1,
+        "subtask_id": "s1",
+        "action": "local_text",
+        "call_success": true,
+        "duration_ms": 444.36,
+        "result": {
+          "text": "原文要点（完整句摘录）：\n“巡检记录共有8项。” [1]\n“2项缺少照片，尚未补齐。” [1]\n“原因尚未确认。” [1]",
+          "truncated": false,
+          "model": "Qwen/Qwen3-1.7B",
+          "usage": {
+            "input_tokens": 212,
+            "output_tokens": 13
+          },
+          "answer_mode": "verified_source_quotes",
+          "evidence": [
+            {
+              "source_id": "user_input",
+              "source_number": 1,
+              "quote": "巡检记录共有8项。",
+              "sentence_number": 1
+            },
+            {
+              "source_id": "user_input",
+              "source_number": 1,
+              "quote": "2项缺少照片，尚未补齐。",
+              "sentence_number": 2
+            },
+            {
+              "source_id": "user_input",
+              "source_number": 1,
+              "quote": "原因尚未确认。",
+              "sentence_number": 3
+            }
+          ],
+          "selection_output": "{\"selected\": [1, 2, 3]}",
+          "evidence_selection": {
+            "model_selected": [
+              1,
+              2,
+              3
+            ],
+            "program_required": [
+              2,
+              3
+            ],
+            "final_selected": [
+              1,
+              2,
+              3
+            ],
+            "policy": "preserve_qualifier_sentences"
+          },
+          "evidence_scope": "user_input_only",
+          "quality": {
+            "status": "source_spans_verified",
+            "method": "complete_source_unit_selection_v1",
+            "semantic_verified": false,
+            "limitations": "程序保证原句来源对应；相关性、充分性和资料自身正确性仍需独立核查。"
+          },
+          "generation_attempts": [
+            {
+              "attempt": 1,
+              "kind": "evidence_selection",
+              "raw_text": "{\"selected\": [1, 2, 3]}",
+              "duration_ms": 442.91,
+              "usage": {
+                "input_tokens": 212,
+                "output_tokens": 13
+              },
+              "quality": {
+                "status": "source_spans_verified",
+                "method": "complete_source_unit_selection_v1",
+                "semantic_verified": false,
+                "limitations": "程序保证原句来源对应；相关性、充分性和资料自身正确性仍需独立核查。"
+              },
+              "truncated": false
+            }
+          ],
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4006.0,
+            "cuda_peak_allocated_mb": 3960.65,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        },
+        "validation": {
+          "status": "needs_review",
+          "semantic_verified": false,
+          "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+        },
+        "available_ram_mb": 15254
+      },
+      {
+        "event": "input_source_decision",
+        "elapsed_ms": 1739.69,
+        "subtask_id": "s2",
+        "choice": "$s1",
+        "backend": "anyjev",
+        "model": "Qwen/Qwen3-1.7B",
+        "calibrated": false,
+        "probabilities": {
+          "$input": 8.161614282316002e-11,
+          "$s1": 0.999999999918384
+        },
+        "prompt_version": "general-agent-choice-v1",
+        "cold_start": false,
+        "duration_with_load_ms": 294.42,
+        "resources": {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 4006.0,
+          "cuda_peak_allocated_mb": 3960.65,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        },
+        "confidence": 0.9999999998367679
+      },
+      {
+        "event": "input_bound",
+        "elapsed_ms": 1739.7,
+        "subtask_id": "s2",
+        "source": "$s1",
+        "method": "anyjev_choice"
+      },
+      {
+        "event": "candidates_filtered",
+        "elapsed_ms": 1741.63,
+        "step": 2,
+        "subtask": {
+          "id": "s2",
+          "goal": "统计上一步总结结果的字符数",
+          "input": "$s1",
+          "parameters": {}
+        },
+        "available": [
+          "text_stats",
+          "local_text",
+          "retrieve",
+          "knowledge_qa",
+          "replan",
+          "stop"
+        ],
+        "excluded": {
+          "calculator": "初版计算服务需要显式 parameters.expression，不由决策模块猜测参数。",
+          "dataset_report": "没有用户声明的CSV附件，或本轮附件分析已完成。"
+        }
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 2000.39,
+        "step": 2,
+        "subtask_id": "s2",
+        "choice": "text_stats",
+        "duration_ms": 258.75,
+        "probabilities": {
+          "text_stats": 0.9999999992110714,
+          "local_text": 3.0824247699021695e-12,
+          "retrieve": 2.8502971720727255e-10,
+          "knowledge_qa": 2.232474952771566e-11,
+          "replan": 4.08735481683908e-10,
+          "stop": 6.975618265731135e-11
+        },
+        "backend": "anyjev",
+        "model": "Qwen/Qwen3-1.7B",
+        "level": "L0",
+        "prior": "content_free",
+        "calibrated": false,
+        "prompt_version": "chinese-capability-routing-v4",
+        "bias_correction": true,
+        "cold_start": false,
+        "load_ms": 0,
+        "resources": {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 4006.0,
+          "cuda_peak_allocated_mb": 3960.65,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        },
+        "confidence": 0.9999999990532857
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 2000.4,
+        "step": 2,
+        "initial_choice": "text_stats",
+        "choice": "text_stats",
+        "reviewed": false
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 2000.4,
+        "step": 2,
+        "subtask_id": "s2",
+        "action": "text_stats",
+        "parameters": {
+          "text": "原文要点（完整句摘录）：\n“巡检记录共有8项。” [1]\n“2项缺少照片，尚未补齐。” [1]\n“原因尚未确认。” [1]"
+        }
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 2000.49,
+        "step": 2,
+        "subtask_id": "s2",
+        "action": "text_stats",
+        "call_success": true,
+        "duration_ms": 0.05,
+        "result": {
+          "characters": 61,
+          "nonempty_lines": 4,
+          "whitespace_words": 7
+        },
+        "validation": {
+          "status": "needs_review",
+          "semantic_verified": false,
+          "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+        },
+        "available_ram_mb": 15250
+      },
+      {
+        "event": "candidates_filtered",
+        "elapsed_ms": 2000.51,
+        "step": 3,
+        "subtask": null,
+        "available": [
+          "finish",
+          "stop"
+        ],
+        "excluded": {}
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 2137.44,
+        "step": 3,
+        "subtask_id": null,
+        "choice": "finish",
+        "duration_ms": 136.91,
+        "backend": "anyjev",
+        "model": "Qwen/Qwen3-1.7B",
+        "calibrated": false,
+        "probabilities": {
+          "finish": 0.999780410767844,
+          "stop": 0.0002195892321560005
+        },
+        "prompt_version": "general-agent-choice-v1",
+        "cold_start": false,
+        "duration_with_load_ms": 136.41,
+        "resources": {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 4006.0,
+          "cuda_peak_allocated_mb": 3972.56,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        },
+        "confidence": 0.9995608215356879
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 2137.44,
+        "step": 3,
+        "initial_choice": "finish",
+        "choice": "finish",
+        "reviewed": false
+      },
+      {
+        "event": "agent_delivered",
+        "elapsed_ms": 2137.45,
+        "step": 3,
+        "reason": "计划内子任务已执行，逐项交付结果；计划覆盖与答案质量仍需核查。"
+      }
+    ],
+    "total_ms": 2137.48,
+    "model_identity": "independent AnyJev + Qwen; not commercial Jev",
+    "log_file": "D:\\1 jev\\jev-edge-prototype\\logs\\4ac0b6cf0722472a872eeff107a7082e.json",
+    "task_id": "4ac0b6cf0722472a872eeff107a7082e",
+    "revision": 1,
+    "previous_runs": [],
+    "previous_stages": [],
+    "resumable": false,
+    "goal": "1. 总结原文\n2. 统计上一步总结结果的字符数",
+    "review_items": [
+      "自然语言事实、信息保留和需求覆盖仍需人工核查。",
+      "来源对应与文件哈希不证明资料充分；程序纠正不算模型独立选对。"
+    ],
+    "artifacts": [
+      {
+        "name": "report.md",
+        "url": "/v1/artifacts/4ac0b6cf0722472a872eeff107a7082e/report.md"
+      },
+      {
+        "name": "report.json",
+        "url": "/v1/artifacts/4ac0b6cf0722472a872eeff107a7082e/report.json"
+      }
+    ],
+    "delivery": {
+      "integrity_verified": true,
+      "scope": "artifact_bytes_and_record_only; answer quality remains separately declared",
+      "partial": false
+    }
+  },
+  "dataset": {
+    "run_id": "53d509f30dbd4528b9eaeea462b66364",
+    "mode": "agent",
+    "backend": "anyjev",
+    "status": "needs_review",
+    "execution_complete": true,
+    "reason": "计划内子任务已执行，逐项交付结果；计划覆盖与答案质量仍需核查。",
+    "task_complete": false,
+    "semantic_accuracy": null,
+    "completion_scope": "declared_plan_execution_only",
+    "task_contract": {
+      "operation": "general_agent",
+      "planner": "user numbered requirements",
+      "selector": "AnyJev + Qwen",
+      "max_subtasks": 6
+    },
+    "plans": [
+      {
+        "revision": 1,
+        "source": "user_numbered_requirements",
+        "objectives": [
+          "分析CSV附件并生成数据报告",
+          "总结上一步报告，保留数据缺失、非法值和限制说明",
+          "统计上一步总结结果的字符数"
+        ],
+        "steps": [
+          {
+            "id": "s1",
+            "goal": "分析CSV附件并生成数据报告",
+            "input": "$input",
+            "parameters": {}
+          },
+          {
+            "id": "s2",
+            "goal": "总结上一步报告，保留数据缺失、非法值和限制说明",
+            "input": "$input",
+            "parameters": {}
+          },
+          {
+            "id": "s3",
+            "goal": "统计上一步总结结果的字符数",
+            "input": "$input",
+            "parameters": {}
+          }
+        ]
+      }
+    ],
+    "input_bindings": {
+      "s1": "$input",
+      "s2": "$s1",
+      "s3": "$s2"
+    },
+    "subtask_results": {
+      "s1": {
+        "goal": "分析CSV附件并生成数据报告",
+        "service": "dataset_report",
+        "result": {
+          "text": "以下数值来自本次文件分析；状态计数不是答案正确率。\n文件baseline.csv共有4条记录，其中有效数值2条，缺失1条，非法值1条，均值150.000000，中位数150.000000。\n文件current.csv共有4条记录，其中有效数值4条，缺失0条，非法值0条，均值180.000000，中位数180.000000。\n第二份减第一份：记录数差0，均值差30.000000。\n控制器仅保留有上限的明细预览；省略数量明确标注，全部状态和行明细以已核验CSV成果为准。",
+          "statistics": {
+            "baseline.csv": {
+              "rows": 4,
+              "numeric_rows": 2,
+              "missing_rows": [
+                4
+              ],
+              "invalid_rows": [
+                5
+              ],
+              "minimum": "120.000000",
+              "maximum": "180.000000",
+              "mean": "150.000000",
+              "median": "150.000000",
+              "status_counts": {
+                "bad": 1,
+                "missing": 1,
+                "ok": 2
+              },
+              "numeric_scope": "only finite numeric cells; missing/invalid cells separately disclosed",
+              "status_meaning": "literal field counts, not semantic correctness or task success"
+            },
+            "current.csv": {
+              "rows": 4,
+              "numeric_rows": 4,
+              "missing_rows": [],
+              "invalid_rows": [],
+              "minimum": "90.000000",
+              "maximum": "270.000000",
+              "mean": "180.000000",
+              "median": "180.000000",
+              "status_counts": {
+                "needs_review": 1,
+                "ok": 3
+              },
+              "numeric_scope": "only finite numeric cells; missing/invalid cells separately disclosed",
+              "status_meaning": "literal field counts, not semantic correctness or task success"
+            }
+          },
+          "comparison": {
+            "first": "baseline.csv",
+            "second": "current.csv",
+            "rows_delta": 0,
+            "mean_delta": "30.000000",
+            "status_counts": {
+              "baseline.csv": {
+                "bad": 1,
+                "missing": 1,
+                "ok": 2
+              },
+              "current.csv": {
+                "needs_review": 1,
+                "ok": 3
+              }
+            },
+            "scope": "第二份减第一份的描述性差异；样本或负载可能不同，不证明因果、性能优势或答案质量。"
+          },
+          "threshold_checks": {
+            "baseline.csv": {
+              "operator": ">",
+              "threshold": "200",
+              "count": 0,
+              "matches": [],
+              "missing_rows": [
+                4
+              ],
+              "invalid_rows": [
+                5
+              ]
+            },
+            "current.csv": {
+              "operator": ">",
+              "threshold": "200",
+              "count": 2,
+              "matches": [
+                {
+                  "source_row": 4,
+                  "value": "210"
+                },
+                {
+                  "source_row": 5,
+                  "value": "270"
+                }
+              ],
+              "missing_rows": [],
+              "invalid_rows": []
+            }
+          },
+          "detail_scope": {
+            "kind": "bounded_controller_preview",
+            "list_limit": 50,
+            "status_entry_limit": 20,
+            "status_utf8_bytes_limit": 4000,
+            "full_details": [
+              {
+                "name": "report.md",
+                "url": "/v1/artifacts/3744b8e9512e40daa0e95c9cba873be1/report.md"
+              },
+              {
+                "name": "report.json",
+                "url": "/v1/artifacts/3744b8e9512e40daa0e95c9cba873be1/report.json"
+              }
+            ],
+            "omissions": "Fields ending _omitted explicitly count omitted entries; original verified artifacts are complete."
+          },
+          "artifacts": [
+            {
+              "name": "report.md",
+              "url": "/v1/artifacts/3744b8e9512e40daa0e95c9cba873be1/report.md"
+            },
+            {
+              "name": "report.json",
+              "url": "/v1/artifacts/3744b8e9512e40daa0e95c9cba873be1/report.json"
+            }
+          ],
+          "workflow_run": {
+            "run_id": "3744b8e9512e40daa0e95c9cba873be1",
+            "mode": "workflow",
+            "backend": "anyjev",
+            "status": "completed",
+            "task_complete": true,
+            "completion_scope": "deterministic_dataset_contract",
+            "invocation_attempts": 11,
+            "successful_calls": 11,
+            "route_reviews": 0,
+            "artifact_repairs": 0,
+            "remote_attempts": 0,
+            "total_ms": 5031.63,
+            "semantic_accuracy": null,
+            "record_scope": "summary_only; full decisions, failures and numerical details remain in original log/artifacts",
+            "log_file": "D:\\1 jev\\jev-edge-prototype\\logs\\3744b8e9512e40daa0e95c9cba873be1.json",
+            "log_reference": {
+              "path": "D:\\1 jev\\jev-edge-prototype\\logs\\3744b8e9512e40daa0e95c9cba873be1.json",
+              "sha256": "4011c54eb70a6d5044ef2bce604049702349448f718dcad20f17a9a08cb0487c"
+            },
+            "decision_calls": 11,
+            "trace": [
+              {
+                "event": "decision",
+                "elapsed_ms": 311.87,
+                "step": 1,
+                "duration_ms": 311.72,
+                "backend": "anyjev",
+                "choice": "inspect"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 311.87,
+                "step": 1,
+                "initial_choice": "inspect",
+                "choice": "inspect",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 311.88,
+                "step": 1,
+                "action": "inspect"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 312.99,
+                "step": 1,
+                "action": "inspect",
+                "call_success": true,
+                "duration_ms": 1.12
+              },
+              {
+                "event": "decision",
+                "elapsed_ms": 810.63,
+                "step": 2,
+                "duration_ms": 497.61,
+                "backend": "anyjev",
+                "choice": "load_0"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 810.63,
+                "step": 2,
+                "initial_choice": "load_0",
+                "choice": "load_0",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 810.64,
+                "step": 2,
+                "action": "load_0"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 813.19,
+                "step": 2,
+                "action": "load_0",
+                "call_success": true,
+                "duration_ms": 2.55
+              },
+              {
+                "event": "decision",
+                "elapsed_ms": 1307.38,
+                "step": 3,
+                "duration_ms": 494.16,
+                "backend": "anyjev",
+                "choice": "load_1"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 1307.39,
+                "step": 3,
+                "initial_choice": "load_1",
+                "choice": "load_1",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 1307.39,
+                "step": 3,
+                "action": "load_1"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 1309.78,
+                "step": 3,
+                "action": "load_1",
+                "call_success": true,
+                "duration_ms": 2.38
+              },
+              {
+                "event": "decision",
+                "elapsed_ms": 1831.62,
+                "step": 4,
+                "duration_ms": 521.81,
+                "backend": "anyjev",
+                "choice": "stats_0"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 1831.62,
+                "step": 4,
+                "initial_choice": "stats_0",
+                "choice": "stats_0",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 1831.62,
+                "step": 4,
+                "action": "stats_0"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 1831.74,
+                "step": 4,
+                "action": "stats_0",
+                "call_success": true,
+                "duration_ms": 0.12
+              },
+              {
+                "event": "decision",
+                "elapsed_ms": 2388.45,
+                "step": 5,
+                "duration_ms": 556.68,
+                "backend": "anyjev",
+                "choice": "threshold_0"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 2388.46,
+                "step": 5,
+                "initial_choice": "threshold_0",
+                "choice": "threshold_0",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 2388.46,
+                "step": 5,
+                "action": "threshold_0"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 2388.49,
+                "step": 5,
+                "action": "threshold_0",
+                "call_success": true,
+                "duration_ms": 0.03
+              },
+              {
+                "event": "decision",
+                "elapsed_ms": 2741.04,
+                "step": 6,
+                "duration_ms": 352.52,
+                "backend": "anyjev",
+                "choice": "stats_1"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 2741.04,
+                "step": 6,
+                "initial_choice": "stats_1",
+                "choice": "stats_1",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 2741.05,
+                "step": 6,
+                "action": "stats_1"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 2741.11,
+                "step": 6,
+                "action": "stats_1",
+                "call_success": true,
+                "duration_ms": 0.07
+              },
+              {
+                "event": "decision",
+                "elapsed_ms": 3363.2,
+                "step": 7,
+                "duration_ms": 621.78,
+                "backend": "anyjev",
+                "choice": "threshold_1"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 3363.21,
+                "step": 7,
+                "initial_choice": "threshold_1",
+                "choice": "threshold_1",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 3363.21,
+                "step": 7,
+                "action": "threshold_1"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 3363.24,
+                "step": 7,
+                "action": "threshold_1",
+                "call_success": true,
+                "duration_ms": 0.03
+              },
+              {
+                "event": "decision",
+                "elapsed_ms": 3781.31,
+                "step": 8,
+                "duration_ms": 417.79,
+                "backend": "anyjev",
+                "choice": "compare"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 3781.31,
+                "step": 8,
+                "initial_choice": "compare",
+                "choice": "compare",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 3781.31,
+                "step": 8,
+                "action": "compare"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 3781.36,
+                "step": 8,
+                "action": "compare",
+                "call_success": true,
+                "duration_ms": 0.05
+              },
+              {
+                "event": "decision",
+                "elapsed_ms": 4177.63,
+                "step": 9,
+                "duration_ms": 395.84,
+                "backend": "anyjev",
+                "choice": "write"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 4177.63,
+                "step": 9,
+                "initial_choice": "write",
+                "choice": "write",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 4177.64,
+                "step": 9,
+                "action": "write"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 4187.43,
+                "step": 9,
+                "action": "write",
+                "call_success": true,
+                "duration_ms": 9.79
+              },
+              {
+                "event": "decision",
+                "elapsed_ms": 4588.74,
+                "step": 10,
+                "duration_ms": 401.27,
+                "backend": "anyjev",
+                "choice": "verify"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 4588.74,
+                "step": 10,
+                "initial_choice": "verify",
+                "choice": "verify",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 4588.74,
+                "step": 10,
+                "action": "verify"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 4591.78,
+                "step": 10,
+                "action": "verify",
+                "call_success": true,
+                "duration_ms": 3.04
+              },
+              {
+                "event": "decision",
+                "elapsed_ms": 5028.27,
+                "step": 11,
+                "duration_ms": 436.46,
+                "backend": "anyjev",
+                "choice": "finish"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 5028.27,
+                "step": 11,
+                "initial_choice": "finish",
+                "choice": "finish",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 5028.28,
+                "step": 11,
+                "action": "finish"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 5031.61,
+                "step": 11,
+                "action": "finish",
+                "call_success": true,
+                "duration_ms": 3.33
+              }
+            ],
+            "trace_total": 44,
+            "trace_omitted": 0,
+            "artifacts": [
+              {
+                "name": "report.md",
+                "url": "/v1/artifacts/3744b8e9512e40daa0e95c9cba873be1/report.md"
+              },
+              {
+                "name": "report.json",
+                "url": "/v1/artifacts/3744b8e9512e40daa0e95c9cba873be1/report.json"
+              }
+            ]
+          },
+          "quality": {
+            "status": "deterministic_dataset_contract",
+            "semantic_verified": false
+          }
+        },
+        "validation": {
+          "status": "needs_review",
+          "semantic_verified": false,
+          "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+        },
+        "input_provenance": {
+          "source": "$input",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "run_id": "53d509f30dbd4528b9eaeea462b66364",
+          "retained_on_continue": false
+        }
+      },
+      "s2": {
+        "goal": "总结上一步报告，保留数据缺失、非法值和限制说明",
+        "service": "local_text",
+        "result": {
+          "text": "原文要点（完整句摘录）：\n“以下数值来自本次文件分析；状态计数不是答案正确率。” [1]\n“文件baseline.csv共有4条记录，其中有效数值2条，缺失1条，非法值1条，均值150.000000，中位数150.000000。” [1]\n“文件current.csv共有4条记录，其中有效数值4条，缺失0条，非法值0条，均值180.000000，中位数180.000000。” [1]\n“第二份减第一份：记录数差0，均值差30.000000。” [1]\n“控制器仅保留有上限的明细预览；省略数量明确标注，全部状态和行明细以已核验CSV成果为准。” [1]",
+          "truncated": false,
+          "model": "Qwen/Qwen3-1.7B",
+          "usage": {
+            "input_tokens": 425,
+            "output_tokens": 16
+          },
+          "answer_mode": "verified_source_quotes",
+          "evidence": [
+            {
+              "source_id": "user_input",
+              "source_number": 1,
+              "quote": "以下数值来自本次文件分析；状态计数不是答案正确率。",
+              "sentence_number": 1
+            },
+            {
+              "source_id": "user_input",
+              "source_number": 1,
+              "quote": "文件baseline.csv共有4条记录，其中有效数值2条，缺失1条，非法值1条，均值150.000000，中位数150.000000。",
+              "sentence_number": 2
+            },
+            {
+              "source_id": "user_input",
+              "source_number": 1,
+              "quote": "文件current.csv共有4条记录，其中有效数值4条，缺失0条，非法值0条，均值180.000000，中位数180.000000。",
+              "sentence_number": 3
+            },
+            {
+              "source_id": "user_input",
+              "source_number": 1,
+              "quote": "第二份减第一份：记录数差0，均值差30.000000。",
+              "sentence_number": 4
+            },
+            {
+              "source_id": "user_input",
+              "source_number": 1,
+              "quote": "控制器仅保留有上限的明细预览；省略数量明确标注，全部状态和行明细以已核验CSV成果为准。",
+              "sentence_number": 5
+            }
+          ],
+          "selection_output": "{\"selected\": [2, 3, 4, 5]}",
+          "evidence_selection": {
+            "model_selected": [
+              2,
+              3,
+              4,
+              5
+            ],
+            "program_required": [
+              1,
+              5
+            ],
+            "final_selected": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "policy": "preserve_qualifier_sentences"
+          },
+          "evidence_scope": "user_input_only",
+          "quality": {
+            "status": "source_spans_verified",
+            "method": "complete_source_unit_selection_v1",
+            "semantic_verified": false,
+            "limitations": "程序保证原句来源对应；相关性、充分性和资料自身正确性仍需独立核查。"
+          },
+          "generation_attempts": [
+            {
+              "attempt": 1,
+              "kind": "evidence_selection",
+              "raw_text": "{\"selected\": [2, 3, 4, 5]}",
+              "duration_ms": 490.5,
+              "usage": {
+                "input_tokens": 425,
+                "output_tokens": 16
+              },
+              "quality": {
+                "status": "source_spans_verified",
+                "method": "complete_source_unit_selection_v1",
+                "semantic_verified": false,
+                "limitations": "程序保证原句来源对应；相关性、充分性和资料自身正确性仍需独立核查。"
+              },
+              "truncated": false
+            }
+          ],
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4152.0,
+            "cuda_peak_allocated_mb": 4035.04,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        },
+        "validation": {
+          "status": "needs_review",
+          "semantic_verified": false,
+          "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+        },
+        "input_provenance": {
+          "source": "$s1",
+          "sha256": "8f36987cf6c5b30db37d0160f14a98e3b3b021e126a09285d1f25b7acc071ede",
+          "run_id": "53d509f30dbd4528b9eaeea462b66364",
+          "retained_on_continue": false
+        }
+      },
+      "s3": {
+        "goal": "统计上一步总结结果的字符数",
+        "service": "text_stats",
+        "result": {
+          "characters": 278,
+          "nonempty_lines": 6,
+          "whitespace_words": 11
+        },
+        "validation": {
+          "status": "needs_review",
+          "semantic_verified": false,
+          "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+        },
+        "input_provenance": {
+          "source": "$s2",
+          "sha256": "d200be596748c8438845263a348be83850bc304f780fceb364b119b40e17593a",
+          "run_id": "53d509f30dbd4528b9eaeea462b66364",
+          "retained_on_continue": false
+        }
+      }
+    },
+    "pending_subtasks": [],
+    "result": {
+      "text": "【s1】分析CSV附件并生成数据报告\n以下数值来自本次文件分析；状态计数不是答案正确率。\n文件baseline.csv共有4条记录，其中有效数值2条，缺失1条，非法值1条，均值150.000000，中位数150.000000。\n文件current.csv共有4条记录，其中有效数值4条，缺失0条，非法值0条，均值180.000000，中位数180.000000。\n第二份减第一份：记录数差0，均值差30.000000。\n控制器仅保留有上限的明细预览；省略数量明确标注，全部状态和行明细以已核验CSV成果为准。\n\n【s2】总结上一步报告，保留数据缺失、非法值和限制说明\n原文要点（完整句摘录）：\n“以下数值来自本次文件分析；状态计数不是答案正确率。” [1]\n“文件baseline.csv共有4条记录，其中有效数值2条，缺失1条，非法值1条，均值150.000000，中位数150.000000。” [1]\n“文件current.csv共有4条记录，其中有效数值4条，缺失0条，非法值0条，均值180.000000，中位数180.000000。” [1]\n“第二份减第一份：记录数差0，均值差30.000000。” [1]\n“控制器仅保留有上限的明细预览；省略数量明确标注，全部状态和行明细以已核验CSV成果为准。” [1]\n\n【s3】统计上一步总结结果的字符数\n{\"characters\": 278, \"nonempty_lines\": 6, \"whitespace_words\": 11}",
+      "quality": {
+        "status": "unverified_agent_results",
+        "semantic_verified": false
+      }
+    },
+    "decision_calls": 6,
+    "replans": 0,
+    "route_reviews": 0,
+    "invocation_attempts": 3,
+    "successful_calls": 3,
+    "remote_attempts": 0,
+    "capability_labels": {
+      "replan": "根据反馈重新规划",
+      "finish": "整理并返回成果",
+      "stop": "说明限制并停止"
+    },
+    "events": [
+      {
+        "event": "run_started",
+        "elapsed_ms": 0.06,
+        "mode": "agent",
+        "backend": "anyjev",
+        "task": {
+          "mode": "agent",
+          "backend": "anyjev",
+          "goal": "1. 分析CSV附件并生成数据报告\n2. 总结上一步报告，保留数据缺失、非法值和限制说明\n3. 统计上一步总结结果的字符数",
+          "input": "",
+          "dataset": {
+            "input_dir": "r1-check-20261015-102534-717384",
+            "files": [
+              "baseline.csv",
+              "current.csv"
+            ],
+            "value_column": "latency_ms",
+            "status_column": "status",
+            "threshold": "200",
+            "include_suggestions": false
+          }
+        },
+        "configuration": {
+          "version": "0.6.0",
+          "agent_max_steps": 12,
+          "workflow_max_steps": 16,
+          "task_contract_enabled": true,
+          "preservation_checks_enabled": true,
+          "stop_conflict_review_enabled": true,
+          "max_route_reviews": 1,
+          "max_generation_retries": 1,
+          "decision_backend": "anyjev",
+          "decision_model": "Qwen/Qwen3-1.7B",
+          "retrieval_model": "BAAI/bge-small-zh-v1.5",
+          "decision_prior": "content_free",
+          "max_steps": 3,
+          "max_seconds": 300,
+          "call_timeout_seconds": 120,
+          "max_remote_calls": 2,
+          "max_new_tokens": 512,
+          "max_input_tokens": 4096,
+          "provisional_confidence_floor": 0.4,
+          "threshold_calibrated": false,
+          "remote_base_url": "https://api.deepseek.com",
+          "remote_model": "deepseek-flash",
+          "remote_key_env": "DEEPSEEK_API_KEY",
+          "jev_model": "jev-1.13.0",
+          "jev_key_env": "TYPESAFE_API_KEY",
+          "decision_model_dir": "models/qwen3-1.7b",
+          "route_review": true,
+          "offline_mode": true,
+          "reference_topics": [
+            "Jev",
+            "AnyJev",
+            "本项目",
+            "本系统",
+            "这个项目",
+            "这个离线系统"
+          ]
+        },
+        "model_identity": "independent AnyJev + Qwen; not commercial Jev",
+        "available_ram_mb": 15257
+      },
+      {
+        "event": "plan_accepted",
+        "elapsed_ms": 0.9,
+        "revision": 1,
+        "plan": [
+          {
+            "id": "s1",
+            "goal": "分析CSV附件并生成数据报告",
+            "input": "$input",
+            "parameters": {}
+          },
+          {
+            "id": "s2",
+            "goal": "总结上一步报告，保留数据缺失、非法值和限制说明",
+            "input": "$input",
+            "parameters": {}
+          },
+          {
+            "id": "s3",
+            "goal": "统计上一步总结结果的字符数",
+            "input": "$input",
+            "parameters": {}
+          }
+        ],
+        "source": "user_numbered_requirements",
+        "note": "编号子任务由用户明确给出；程序解析编号，AnyJev决定输入来源与实际调用。不是模型自动拆解。"
+      },
+      {
+        "event": "input_bound",
+        "elapsed_ms": 0.91,
+        "subtask_id": "s1",
+        "source": "$input",
+        "method": "only_available_source"
+      },
+      {
+        "event": "candidates_filtered",
+        "elapsed_ms": 3.07,
+        "step": 1,
+        "subtask": {
+          "id": "s1",
+          "goal": "分析CSV附件并生成数据报告",
+          "input": "$input",
+          "parameters": {}
+        },
+        "available": [
+          "local_text",
+          "retrieve",
+          "knowledge_qa",
+          "dataset_report",
+          "replan",
+          "stop"
+        ],
+        "excluded": {
+          "calculator": "初版计算服务需要显式 parameters.expression，不由决策模块猜测参数。",
+          "text_stats": "需要 1 至 6000 字符的文本参数或 input。"
+        }
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 999.14,
+        "step": 1,
+        "subtask_id": "s1",
+        "choice": "dataset_report",
+        "duration_ms": 996.05,
+        "probabilities": {
+          "local_text": 5.9496898102139395e-12,
+          "retrieve": 8.982749721254947e-11,
+          "knowledge_qa": 1.1990559640616028e-10,
+          "dataset_report": 0.9999999988006943,
+          "replan": 9.767333300511538e-10,
+          "stop": 6.889524010231917e-12
+        },
+        "backend": "anyjev",
+        "model": "Qwen/Qwen3-1.7B",
+        "level": "L0",
+        "prior": "content_free",
+        "calibrated": false,
+        "prompt_version": "chinese-capability-routing-v4",
+        "bias_correction": true,
+        "cold_start": false,
+        "load_ms": 0,
+        "resources": {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 4006.0,
+          "cuda_peak_allocated_mb": 3972.56,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        },
+        "confidence": 0.9999999985608332
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 999.14,
+        "step": 1,
+        "initial_choice": "dataset_report",
+        "choice": "dataset_report",
+        "reviewed": false
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 999.74,
+        "step": 1,
+        "subtask_id": "s1",
+        "action": "dataset_report",
+        "parameters": {
+          "dataset": {
+            "input_dir": "r1-check-20261015-102534-717384",
+            "files": [
+              "baseline.csv",
+              "current.csv"
+            ],
+            "value_column": "latency_ms",
+            "status_column": "status",
+            "threshold": "200",
+            "include_suggestions": false
+          }
+        }
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 6040.19,
+        "step": 1,
+        "subtask_id": "s1",
+        "action": "dataset_report",
+        "call_success": true,
+        "duration_ms": 5040.99,
+        "result": {
+          "text": "以下数值来自本次文件分析；状态计数不是答案正确率。\n文件baseline.csv共有4条记录，其中有效数值2条，缺失1条，非法值1条，均值150.000000，中位数150.000000。\n文件current.csv共有4条记录，其中有效数值4条，缺失0条，非法值0条，均值180.000000，中位数180.000000。\n第二份减第一份：记录数差0，均值差30.000000。\n控制器仅保留有上限的明细预览；省略数量明确标注，全部状态和行明细以已核验CSV成果为准。",
+          "statistics": {
+            "baseline.csv": {
+              "rows": 4,
+              "numeric_rows": 2,
+              "missing_rows": [
+                4
+              ],
+              "invalid_rows": [
+                5
+              ],
+              "minimum": "120.000000",
+              "maximum": "180.000000",
+              "mean": "150.000000",
+              "median": "150.000000",
+              "status_counts": {
+                "bad": 1,
+                "missing": 1,
+                "ok": 2
+              },
+              "numeric_scope": "only finite numeric cells; missing/invalid cells separately disclosed",
+              "status_meaning": "literal field counts, not semantic correctness or task success"
+            },
+            "current.csv": {
+              "rows": 4,
+              "numeric_rows": 4,
+              "missing_rows": [],
+              "invalid_rows": [],
+              "minimum": "90.000000",
+              "maximum": "270.000000",
+              "mean": "180.000000",
+              "median": "180.000000",
+              "status_counts": {
+                "needs_review": 1,
+                "ok": 3
+              },
+              "numeric_scope": "only finite numeric cells; missing/invalid cells separately disclosed",
+              "status_meaning": "literal field counts, not semantic correctness or task success"
+            }
+          },
+          "comparison": {
+            "first": "baseline.csv",
+            "second": "current.csv",
+            "rows_delta": 0,
+            "mean_delta": "30.000000",
+            "status_counts": {
+              "baseline.csv": {
+                "bad": 1,
+                "missing": 1,
+                "ok": 2
+              },
+              "current.csv": {
+                "needs_review": 1,
+                "ok": 3
+              }
+            },
+            "scope": "第二份减第一份的描述性差异；样本或负载可能不同，不证明因果、性能优势或答案质量。"
+          },
+          "threshold_checks": {
+            "baseline.csv": {
+              "operator": ">",
+              "threshold": "200",
+              "count": 0,
+              "matches": [],
+              "missing_rows": [
+                4
+              ],
+              "invalid_rows": [
+                5
+              ]
+            },
+            "current.csv": {
+              "operator": ">",
+              "threshold": "200",
+              "count": 2,
+              "matches": [
+                {
+                  "source_row": 4,
+                  "value": "210"
+                },
+                {
+                  "source_row": 5,
+                  "value": "270"
+                }
+              ],
+              "missing_rows": [],
+              "invalid_rows": []
+            }
+          },
+          "detail_scope": {
+            "kind": "bounded_controller_preview",
+            "list_limit": 50,
+            "status_entry_limit": 20,
+            "status_utf8_bytes_limit": 4000,
+            "full_details": [
+              {
+                "name": "report.md",
+                "url": "/v1/artifacts/3744b8e9512e40daa0e95c9cba873be1/report.md"
+              },
+              {
+                "name": "report.json",
+                "url": "/v1/artifacts/3744b8e9512e40daa0e95c9cba873be1/report.json"
+              }
+            ],
+            "omissions": "Fields ending _omitted explicitly count omitted entries; original verified artifacts are complete."
+          },
+          "artifacts": [
+            {
+              "name": "report.md",
+              "url": "/v1/artifacts/3744b8e9512e40daa0e95c9cba873be1/report.md"
+            },
+            {
+              "name": "report.json",
+              "url": "/v1/artifacts/3744b8e9512e40daa0e95c9cba873be1/report.json"
+            }
+          ],
+          "workflow_run": {
+            "run_id": "3744b8e9512e40daa0e95c9cba873be1",
+            "mode": "workflow",
+            "backend": "anyjev",
+            "status": "completed",
+            "task_complete": true,
+            "completion_scope": "deterministic_dataset_contract",
+            "invocation_attempts": 11,
+            "successful_calls": 11,
+            "route_reviews": 0,
+            "artifact_repairs": 0,
+            "remote_attempts": 0,
+            "total_ms": 5031.63,
+            "semantic_accuracy": null,
+            "record_scope": "summary_only; full decisions, failures and numerical details remain in original log/artifacts",
+            "log_file": "D:\\1 jev\\jev-edge-prototype\\logs\\3744b8e9512e40daa0e95c9cba873be1.json",
+            "log_reference": {
+              "path": "D:\\1 jev\\jev-edge-prototype\\logs\\3744b8e9512e40daa0e95c9cba873be1.json",
+              "sha256": "4011c54eb70a6d5044ef2bce604049702349448f718dcad20f17a9a08cb0487c"
+            },
+            "decision_calls": 11,
+            "trace": [
+              {
+                "event": "decision",
+                "elapsed_ms": 311.87,
+                "step": 1,
+                "duration_ms": 311.72,
+                "backend": "anyjev",
+                "choice": "inspect"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 311.87,
+                "step": 1,
+                "initial_choice": "inspect",
+                "choice": "inspect",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 311.88,
+                "step": 1,
+                "action": "inspect"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 312.99,
+                "step": 1,
+                "action": "inspect",
+                "call_success": true,
+                "duration_ms": 1.12
+              },
+              {
+                "event": "decision",
+                "elapsed_ms": 810.63,
+                "step": 2,
+                "duration_ms": 497.61,
+                "backend": "anyjev",
+                "choice": "load_0"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 810.63,
+                "step": 2,
+                "initial_choice": "load_0",
+                "choice": "load_0",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 810.64,
+                "step": 2,
+                "action": "load_0"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 813.19,
+                "step": 2,
+                "action": "load_0",
+                "call_success": true,
+                "duration_ms": 2.55
+              },
+              {
+                "event": "decision",
+                "elapsed_ms": 1307.38,
+                "step": 3,
+                "duration_ms": 494.16,
+                "backend": "anyjev",
+                "choice": "load_1"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 1307.39,
+                "step": 3,
+                "initial_choice": "load_1",
+                "choice": "load_1",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 1307.39,
+                "step": 3,
+                "action": "load_1"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 1309.78,
+                "step": 3,
+                "action": "load_1",
+                "call_success": true,
+                "duration_ms": 2.38
+              },
+              {
+                "event": "decision",
+                "elapsed_ms": 1831.62,
+                "step": 4,
+                "duration_ms": 521.81,
+                "backend": "anyjev",
+                "choice": "stats_0"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 1831.62,
+                "step": 4,
+                "initial_choice": "stats_0",
+                "choice": "stats_0",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 1831.62,
+                "step": 4,
+                "action": "stats_0"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 1831.74,
+                "step": 4,
+                "action": "stats_0",
+                "call_success": true,
+                "duration_ms": 0.12
+              },
+              {
+                "event": "decision",
+                "elapsed_ms": 2388.45,
+                "step": 5,
+                "duration_ms": 556.68,
+                "backend": "anyjev",
+                "choice": "threshold_0"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 2388.46,
+                "step": 5,
+                "initial_choice": "threshold_0",
+                "choice": "threshold_0",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 2388.46,
+                "step": 5,
+                "action": "threshold_0"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 2388.49,
+                "step": 5,
+                "action": "threshold_0",
+                "call_success": true,
+                "duration_ms": 0.03
+              },
+              {
+                "event": "decision",
+                "elapsed_ms": 2741.04,
+                "step": 6,
+                "duration_ms": 352.52,
+                "backend": "anyjev",
+                "choice": "stats_1"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 2741.04,
+                "step": 6,
+                "initial_choice": "stats_1",
+                "choice": "stats_1",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 2741.05,
+                "step": 6,
+                "action": "stats_1"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 2741.11,
+                "step": 6,
+                "action": "stats_1",
+                "call_success": true,
+                "duration_ms": 0.07
+              },
+              {
+                "event": "decision",
+                "elapsed_ms": 3363.2,
+                "step": 7,
+                "duration_ms": 621.78,
+                "backend": "anyjev",
+                "choice": "threshold_1"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 3363.21,
+                "step": 7,
+                "initial_choice": "threshold_1",
+                "choice": "threshold_1",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 3363.21,
+                "step": 7,
+                "action": "threshold_1"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 3363.24,
+                "step": 7,
+                "action": "threshold_1",
+                "call_success": true,
+                "duration_ms": 0.03
+              },
+              {
+                "event": "decision",
+                "elapsed_ms": 3781.31,
+                "step": 8,
+                "duration_ms": 417.79,
+                "backend": "anyjev",
+                "choice": "compare"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 3781.31,
+                "step": 8,
+                "initial_choice": "compare",
+                "choice": "compare",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 3781.31,
+                "step": 8,
+                "action": "compare"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 3781.36,
+                "step": 8,
+                "action": "compare",
+                "call_success": true,
+                "duration_ms": 0.05
+              },
+              {
+                "event": "decision",
+                "elapsed_ms": 4177.63,
+                "step": 9,
+                "duration_ms": 395.84,
+                "backend": "anyjev",
+                "choice": "write"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 4177.63,
+                "step": 9,
+                "initial_choice": "write",
+                "choice": "write",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 4177.64,
+                "step": 9,
+                "action": "write"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 4187.43,
+                "step": 9,
+                "action": "write",
+                "call_success": true,
+                "duration_ms": 9.79
+              },
+              {
+                "event": "decision",
+                "elapsed_ms": 4588.74,
+                "step": 10,
+                "duration_ms": 401.27,
+                "backend": "anyjev",
+                "choice": "verify"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 4588.74,
+                "step": 10,
+                "initial_choice": "verify",
+                "choice": "verify",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 4588.74,
+                "step": 10,
+                "action": "verify"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 4591.78,
+                "step": 10,
+                "action": "verify",
+                "call_success": true,
+                "duration_ms": 3.04
+              },
+              {
+                "event": "decision",
+                "elapsed_ms": 5028.27,
+                "step": 11,
+                "duration_ms": 436.46,
+                "backend": "anyjev",
+                "choice": "finish"
+              },
+              {
+                "event": "route_finalized",
+                "elapsed_ms": 5028.27,
+                "step": 11,
+                "initial_choice": "finish",
+                "choice": "finish",
+                "reviewed": false,
+                "review_changed_choice": false
+              },
+              {
+                "event": "invocation_started",
+                "elapsed_ms": 5028.28,
+                "step": 11,
+                "action": "finish"
+              },
+              {
+                "event": "invocation_finished",
+                "elapsed_ms": 5031.61,
+                "step": 11,
+                "action": "finish",
+                "call_success": true,
+                "duration_ms": 3.33
+              }
+            ],
+            "trace_total": 44,
+            "trace_omitted": 0,
+            "artifacts": [
+              {
+                "name": "report.md",
+                "url": "/v1/artifacts/3744b8e9512e40daa0e95c9cba873be1/report.md"
+              },
+              {
+                "name": "report.json",
+                "url": "/v1/artifacts/3744b8e9512e40daa0e95c9cba873be1/report.json"
+              }
+            ]
+          },
+          "quality": {
+            "status": "deterministic_dataset_contract",
+            "semantic_verified": false
+          }
+        },
+        "validation": {
+          "status": "needs_review",
+          "semantic_verified": false,
+          "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+        },
+        "available_ram_mb": 15201
+      },
+      {
+        "event": "input_source_decision",
+        "elapsed_ms": 6391.56,
+        "subtask_id": "s2",
+        "choice": "$s1",
+        "backend": "anyjev",
+        "model": "Qwen/Qwen3-1.7B",
+        "calibrated": false,
+        "probabilities": {
+          "$input": 2.2334041291328598e-08,
+          "$s1": 0.9999999776659587
+        },
+        "prompt_version": "general-agent-choice-v1",
+        "cold_start": false,
+        "duration_with_load_ms": 350.81,
+        "resources": {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 4152.0,
+          "cuda_peak_allocated_mb": 4035.04,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        },
+        "confidence": 0.9999999553319174
+      },
+      {
+        "event": "input_bound",
+        "elapsed_ms": 6391.57,
+        "subtask_id": "s2",
+        "source": "$s1",
+        "method": "anyjev_choice"
+      },
+      {
+        "event": "candidates_filtered",
+        "elapsed_ms": 6393.63,
+        "step": 2,
+        "subtask": {
+          "id": "s2",
+          "goal": "总结上一步报告，保留数据缺失、非法值和限制说明",
+          "input": "$s1",
+          "parameters": {}
+        },
+        "available": [
+          "text_stats",
+          "local_text",
+          "retrieve",
+          "knowledge_qa",
+          "replan",
+          "stop"
+        ],
+        "excluded": {
+          "calculator": "初版计算服务需要显式 parameters.expression，不由决策模块猜测参数。",
+          "dataset_report": "没有用户声明的CSV附件，或本轮附件分析已完成。"
+        }
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 6812.63,
+        "step": 2,
+        "subtask_id": "s2",
+        "choice": "retrieve",
+        "duration_ms": 418.97,
+        "probabilities": {
+          "text_stats": 0.16748192399595577,
+          "local_text": 0.23039793691931462,
+          "retrieve": 0.5880562884801058,
+          "knowledge_qa": 0.007849460615827277,
+          "replan": 0.006143671493485274,
+          "stop": 7.071849531123876e-05
+        },
+        "backend": "anyjev",
+        "model": "Qwen/Qwen3-1.7B",
+        "level": "L0",
+        "prior": "content_free",
+        "calibrated": false,
+        "prompt_version": "chinese-capability-routing-v4",
+        "bias_correction": true,
+        "cold_start": false,
+        "load_ms": 0,
+        "resources": {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 4152.0,
+          "cuda_peak_allocated_mb": 4035.04,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        },
+        "confidence": 0.505667546176127
+      },
+      {
+        "event": "controller_override",
+        "elapsed_ms": 6812.65,
+        "step": 2,
+        "original_choice": "retrieve",
+        "choice": "local_text",
+        "reason": "原文变换必须处理当前绑定资料，不能用计数或重新检索替代。",
+        "method": "supplied_text_source_policy"
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 6812.65,
+        "step": 2,
+        "initial_choice": "retrieve",
+        "choice": "local_text",
+        "reviewed": true
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 6812.66,
+        "step": 2,
+        "subtask_id": "s2",
+        "action": "local_text",
+        "parameters": {
+          "text": "以下数值来自本次文件分析；状态计数不是答案正确率。\n文件baseline.csv共有4条记录，其中有效数值2条，缺失1条，非法值1条，均值150.000000，中位数150.000000。\n文件current.csv共有4条记录，其中有效数值4条，缺失0条，非法值0条，均值180.000000，中位数180.000000。\n第二份减第一份：记录数差0，均值差30.000000。\n控制器仅保留有上限的明细预览；省略数量明确标注，全部状态和行明细以已核验CSV成果为准。"
+        }
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 7304.26,
+        "step": 2,
+        "subtask_id": "s2",
+        "action": "local_text",
+        "call_success": true,
+        "duration_ms": 491.55,
+        "result": {
+          "text": "原文要点（完整句摘录）：\n“以下数值来自本次文件分析；状态计数不是答案正确率。” [1]\n“文件baseline.csv共有4条记录，其中有效数值2条，缺失1条，非法值1条，均值150.000000，中位数150.000000。” [1]\n“文件current.csv共有4条记录，其中有效数值4条，缺失0条，非法值0条，均值180.000000，中位数180.000000。” [1]\n“第二份减第一份：记录数差0，均值差30.000000。” [1]\n“控制器仅保留有上限的明细预览；省略数量明确标注，全部状态和行明细以已核验CSV成果为准。” [1]",
+          "truncated": false,
+          "model": "Qwen/Qwen3-1.7B",
+          "usage": {
+            "input_tokens": 425,
+            "output_tokens": 16
+          },
+          "answer_mode": "verified_source_quotes",
+          "evidence": [
+            {
+              "source_id": "user_input",
+              "source_number": 1,
+              "quote": "以下数值来自本次文件分析；状态计数不是答案正确率。",
+              "sentence_number": 1
+            },
+            {
+              "source_id": "user_input",
+              "source_number": 1,
+              "quote": "文件baseline.csv共有4条记录，其中有效数值2条，缺失1条，非法值1条，均值150.000000，中位数150.000000。",
+              "sentence_number": 2
+            },
+            {
+              "source_id": "user_input",
+              "source_number": 1,
+              "quote": "文件current.csv共有4条记录，其中有效数值4条，缺失0条，非法值0条，均值180.000000，中位数180.000000。",
+              "sentence_number": 3
+            },
+            {
+              "source_id": "user_input",
+              "source_number": 1,
+              "quote": "第二份减第一份：记录数差0，均值差30.000000。",
+              "sentence_number": 4
+            },
+            {
+              "source_id": "user_input",
+              "source_number": 1,
+              "quote": "控制器仅保留有上限的明细预览；省略数量明确标注，全部状态和行明细以已核验CSV成果为准。",
+              "sentence_number": 5
+            }
+          ],
+          "selection_output": "{\"selected\": [2, 3, 4, 5]}",
+          "evidence_selection": {
+            "model_selected": [
+              2,
+              3,
+              4,
+              5
+            ],
+            "program_required": [
+              1,
+              5
+            ],
+            "final_selected": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "policy": "preserve_qualifier_sentences"
+          },
+          "evidence_scope": "user_input_only",
+          "quality": {
+            "status": "source_spans_verified",
+            "method": "complete_source_unit_selection_v1",
+            "semantic_verified": false,
+            "limitations": "程序保证原句来源对应；相关性、充分性和资料自身正确性仍需独立核查。"
+          },
+          "generation_attempts": [
+            {
+              "attempt": 1,
+              "kind": "evidence_selection",
+              "raw_text": "{\"selected\": [2, 3, 4, 5]}",
+              "duration_ms": 490.5,
+              "usage": {
+                "input_tokens": 425,
+                "output_tokens": 16
+              },
+              "quality": {
+                "status": "source_spans_verified",
+                "method": "complete_source_unit_selection_v1",
+                "semantic_verified": false,
+                "limitations": "程序保证原句来源对应；相关性、充分性和资料自身正确性仍需独立核查。"
+              },
+              "truncated": false
+            }
+          ],
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4152.0,
+            "cuda_peak_allocated_mb": 4035.04,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        },
+        "validation": {
+          "status": "needs_review",
+          "semantic_verified": false,
+          "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+        },
+        "available_ram_mb": 15204
+      },
+      {
+        "event": "input_source_decision",
+        "elapsed_ms": 7961.64,
+        "subtask_id": "s3",
+        "choice": "$s2",
+        "backend": "anyjev",
+        "model": "Qwen/Qwen3-1.7B",
+        "calibrated": false,
+        "probabilities": {
+          "$input": 4.154947473373243e-12,
+          "$s1": 1.8841734474629594e-10,
+          "$s2": 0.9999999998074277
+        },
+        "prompt_version": "general-agent-choice-v1",
+        "cold_start": false,
+        "duration_with_load_ms": 655.75,
+        "resources": {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 4204.0,
+          "cuda_peak_allocated_mb": 4049.15,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        },
+        "confidence": 0.9999999997111414
+      },
+      {
+        "event": "input_bound",
+        "elapsed_ms": 7961.65,
+        "subtask_id": "s3",
+        "source": "$s2",
+        "method": "anyjev_choice"
+      },
+      {
+        "event": "candidates_filtered",
+        "elapsed_ms": 7964.09,
+        "step": 3,
+        "subtask": {
+          "id": "s3",
+          "goal": "统计上一步总结结果的字符数",
+          "input": "$s2",
+          "parameters": {}
+        },
+        "available": [
+          "text_stats",
+          "local_text",
+          "retrieve",
+          "knowledge_qa",
+          "replan",
+          "stop"
+        ],
+        "excluded": {
+          "calculator": "初版计算服务需要显式 parameters.expression，不由决策模块猜测参数。",
+          "dataset_report": "没有用户声明的CSV附件，或本轮附件分析已完成。"
+        }
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 8379.86,
+        "step": 3,
+        "subtask_id": "s3",
+        "choice": "text_stats",
+        "duration_ms": 415.75,
+        "probabilities": {
+          "text_stats": 0.9999999685419502,
+          "local_text": 2.262638552938882e-11,
+          "retrieve": 1.0100112746084138e-08,
+          "knowledge_qa": 1.0659615828932972e-09,
+          "replan": 1.8792127092653663e-08,
+          "stop": 1.4772220046946967e-09
+        },
+        "backend": "anyjev",
+        "model": "Qwen/Qwen3-1.7B",
+        "level": "L0",
+        "prior": "content_free",
+        "calibrated": false,
+        "prompt_version": "chinese-capability-routing-v4",
+        "bias_correction": true,
+        "cold_start": false,
+        "load_ms": 0,
+        "resources": {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 4204.0,
+          "cuda_peak_allocated_mb": 4049.15,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        },
+        "confidence": 0.9999999622503402
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 8379.86,
+        "step": 3,
+        "initial_choice": "text_stats",
+        "choice": "text_stats",
+        "reviewed": false
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 8379.87,
+        "step": 3,
+        "subtask_id": "s3",
+        "action": "text_stats",
+        "parameters": {
+          "text": "原文要点（完整句摘录）：\n“以下数值来自本次文件分析；状态计数不是答案正确率。” [1]\n“文件baseline.csv共有4条记录，其中有效数值2条，缺失1条，非法值1条，均值150.000000，中位数150.000000。” [1]\n“文件current.csv共有4条记录，其中有效数值4条，缺失0条，非法值0条，均值180.000000，中位数180.000000。” [1]\n“第二份减第一份：记录数差0，均值差30.000000。” [1]\n“控制器仅保留有上限的明细预览；省略数量明确标注，全部状态和行明细以已核验CSV成果为准。” [1]"
+        }
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 8379.95,
+        "step": 3,
+        "subtask_id": "s3",
+        "action": "text_stats",
+        "call_success": true,
+        "duration_ms": 0.04,
+        "result": {
+          "characters": 278,
+          "nonempty_lines": 6,
+          "whitespace_words": 11
+        },
+        "validation": {
+          "status": "needs_review",
+          "semantic_verified": false,
+          "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+        },
+        "available_ram_mb": 15197
+      },
+      {
+        "event": "candidates_filtered",
+        "elapsed_ms": 8379.96,
+        "step": 4,
+        "subtask": null,
+        "available": [
+          "finish",
+          "stop"
+        ],
+        "excluded": {}
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 8688.64,
+        "step": 4,
+        "subtask_id": null,
+        "choice": "finish",
+        "duration_ms": 308.65,
+        "backend": "anyjev",
+        "model": "Qwen/Qwen3-1.7B",
+        "calibrated": false,
+        "probabilities": {
+          "finish": 0.9999905066871553,
+          "stop": 9.49331284475084e-06
+        },
+        "prompt_version": "general-agent-choice-v1",
+        "cold_start": false,
+        "duration_with_load_ms": 307.96,
+        "resources": {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 4280.0,
+          "cuda_peak_allocated_mb": 4104.09,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        },
+        "confidence": 0.9999810133743106
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 8688.64,
+        "step": 4,
+        "initial_choice": "finish",
+        "choice": "finish",
+        "reviewed": false
+      },
+      {
+        "event": "agent_delivered",
+        "elapsed_ms": 8688.65,
+        "step": 4,
+        "reason": "计划内子任务已执行，逐项交付结果；计划覆盖与答案质量仍需核查。"
+      }
+    ],
+    "total_ms": 8688.69,
+    "model_identity": "independent AnyJev + Qwen; not commercial Jev",
+    "log_file": "D:\\1 jev\\jev-edge-prototype\\logs\\53d509f30dbd4528b9eaeea462b66364.json",
+    "task_id": "53d509f30dbd4528b9eaeea462b66364",
+    "revision": 1,
+    "previous_runs": [],
+    "previous_stages": [],
+    "resumable": false,
+    "goal": "1. 分析CSV附件并生成数据报告\n2. 总结上一步报告，保留数据缺失、非法值和限制说明\n3. 统计上一步总结结果的字符数",
+    "dataset_context": {
+      "input_dir": "r1-check-20261015-102534-717384",
+      "files": [
+        "baseline.csv",
+        "current.csv"
+      ],
+      "value_column": "latency_ms",
+      "status_column": "status",
+      "threshold": "200",
+      "include_suggestions": false
+    },
+    "review_items": [
+      "自然语言事实、信息保留和需求覆盖仍需人工核查。",
+      "来源对应与文件哈希不证明资料充分；程序纠正不算模型独立选对。"
+    ],
+    "artifacts": [
+      {
+        "name": "report.md",
+        "url": "/v1/artifacts/53d509f30dbd4528b9eaeea462b66364/report.md"
+      },
+      {
+        "name": "report.json",
+        "url": "/v1/artifacts/53d509f30dbd4528b9eaeea462b66364/report.json"
+      }
+    ],
+    "delivery": {
+      "integrity_verified": true,
+      "scope": "artifact_bytes_and_record_only; answer quality remains separately declared",
+      "partial": false
+    }
+  },
+  "unsupported": {
+    "run_id": "66cfdd3b46554aceadc1e0805d2a7a77",
+    "mode": "agent",
+    "backend": "anyjev",
+    "status": "stopped",
+    "reason": "决策模块判断当前离线能力不足，已停止；未执行设备或联网操作。",
+    "execution_complete": false,
+    "task_complete": false,
+    "semantic_accuracy": null,
+    "completion_scope": "declared_plan_execution_only",
+    "task_contract": {
+      "operation": "general_agent",
+      "planner": "local Qwen (experimental)",
+      "selector": "AnyJev + Qwen",
+      "max_subtasks": 6
+    },
+    "plans": [],
+    "input_bindings": {},
+    "subtask_results": {},
+    "pending_subtasks": [],
+    "result": {
+      "text": "决策模块判断当前离线能力不足，已停止；未执行设备或联网操作。",
+      "quality": {
+        "status": "unverified_agent_results",
+        "semantic_verified": false
+      }
+    },
+    "decision_calls": 1,
+    "replans": 0,
+    "route_reviews": 0,
+    "invocation_attempts": 0,
+    "successful_calls": 0,
+    "remote_attempts": 0,
+    "capability_labels": {
+      "replan": "根据反馈重新规划",
+      "finish": "整理并返回成果",
+      "stop": "说明限制并停止",
+      "plan": "拆分需求并规划",
+      "clarify": "补充必要资料"
+    },
+    "events": [
+      {
+        "event": "run_started",
+        "elapsed_ms": 0.06,
+        "mode": "agent",
+        "backend": "anyjev",
+        "task": {
+          "mode": "agent",
+          "goal": "连接我家的摄像头，查看此刻客厅是否有人，并关闭客厅灯。",
+          "input": ""
+        },
+        "configuration": {
+          "version": "0.6.0",
+          "agent_max_steps": 12,
+          "workflow_max_steps": 16,
+          "task_contract_enabled": true,
+          "preservation_checks_enabled": true,
+          "stop_conflict_review_enabled": true,
+          "max_route_reviews": 1,
+          "max_generation_retries": 1,
+          "decision_backend": "anyjev",
+          "decision_model": "Qwen/Qwen3-1.7B",
+          "retrieval_model": "BAAI/bge-small-zh-v1.5",
+          "decision_prior": "content_free",
+          "max_steps": 3,
+          "max_seconds": 300,
+          "call_timeout_seconds": 120,
+          "max_remote_calls": 2,
+          "max_new_tokens": 512,
+          "max_input_tokens": 4096,
+          "provisional_confidence_floor": 0.4,
+          "threshold_calibrated": false,
+          "remote_base_url": "https://api.deepseek.com",
+          "remote_model": "deepseek-flash",
+          "remote_key_env": "DEEPSEEK_API_KEY",
+          "jev_model": "jev-1.13.0",
+          "jev_key_env": "TYPESAFE_API_KEY",
+          "decision_model_dir": "models/qwen3-1.7b",
+          "route_review": true,
+          "offline_mode": true,
+          "reference_topics": [
+            "Jev",
+            "AnyJev",
+            "本项目",
+            "本系统",
+            "这个项目",
+            "这个离线系统"
+          ]
+        },
+        "model_identity": "independent AnyJev + Qwen; not commercial Jev",
+        "available_ram_mb": 15196
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 543.99,
+        "step": 0,
+        "choice": "stop",
+        "backend": "anyjev",
+        "model": "Qwen/Qwen3-1.7B",
+        "calibrated": false,
+        "probabilities": {
+          "plan": 0.08295898848029187,
+          "clarify": 0.0010891732945132956,
+          "stop": 0.9159518382251949
+        },
+        "prompt_version": "general-agent-choice-v1",
+        "cold_start": false,
+        "duration_with_load_ms": 542.42,
+        "resources": {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 4280.0,
+          "cuda_peak_allocated_mb": 4104.09,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        },
+        "confidence": 0.8739277573377922
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 544.0,
+        "step": 0,
+        "initial_choice": "stop",
+        "choice": "stop",
+        "reviewed": false
+      },
+      {
+        "event": "run_interrupted",
+        "elapsed_ms": 544.0,
+        "error": "决策模块判断当前离线能力不足，已停止；未执行设备或联网操作。"
+      }
+    ],
+    "total_ms": 544.01,
+    "model_identity": "independent AnyJev + Qwen; not commercial Jev",
+    "log_file": "D:\\1 jev\\jev-edge-prototype\\logs\\66cfdd3b46554aceadc1e0805d2a7a77.json",
+    "task_id": "66cfdd3b46554aceadc1e0805d2a7a77",
+    "revision": 1,
+    "previous_runs": [],
+    "previous_stages": [],
+    "resumable": false,
+    "goal": "连接我家的摄像头，查看此刻客厅是否有人，并关闭客厅灯。",
+    "review_items": [
+      "自然语言事实、信息保留和需求覆盖仍需人工核查。",
+      "来源对应与文件哈希不证明资料充分；程序纠正不算模型独立选对。"
+    ],
+    "artifacts": [
+      {
+        "name": "report.md",
+        "url": "/v1/artifacts/66cfdd3b46554aceadc1e0805d2a7a77/report.md"
+      },
+      {
+        "name": "report.json",
+        "url": "/v1/artifacts/66cfdd3b46554aceadc1e0805d2a7a77/report.json"
+      }
+    ],
+    "delivery": {
+      "integrity_verified": true,
+      "scope": "artifact_bytes_and_record_only; answer quality remains separately declared",
+      "partial": true
+    }
+  },
+  "single": {
+    "run_id": "583a81d14a8440369bd0cfb800294af7",
+    "backend": "anyjev",
+    "status": "completed",
+    "task_complete": true,
+    "action": "calculator",
+    "result": {
+      "value": 8.0,
+      "expression": "(23+17)/5"
+    },
+    "validation": {
+      "status": "passed",
+      "declared_checks_passed": true,
+      "semantic_verified": true,
+      "scope": "deterministic_tool_result",
+      "reason": "确定性工具结果按声明真值核对"
+    },
+    "task_contract": {
+      "schema_version": 1,
+      "method": "explicit_program_contract_v1",
+      "operation": "calculation",
+      "text_operation": "general_qa",
+      "preferred_capability": "calculator",
+      "has_source": false,
+      "evidence_required": false,
+      "blocked_reason": null,
+      "state_slots": [],
+      "negative_assertions": [],
+      "literal_numbers": [],
+      "output_constraints": {
+        "single_sentence": false,
+        "preserve_information": false,
+        "no_added_facts": false
+      },
+      "limitations": "有限显式措辞与字段规则；可能漏识别或误分类，不是完整语义解析或正确性证明。"
+    },
+    "generation_calls": 0,
+    "generation_calls_scope": "text services including evidence selection and rewrite; excludes routing probability readout and route review",
+    "invocation_attempts": 1,
+    "successful_calls": 1,
+    "route_reviews": 0,
+    "total_ms": 578.19,
+    "remote_attempts": 0,
+    "estimated_cost": null,
+    "cost_note": "记录实际 token 使用量；未配置价格，不推算费用。",
+    "threshold_calibrated": false,
+    "events": [
+      {
+        "event": "run_started",
+        "elapsed_ms": 0.44,
+        "backend": "anyjev",
+        "configuration": {
+          "version": "0.6.0",
+          "agent_max_steps": 12,
+          "workflow_max_steps": 16,
+          "task_contract_enabled": true,
+          "preservation_checks_enabled": true,
+          "stop_conflict_review_enabled": true,
+          "max_route_reviews": 1,
+          "max_generation_retries": 1,
+          "decision_backend": "anyjev",
+          "decision_model": "Qwen/Qwen3-1.7B",
+          "retrieval_model": "BAAI/bge-small-zh-v1.5",
+          "decision_prior": "content_free",
+          "max_steps": 3,
+          "max_seconds": 300,
+          "call_timeout_seconds": 120,
+          "max_remote_calls": 2,
+          "max_new_tokens": 512,
+          "max_input_tokens": 4096,
+          "provisional_confidence_floor": 0.4,
+          "threshold_calibrated": false,
+          "remote_base_url": "https://api.deepseek.com",
+          "remote_model": "deepseek-flash",
+          "remote_key_env": "DEEPSEEK_API_KEY",
+          "jev_model": "jev-1.13.0",
+          "jev_key_env": "TYPESAFE_API_KEY",
+          "decision_model_dir": "models/qwen3-1.7b",
+          "route_review": true,
+          "offline_mode": true,
+          "reference_topics": [
+            "Jev",
+            "AnyJev",
+            "本项目",
+            "本系统",
+            "这个项目",
+            "这个离线系统"
+          ]
+        },
+        "task": {
+          "goal": "计算 (23+17)/5",
+          "input": "",
+          "parameters": {
+            "expression": "(23+17)/5"
+          },
+          "validation": {
+            "expected_value": 8
+          }
+        },
+        "model_lock": {
+          "decision": {
+            "repo_id": "Qwen/Qwen3-1.7B",
+            "source": "modelscope",
+            "relative_dir": "models/qwen3-1.7b",
+            "status": "downloaded",
+            "files": [
+              {
+                "path": "LICENSE",
+                "revision": "4855588ea1a12789f2e965e5f52a9e4a24c94b2a",
+                "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+                "size": 11343
+              },
+              {
+                "path": "README.md",
+                "revision": "7b34c202491054b0463f4921e2d01346f00cebdc",
+                "sha256": "257e52c419dac2258852643f18af6c974f21f8c6c1b6f371b6cca6201cf29091",
+                "size": 13963
+              },
+              {
+                "path": "config.json",
+                "revision": "ba16748358494dc16019aa354b05b6a175b67ff5",
+                "sha256": "1ddb5b89ebc90dcb417a45c213d818577e65976454d29385c8f6140771d95197",
+                "size": 726
+              },
+              {
+                "path": "configuration.json",
+                "revision": "ba16748358494dc16019aa354b05b6a175b67ff5",
+                "sha256": "f888421726665e8a84b738eed42a64875aed79de8be7daade851ac8bf4c0cef9",
+                "size": 73
+              },
+              {
+                "path": "generation_config.json",
+                "revision": "ba16748358494dc16019aa354b05b6a175b67ff5",
+                "sha256": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2",
+                "size": 239
+              },
+              {
+                "path": "merges.txt",
+                "revision": "ba16748358494dc16019aa354b05b6a175b67ff5",
+                "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+                "size": 1671853
+              },
+              {
+                "path": "model-00001-of-00002.safetensors",
+                "revision": "980712f58bdf09497308d37d0e30b535064cde04",
+                "sha256": "169ad53ec313c3a34b06c0809216e4fc072cce444a5d4ff2b59690d064130ed5",
+                "size": 3441185608
+              },
+              {
+                "path": "model-00002-of-00002.safetensors",
+                "revision": "980712f58bdf09497308d37d0e30b535064cde04",
+                "sha256": "912becff8d60672aa8628ef08c05898d9adf17c2ad4ae3caf99b065622fdeff9",
+                "size": 622329984
+              },
+              {
+                "path": "model.safetensors.index.json",
+                "revision": "ba16748358494dc16019aa354b05b6a175b67ff5",
+                "sha256": "0d660e94b165eb912669a5249dff44b83188c4777a07ddb9611fb78d91b0578d",
+                "size": 25605
+              },
+              {
+                "path": "tokenizer.json",
+                "revision": "ba16748358494dc16019aa354b05b6a175b67ff5",
+                "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+                "size": 11422654
+              },
+              {
+                "path": "tokenizer_config.json",
+                "revision": "c230923b64efe6d30f13552ace594b9578fab252",
+                "sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+                "size": 9732
+              },
+              {
+                "path": "vocab.json",
+                "revision": "ba16748358494dc16019aa354b05b6a175b67ff5",
+                "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+                "size": 2776833
+              }
+            ],
+            "downloaded_at": "2026-10-13T06:47:17.236952+00:00",
+            "version_policy": "每个文件固定 revision 与 SHA256"
+          },
+          "retrieval": {
+            "repo_id": "BAAI/bge-small-zh-v1.5",
+            "source": "modelscope",
+            "status": "downloaded",
+            "downloaded_at": "2026-10-13T04:32:02.151928+00:00",
+            "files": [
+              {
+                "path": "README.md",
+                "revision": "8399f11f8da998fe932df2684586c92024219d05",
+                "sha256": "c48a4eeea77f6b1d38b48ec1c5b8d4f86d5550cc43fa345a0db1b2ca1d082369",
+                "size": 27670
+              },
+              {
+                "path": "config.json",
+                "revision": "8399f11f8da998fe932df2684586c92024219d05",
+                "sha256": "3853a7979202c348751b753e36f579c41d8da7d36af617d3d907e1fc9b441f2a",
+                "size": 776
+              },
+              {
+                "path": "config_sentence_transformers.json",
+                "revision": "8399f11f8da998fe932df2684586c92024219d05",
+                "sha256": "940d5f50db195fa6e5e6a4f122c095f77880de259d74b14a65779ed48bdd7c56",
+                "size": 124
+              },
+              {
+                "path": "configuration.json",
+                "revision": "8399f11f8da998fe932df2684586c92024219d05",
+                "sha256": "6bc26d64eb5024b4d1dab5a52371958b429256d6c9d59787f1f5294a54e0cebd",
+                "size": 76
+              },
+              {
+                "path": "model.safetensors",
+                "revision": "8399f11f8da998fe932df2684586c92024219d05",
+                "sha256": "354763b9b1357bc9c44f62c6be2276321081ed2567773608c0d0785b61d5a026",
+                "size": 95827648
+              },
+              {
+                "path": "modules.json",
+                "revision": "8399f11f8da998fe932df2684586c92024219d05",
+                "sha256": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf",
+                "size": 349
+              },
+              {
+                "path": "sentence_bert_config.json",
+                "revision": "8399f11f8da998fe932df2684586c92024219d05",
+                "sha256": "84e39fda68ccbff05bfa723ae9c0e70e23e2ec373b76e0f8c6e71af72a693cbf",
+                "size": 52
+              },
+              {
+                "path": "special_tokens_map.json",
+                "revision": "8399f11f8da998fe932df2684586c92024219d05",
+                "sha256": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+                "size": 125
+              },
+              {
+                "path": "tokenizer.json",
+                "revision": "8399f11f8da998fe932df2684586c92024219d05",
+                "sha256": "48cea5d44424912a6fd1ea647bf4fe50b55ab8b1e5879c3275f80e339e8fae26",
+                "size": 439125
+              },
+              {
+                "path": "tokenizer_config.json",
+                "revision": "8399f11f8da998fe932df2684586c92024219d05",
+                "sha256": "e6f3b96db926a37d4039995fbf5ad17de158dfb8f6343d607e4dbaad18d75f5a",
+                "size": 367
+              },
+              {
+                "path": "vocab.txt",
+                "revision": "8399f11f8da998fe932df2684586c92024219d05",
+                "sha256": "45bbac6b341c319adc98a532532882e91a9cefc0329aa57bac9ae761c27b291c",
+                "size": 109540
+              }
+            ],
+            "version_policy": "每个文件固定 revision 与 SHA256；不是 Hugging Face commit"
+          }
+        },
+        "available_ram_mb": 15196,
+        "model_identity": "independent AnyJev + Qwen; not commercial Jev"
+      },
+      {
+        "event": "parameters_derived",
+        "elapsed_ms": 0.44,
+        "parameters": [
+          {
+            "parameter": "expression",
+            "source": "goal",
+            "value": "(23+17)/5",
+            "method": "restricted_expression_parser"
+          }
+        ],
+        "note": "程序提取有限格式参数；尚未选择模型或工具"
+      },
+      {
+        "event": "task_contract",
+        "elapsed_ms": 0.44,
+        "contract": {
+          "schema_version": 1,
+          "method": "explicit_program_contract_v1",
+          "operation": "calculation",
+          "text_operation": "general_qa",
+          "preferred_capability": "calculator",
+          "has_source": false,
+          "evidence_required": false,
+          "blocked_reason": null,
+          "state_slots": [],
+          "negative_assertions": [],
+          "literal_numbers": [],
+          "output_constraints": {
+            "single_sentence": false,
+            "preserve_information": false,
+            "no_added_facts": false
+          },
+          "limitations": "有限显式措辞与字段规则；可能漏识别或误分类，不是完整语义解析或正确性证明。"
+        },
+        "note": "程序规则生成的任务契约，不是模型独立决策或正确性证明"
+      },
+      {
+        "event": "candidates_filtered",
+        "elapsed_ms": 3.78,
+        "step": 1,
+        "available": [
+          "calculator",
+          "local_text",
+          "knowledge_qa",
+          "stop"
+        ],
+        "excluded": {
+          "text_stats": "调用参数不可用：需要 1 至 6000 字符的文本参数或 input。",
+          "retrieve": "调用参数不可用：query 必须为 1 至 2000 字符。",
+          "dataset_report": "调用参数不可用：需要附加CSV资料目录和字段，不能由模型猜测文件路径。",
+          "remote_llm": "未允许联网、网络不可用、未配置凭据或调用额度不足"
+        },
+        "available_ram_mb": 15196,
+        "remaining_seconds": 300.0
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 578.02,
+        "step": 1,
+        "duration_ms": 574.22,
+        "probabilities": {
+          "calculator": 0.9999999988190899,
+          "local_text": 8.04908145951641e-12,
+          "knowledge_qa": 9.415828093455083e-10,
+          "stop": 2.3127828399118768e-10
+        },
+        "backend": "anyjev",
+        "model": "Qwen/Qwen3-1.7B",
+        "level": "L0",
+        "prior": "content_free",
+        "calibrated": false,
+        "prompt_version": "chinese-capability-routing-v4",
+        "bias_correction": true,
+        "cold_start": false,
+        "load_ms": 0,
+        "resources": {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 4280.0,
+          "cuda_peak_allocated_mb": 4104.09,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        },
+        "confidence": 0.9999999984254532,
+        "choice": "calculator"
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 578.05,
+        "step": 1,
+        "initial_choice": "calculator",
+        "choice": "calculator",
+        "reviewed": false,
+        "note": "初始、复核、程序约束分别记录；不等于实际执行成功"
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 578.11,
+        "step": 1,
+        "action": "calculator",
+        "parameters": {
+          "expression": "(23+17)/5"
+        }
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 578.18,
+        "step": 1,
+        "action": "calculator",
+        "call_success": true,
+        "duration_ms": 0.09,
+        "result": {
+          "value": 8.0,
+          "expression": "(23+17)/5"
+        },
+        "validation": {
+          "status": "passed",
+          "declared_checks_passed": true,
+          "semantic_verified": true,
+          "scope": "deterministic_tool_result",
+          "reason": "确定性工具结果按声明真值核对"
+        },
+        "available_ram_mb": 15196
+      }
+    ],
+    "log_file": "D:\\1 jev\\jev-edge-prototype\\logs\\583a81d14a8440369bd0cfb800294af7.json",
+    "mode": "single",
+    "execution_complete": true,
+    "task_id": "583a81d14a8440369bd0cfb800294af7",
+    "revision": 1,
+    "previous_runs": [],
+    "previous_stages": [],
+    "resumable": false,
+    "goal": "计算 (23+17)/5",
+    "review_items": [
+      "已通过报告中声明的确定性条件；额外自然语言要求不在自动验收范围。"
+    ],
+    "artifacts": [
+      {
+        "name": "report.md",
+        "url": "/v1/artifacts/583a81d14a8440369bd0cfb800294af7/report.md"
+      },
+      {
+        "name": "report.json",
+        "url": "/v1/artifacts/583a81d14a8440369bd0cfb800294af7/report.json"
+      }
+    ],
+    "delivery": {
+      "integrity_verified": true,
+      "scope": "artifact_bytes_and_record_only; answer quality remains separately declared",
+      "partial": false
+    }
+  },
+  "waiting": {
+    "run_id": "ac2bfb2fcf3748db9eca89fe62bec695",
+    "mode": "agent",
+    "backend": "anyjev",
+    "status": "waiting_input",
+    "reason": "子任务s2缺少待处理原文，请补充资料后继续；已完成步骤将保留。",
+    "execution_complete": false,
+    "requested_material": {
+      "kind": "text",
+      "message": "子任务s2缺少待处理原文，请补充资料后继续；已完成步骤将保留。"
+    },
+    "task_complete": false,
+    "semantic_accuracy": null,
+    "completion_scope": "declared_plan_execution_only",
+    "task_contract": {
+      "operation": "general_agent",
+      "planner": "user numbered requirements",
+      "selector": "AnyJev + Qwen",
+      "max_subtasks": 6
+    },
+    "plans": [
+      {
+        "revision": 1,
+        "source": "user_numbered_requirements",
+        "objectives": [
+          "计算 (31-7)/3",
+          "翻译补充资料为中文"
+        ],
+        "steps": [
+          {
+            "id": "s1",
+            "goal": "计算 (31-7)/3",
+            "input": "$input",
+            "parameters": {
+              "expression": "(31-7)/3"
+            }
+          },
+          {
+            "id": "s2",
+            "goal": "翻译补充资料为中文",
+            "input": "$input",
+            "parameters": {}
+          }
+        ]
+      }
+    ],
+    "input_bindings": {
+      "s1": "$input",
+      "s2": "$input"
+    },
+    "subtask_results": {
+      "s1": {
+        "goal": "计算 (31-7)/3",
+        "service": "calculator",
+        "result": {
+          "value": 8.0,
+          "expression": "(31-7)/3"
+        },
+        "validation": {
+          "status": "needs_review",
+          "semantic_verified": false,
+          "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+        },
+        "input_provenance": {
+          "source": "$input",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "run_id": "ac2bfb2fcf3748db9eca89fe62bec695",
+          "retained_on_continue": false
+        }
+      }
+    },
+    "pending_subtasks": [
+      {
+        "id": "s2",
+        "goal": "翻译补充资料为中文",
+        "input": "$input",
+        "parameters": {}
+      }
+    ],
+    "result": {
+      "text": "【s1】计算 (31-7)/3\n8.0",
+      "quality": {
+        "status": "unverified_agent_results",
+        "semantic_verified": false
+      }
+    },
+    "decision_calls": 1,
+    "replans": 0,
+    "route_reviews": 0,
+    "invocation_attempts": 1,
+    "successful_calls": 1,
+    "remote_attempts": 0,
+    "capability_labels": {
+      "replan": "根据反馈重新规划",
+      "finish": "整理并返回成果",
+      "stop": "说明限制并停止"
+    },
+    "events": [
+      {
+        "event": "run_started",
+        "elapsed_ms": 0.08,
+        "mode": "agent",
+        "backend": "anyjev",
+        "task": {
+          "mode": "agent",
+          "backend": "anyjev",
+          "goal": "1. 计算 (31-7)/3\n2. 翻译补充资料为中文",
+          "input": ""
+        },
+        "configuration": {
+          "version": "0.6.0",
+          "agent_max_steps": 12,
+          "workflow_max_steps": 16,
+          "task_contract_enabled": true,
+          "preservation_checks_enabled": true,
+          "stop_conflict_review_enabled": true,
+          "max_route_reviews": 1,
+          "max_generation_retries": 1,
+          "decision_backend": "anyjev",
+          "decision_model": "Qwen/Qwen3-1.7B",
+          "retrieval_model": "BAAI/bge-small-zh-v1.5",
+          "decision_prior": "content_free",
+          "max_steps": 3,
+          "max_seconds": 300,
+          "call_timeout_seconds": 120,
+          "max_remote_calls": 2,
+          "max_new_tokens": 512,
+          "max_input_tokens": 4096,
+          "provisional_confidence_floor": 0.4,
+          "threshold_calibrated": false,
+          "remote_base_url": "https://api.deepseek.com",
+          "remote_model": "deepseek-flash",
+          "remote_key_env": "DEEPSEEK_API_KEY",
+          "jev_model": "jev-1.13.0",
+          "jev_key_env": "TYPESAFE_API_KEY",
+          "decision_model_dir": "models/qwen3-1.7b",
+          "route_review": true,
+          "offline_mode": true,
+          "reference_topics": [
+            "Jev",
+            "AnyJev",
+            "本项目",
+            "本系统",
+            "这个项目",
+            "这个离线系统"
+          ]
+        },
+        "model_identity": "independent AnyJev + Qwen; not commercial Jev",
+        "available_ram_mb": 15194
+      },
+      {
+        "event": "parameters_derived",
+        "elapsed_ms": 1.2,
+        "subtask_id": "s1",
+        "parameters": [
+          {
+            "parameter": "expression",
+            "source": "goal",
+            "value": "(31-7)/3",
+            "method": "restricted_expression_parser"
+          }
+        ],
+        "note": "程序仅提取用户明确写出的受限算式，服务仍由AnyJev选择。"
+      },
+      {
+        "event": "plan_accepted",
+        "elapsed_ms": 1.23,
+        "revision": 1,
+        "plan": [
+          {
+            "id": "s1",
+            "goal": "计算 (31-7)/3",
+            "input": "$input",
+            "parameters": {
+              "expression": "(31-7)/3"
+            }
+          },
+          {
+            "id": "s2",
+            "goal": "翻译补充资料为中文",
+            "input": "$input",
+            "parameters": {}
+          }
+        ],
+        "source": "user_numbered_requirements",
+        "note": "编号子任务由用户明确给出；程序解析编号，AnyJev决定输入来源与实际调用。不是模型自动拆解。"
+      },
+      {
+        "event": "input_bound",
+        "elapsed_ms": 1.23,
+        "subtask_id": "s1",
+        "source": "$input",
+        "method": "only_available_source"
+      },
+      {
+        "event": "candidates_filtered",
+        "elapsed_ms": 3.01,
+        "step": 1,
+        "subtask": {
+          "id": "s1",
+          "goal": "计算 (31-7)/3",
+          "input": "$input",
+          "parameters": {
+            "expression": "(31-7)/3"
+          }
+        },
+        "available": [
+          "calculator",
+          "local_text",
+          "retrieve",
+          "knowledge_qa",
+          "replan",
+          "stop"
+        ],
+        "excluded": {
+          "text_stats": "需要 1 至 6000 字符的文本参数或 input。",
+          "dataset_report": "没有用户声明的CSV附件，或本轮附件分析已完成。"
+        }
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 260.12,
+        "step": 1,
+        "subtask_id": "s1",
+        "choice": "calculator",
+        "duration_ms": 257.09,
+        "probabilities": {
+          "calculator": 0.9999999974312941,
+          "local_text": 4.4243165965895585e-12,
+          "retrieve": 4.5130576841965866e-10,
+          "knowledge_qa": 5.542611826913084e-11,
+          "replan": 1.8320406484011118e-09,
+          "stop": 2.2550900022358177e-10
+        },
+        "backend": "anyjev",
+        "model": "Qwen/Qwen3-1.7B",
+        "level": "L0",
+        "prior": "content_free",
+        "calibrated": false,
+        "prompt_version": "chinese-capability-routing-v4",
+        "bias_correction": true,
+        "cold_start": false,
+        "load_ms": 0,
+        "resources": {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 4280.0,
+          "cuda_peak_allocated_mb": 4104.09,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        },
+        "confidence": 0.9999999969175529
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 260.13,
+        "step": 1,
+        "initial_choice": "calculator",
+        "choice": "calculator",
+        "reviewed": false
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 260.19,
+        "step": 1,
+        "subtask_id": "s1",
+        "action": "calculator",
+        "parameters": {
+          "expression": "(31-7)/3"
+        }
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 260.26,
+        "step": 1,
+        "subtask_id": "s1",
+        "action": "calculator",
+        "call_success": true,
+        "duration_ms": 0.09,
+        "result": {
+          "value": 8.0,
+          "expression": "(31-7)/3"
+        },
+        "validation": {
+          "status": "needs_review",
+          "semantic_verified": false,
+          "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+        },
+        "available_ram_mb": 15193
+      },
+      {
+        "event": "input_bound",
+        "elapsed_ms": 260.37,
+        "subtask_id": "s2",
+        "source": "$input",
+        "method": "only_available_source"
+      },
+      {
+        "event": "controller_waiting_input",
+        "elapsed_ms": 260.41,
+        "reason": "子任务s2缺少待处理原文，请补充资料后继续；已完成步骤将保留。",
+        "material_kind": "text"
+      }
+    ],
+    "total_ms": 260.42,
+    "model_identity": "independent AnyJev + Qwen; not commercial Jev",
+    "log_file": "D:\\1 jev\\jev-edge-prototype\\logs\\ac2bfb2fcf3748db9eca89fe62bec695.json",
+    "task_id": "ac2bfb2fcf3748db9eca89fe62bec695",
+    "revision": 1,
+    "previous_runs": [],
+    "previous_stages": [],
+    "resumable": true,
+    "goal": "1. 计算 (31-7)/3\n2. 翻译补充资料为中文",
+    "review_items": [
+      "自然语言事实、信息保留和需求覆盖仍需人工核查。",
+      "来源对应与文件哈希不证明资料充分；程序纠正不算模型独立选对。"
+    ],
+    "artifacts": [
+      {
+        "name": "report.md",
+        "url": "/v1/artifacts/ac2bfb2fcf3748db9eca89fe62bec695/report.md"
+      },
+      {
+        "name": "report.json",
+        "url": "/v1/artifacts/ac2bfb2fcf3748db9eca89fe62bec695/report.json"
+      }
+    ],
+    "delivery": {
+      "integrity_verified": true,
+      "scope": "artifact_bytes_and_record_only; answer quality remains separately declared",
+      "partial": true
+    }
+  },
+  "resumed": {
+    "run_id": "f2917b8963aa48f58e32b16f1af22bf3",
+    "mode": "agent",
+    "backend": "anyjev",
+    "status": "needs_review",
+    "execution_complete": true,
+    "reason": "计划内子任务已执行，逐项交付结果；计划覆盖与答案质量仍需核查。",
+    "task_complete": false,
+    "semantic_accuracy": null,
+    "completion_scope": "declared_plan_execution_only",
+    "task_contract": {
+      "operation": "general_agent",
+      "planner": "user numbered requirements",
+      "selector": "AnyJev + Qwen",
+      "max_subtasks": 6
+    },
+    "plans": [
+      {
+        "revision": 1,
+        "source": "user_numbered_requirements",
+        "objectives": [
+          "计算 (31-7)/3",
+          "翻译补充资料为中文"
+        ],
+        "steps": [
+          {
+            "id": "s1",
+            "goal": "计算 (31-7)/3",
+            "input": "$input",
+            "parameters": {
+              "expression": "(31-7)/3"
+            }
+          },
+          {
+            "id": "s2",
+            "goal": "翻译补充资料为中文",
+            "input": "$input",
+            "parameters": {}
+          }
+        ]
+      }
+    ],
+    "input_bindings": {
+      "s1": "$input",
+      "s2": "$input"
+    },
+    "subtask_results": {
+      "s1": {
+        "goal": "计算 (31-7)/3",
+        "service": "calculator",
+        "result": {
+          "value": 8.0,
+          "expression": "(31-7)/3"
+        },
+        "validation": {
+          "status": "needs_review",
+          "semantic_verified": false,
+          "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+        },
+        "input_provenance": {
+          "source": "$input",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "run_id": "ac2bfb2fcf3748db9eca89fe62bec695",
+          "retained_on_continue": true
+        }
+      },
+      "s2": {
+        "goal": "翻译补充资料为中文",
+        "service": "local_text",
+        "result": {
+          "text": "检查将于周五上午10点进行。房间尚未决定。",
+          "truncated": false,
+          "model": "Qwen/Qwen3-1.7B",
+          "usage": {
+            "input_tokens": 373,
+            "output_tokens": 14
+          },
+          "quality": {
+            "method": "literal_and_field_state_contract_v2",
+            "status": "unverified",
+            "issues": [],
+            "semantic_verified": false,
+            "limitations": "检查有限数字、时间、邮箱、背景、字段未知状态和否定关系；不能证明语义等价或完整事实性。"
+          },
+          "evidence_scope": "model_knowledge_or_user_input",
+          "task_kind": "translation",
+          "generation_attempts": [
+            {
+              "attempt": 1,
+              "raw_text": "检查将于周五上午10点进行。房间尚未决定。",
+              "duration_ms": 578.7,
+              "usage": {
+                "input_tokens": 373,
+                "output_tokens": 14
+              },
+              "quality": {
+                "method": "literal_and_field_state_contract_v2",
+                "status": "unverified",
+                "issues": [],
+                "semantic_verified": false,
+                "limitations": "检查有限数字、时间、邮箱、背景、字段未知状态和否定关系；不能证明语义等价或完整事实性。"
+              },
+              "truncated": false
+            }
+          ],
+          "recovery": {
+            "attempted": false,
+            "retry_limit": 0,
+            "guard_passed_after_retry": false,
+            "semantic_verified": false
+          },
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4018.0,
+            "cuda_peak_allocated_mb": 3966.92,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        },
+        "validation": {
+          "status": "needs_review",
+          "semantic_verified": false,
+          "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+        },
+        "input_provenance": {
+          "source": "$input",
+          "sha256": "0618f1ee73a9cc632dfc74566e64efc2f1a31bc077f1140e6cd173ca4e5f4827",
+          "run_id": "f2917b8963aa48f58e32b16f1af22bf3",
+          "retained_on_continue": false
+        }
+      }
+    },
+    "pending_subtasks": [],
+    "result": {
+      "text": "【s1】计算 (31-7)/3\n8.0\n\n【s2】翻译补充资料为中文\n检查将于周五上午10点进行。房间尚未决定。",
+      "quality": {
+        "status": "unverified_agent_results",
+        "semantic_verified": false
+      }
+    },
+    "decision_calls": 2,
+    "replans": 0,
+    "route_reviews": 0,
+    "invocation_attempts": 1,
+    "successful_calls": 1,
+    "remote_attempts": 0,
+    "capability_labels": {
+      "replan": "根据反馈重新规划",
+      "finish": "整理并返回成果",
+      "stop": "说明限制并停止"
+    },
+    "events": [
+      {
+        "event": "run_started",
+        "elapsed_ms": 0.12,
+        "mode": "agent",
+        "backend": "anyjev",
+        "task": {
+          "mode": "agent",
+          "backend": "anyjev",
+          "goal": "1. 计算 (31-7)/3\n2. 翻译补充资料为中文",
+          "input": "The inspection is scheduled for Friday at 10:00. The room has not been decided."
+        },
+        "configuration": {
+          "version": "0.6.0",
+          "agent_max_steps": 12,
+          "workflow_max_steps": 16,
+          "task_contract_enabled": true,
+          "preservation_checks_enabled": true,
+          "stop_conflict_review_enabled": true,
+          "max_route_reviews": 1,
+          "max_generation_retries": 1,
+          "decision_backend": "anyjev",
+          "decision_model": "Qwen/Qwen3-1.7B",
+          "retrieval_model": "BAAI/bge-small-zh-v1.5",
+          "decision_prior": "content_free",
+          "max_steps": 3,
+          "max_seconds": 300,
+          "call_timeout_seconds": 120,
+          "max_remote_calls": 2,
+          "max_new_tokens": 512,
+          "max_input_tokens": 4096,
+          "provisional_confidence_floor": 0.4,
+          "threshold_calibrated": false,
+          "remote_base_url": "https://api.deepseek.com",
+          "remote_model": "deepseek-flash",
+          "remote_key_env": "DEEPSEEK_API_KEY",
+          "jev_model": "jev-1.13.0",
+          "jev_key_env": "TYPESAFE_API_KEY",
+          "decision_model_dir": "models/qwen3-1.7b",
+          "route_review": true,
+          "offline_mode": true,
+          "reference_topics": [
+            "Jev",
+            "AnyJev",
+            "本项目",
+            "本系统",
+            "这个项目",
+            "这个离线系统"
+          ]
+        },
+        "model_identity": "independent AnyJev + Qwen; not commercial Jev",
+        "available_ram_mb": 21019
+      },
+      {
+        "event": "task_continued",
+        "elapsed_ms": 0.12,
+        "previous_run_id": "ac2bfb2fcf3748db9eca89fe62bec695",
+        "retained_subtasks": [
+          "s1"
+        ],
+        "pending_subtasks": [
+          "s2"
+        ],
+        "note": "已完成成果按原输入保留；补充材料只用于尚未执行的步骤。"
+      },
+      {
+        "event": "input_bound",
+        "elapsed_ms": 1.16,
+        "subtask_id": "s2",
+        "source": "$input",
+        "method": "only_available_source"
+      },
+      {
+        "event": "candidates_filtered",
+        "elapsed_ms": 3.86,
+        "step": 1,
+        "subtask": {
+          "id": "s2",
+          "goal": "翻译补充资料为中文",
+          "input": "$input",
+          "parameters": {}
+        },
+        "available": [
+          "text_stats",
+          "local_text",
+          "retrieve",
+          "knowledge_qa",
+          "replan",
+          "stop"
+        ],
+        "excluded": {
+          "calculator": "初版计算服务需要显式 parameters.expression，不由决策模块猜测参数。",
+          "dataset_report": "没有用户声明的CSV附件，或本轮附件分析已完成。"
+        }
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 12310.47,
+        "step": 1,
+        "subtask_id": "s2",
+        "choice": "local_text",
+        "duration_ms": 12306.58,
+        "probabilities": {
+          "text_stats": 1.5025724678632179e-05,
+          "local_text": 0.9996440088198102,
+          "retrieve": 0.0002988930814052625,
+          "knowledge_qa": 4.5147736321512145e-06,
+          "replan": 3.500014995341115e-05,
+          "stop": 2.5574505203903146e-06
+        },
+        "backend": "anyjev",
+        "model": "Qwen/Qwen3-1.7B",
+        "level": "L0",
+        "prior": "content_free",
+        "calibrated": false,
+        "prompt_version": "chinese-capability-routing-v4",
+        "bias_correction": true,
+        "cold_start": true,
+        "load_ms": 10679.05,
+        "resources": {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 3942.0,
+          "cuda_peak_allocated_mb": 3932.15,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        },
+        "confidence": 0.9995728105837722
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 12310.47,
+        "step": 1,
+        "initial_choice": "local_text",
+        "choice": "local_text",
+        "reviewed": false
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 12310.48,
+        "step": 1,
+        "subtask_id": "s2",
+        "action": "local_text",
+        "parameters": {
+          "text": "The inspection is scheduled for Friday at 10:00. The room has not been decided."
+        }
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 12890.27,
+        "step": 1,
+        "subtask_id": "s2",
+        "action": "local_text",
+        "call_success": true,
+        "duration_ms": 579.73,
+        "result": {
+          "text": "检查将于周五上午10点进行。房间尚未决定。",
+          "truncated": false,
+          "model": "Qwen/Qwen3-1.7B",
+          "usage": {
+            "input_tokens": 373,
+            "output_tokens": 14
+          },
+          "quality": {
+            "method": "literal_and_field_state_contract_v2",
+            "status": "unverified",
+            "issues": [],
+            "semantic_verified": false,
+            "limitations": "检查有限数字、时间、邮箱、背景、字段未知状态和否定关系；不能证明语义等价或完整事实性。"
+          },
+          "evidence_scope": "model_knowledge_or_user_input",
+          "task_kind": "translation",
+          "generation_attempts": [
+            {
+              "attempt": 1,
+              "raw_text": "检查将于周五上午10点进行。房间尚未决定。",
+              "duration_ms": 578.7,
+              "usage": {
+                "input_tokens": 373,
+                "output_tokens": 14
+              },
+              "quality": {
+                "method": "literal_and_field_state_contract_v2",
+                "status": "unverified",
+                "issues": [],
+                "semantic_verified": false,
+                "limitations": "检查有限数字、时间、邮箱、背景、字段未知状态和否定关系；不能证明语义等价或完整事实性。"
+              },
+              "truncated": false
+            }
+          ],
+          "recovery": {
+            "attempted": false,
+            "retry_limit": 0,
+            "guard_passed_after_retry": false,
+            "semantic_verified": false
+          },
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4018.0,
+            "cuda_peak_allocated_mb": 3966.92,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        },
+        "validation": {
+          "status": "needs_review",
+          "semantic_verified": false,
+          "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+        },
+        "available_ram_mb": 15118
+      },
+      {
+        "event": "candidates_filtered",
+        "elapsed_ms": 12890.3,
+        "step": 2,
+        "subtask": null,
+        "available": [
+          "finish",
+          "stop"
+        ],
+        "excluded": {}
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 13290.52,
+        "step": 2,
+        "subtask_id": null,
+        "choice": "finish",
+        "duration_ms": 400.2,
+        "backend": "anyjev",
+        "model": "Qwen/Qwen3-1.7B",
+        "calibrated": false,
+        "probabilities": {
+          "finish": 0.9999923120670898,
+          "stop": 7.687932910140914e-06
+        },
+        "prompt_version": "general-agent-choice-v1",
+        "cold_start": false,
+        "duration_with_load_ms": 399.63,
+        "resources": {
+          "cuda_available": true,
+          "cuda_allocated_mb": 3884.38,
+          "cuda_reserved_mb": 4018.0,
+          "cuda_peak_allocated_mb": 3966.92,
+          "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+        },
+        "confidence": 0.9999846241341797
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 13290.52,
+        "step": 2,
+        "initial_choice": "finish",
+        "choice": "finish",
+        "reviewed": false
+      },
+      {
+        "event": "agent_delivered",
+        "elapsed_ms": 13290.52,
+        "step": 2,
+        "reason": "计划内子任务已执行，逐项交付结果；计划覆盖与答案质量仍需核查。"
+      }
+    ],
+    "total_ms": 13290.55,
+    "model_identity": "independent AnyJev + Qwen; not commercial Jev",
+    "log_file": "D:\\1 jev\\jev-edge-prototype\\logs\\f2917b8963aa48f58e32b16f1af22bf3.json",
+    "task_id": "ac2bfb2fcf3748db9eca89fe62bec695",
+    "revision": 2,
+    "previous_runs": [
+      "ac2bfb2fcf3748db9eca89fe62bec695"
+    ],
+    "previous_stages": [
+      {
+        "run_id": "ac2bfb2fcf3748db9eca89fe62bec695",
+        "revision": 1,
+        "status": "waiting_input",
+        "artifacts": [
+          {
+            "name": "report.md",
+            "url": "/v1/artifacts/ac2bfb2fcf3748db9eca89fe62bec695/report.md"
+          },
+          {
+            "name": "report.json",
+            "url": "/v1/artifacts/ac2bfb2fcf3748db9eca89fe62bec695/report.json"
+          }
+        ]
+      }
+    ],
+    "resumable": false,
+    "goal": "1. 计算 (31-7)/3\n2. 翻译补充资料为中文",
+    "review_items": [
+      "自然语言事实、信息保留和需求覆盖仍需人工核查。",
+      "来源对应与文件哈希不证明资料充分；程序纠正不算模型独立选对。"
+    ],
+    "artifacts": [
+      {
+        "name": "report.md",
+        "url": "/v1/artifacts/f2917b8963aa48f58e32b16f1af22bf3/report.md"
+      },
+      {
+        "name": "report.json",
+        "url": "/v1/artifacts/f2917b8963aa48f58e32b16f1af22bf3/report.json"
+      }
+    ],
+    "delivery": {
+      "integrity_verified": true,
+      "scope": "artifact_bytes_and_record_only; answer quality remains separately declared",
+      "partial": false
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "stage": "UI backend selection fix",
+  "created_at_utc": "2026-10-15T11:15:27.870471+00:00",
+  "version": "0.6.0",
+  "purpose": "supported-mode plumbing verification, not effectiveness comparison",
+  "current_sha256": {
+    "ui.html": "4888af1e2e4d0d1451f0fe3d58ba1ec4e22c4e2285bf815dae0efb426d42b390",
+    "tests/ui_replay.cjs": "33ece9b190a691fc4840962c07bebb74e942e3769705dd1659e3949834933f24",
+    "RELEASE.md": "cf69b17719ef501e45b5a9ab0db23f6cdbf14ecfc8f07de8d1671eb9979134fe",
+    "reports/backend-switch-20261015.md": "e4519b7c83182c5a9d569a491a72761184abd83c4d896f701d3428677262b301",
+    "evaluation_data/snapshots/ui-backend-switch/SNAPSHOT.md": "d0961016afb7d4f51b4e5a87f603e59bf20fda56390bf7c6e2991dafbbe99067"
+  },
+  "preserved_previous_files": {
+    "ui.html": {
+      "previous_sha256": "6f4f28b54f32c147bbe1237fb0ea1b93c5f359dfa0743d13dfcd7407c741027d",
+      "snapshot": "evaluation_data/snapshots/ui-backend-switch/ui.html",
+      "current_sha256": "4888af1e2e4d0d1451f0fe3d58ba1ec4e22c4e2285bf815dae0efb426d42b390"
+    },
+    "tests/ui_replay.cjs": {
+      "previous_sha256": "c9ab77cdee8262180d374a1acc8160c2a11a591b46ff18ccf6a9107858cb8240",
+      "snapshot": "evaluation_data/snapshots/ui-backend-switch/tests/ui_replay.cjs",
+      "current_sha256": "33ece9b190a691fc4840962c07bebb74e942e3769705dd1659e3949834933f24"
+    },
+    "RELEASE.md": {
+      "previous_sha256": "aa34e96be9ba827b5fd834223ad0c89d6dcca61b06d019529f5afc85502e3ec5",
+      "snapshot": "evaluation_data/snapshots/ui-backend-switch/RELEASE.md",
+      "current_sha256": "cf69b17719ef501e45b5a9ab0db23f6cdbf14ecfc8f07de8d1671eb9979134fe"
+    }
+  },
+  "previous_checkpoint": "evaluation_data/ui-refresh-r1-20261015.json",
+  "previous_checkpoint_sha256": "8962bde958a39c309436bbcbcf9d2a6b4ff381c295139529ecff2508b939828a",
+  "ui_validation": {
+    "passed": 67,
+    "retained_cases": 57,
+    "new_cases": 10,
+    "path": "logs/ui-validation-2026-10-15T11-13-26-592Z.json",
+    "sha256": "ae0d910cffa97ffd2782f13d1a52a85725f434732e7cd4a5a6e2e6b79fb3bc3e",
+    "fault_injection_scope": "Synthetic network failures and delayed responses test frontend recovery only; they are not real model or network reliability measurements."
+  },
+  "real_http_validation": {
+    "path": "logs/backend-switch-http-20261015-111317-753035.json",
+    "sha256": "c90834f7561d7cf2e9edf6362c5e9bae217a1dd4fcb7a7e542c536f008e17d44",
+    "cases": [
+      {
+        "name": "single-rules",
+        "http_status": 200,
+        "checks": {
+          "http_200": true,
+          "selected_backend_preserved": true,
+          "explicit_value_12": true,
+          "declared_condition_passed": true,
+          "remote_zero": true
+        }
+      },
+      {
+        "name": "workflow-rules",
+        "http_status": 200,
+        "checks": {
+          "http_200": true,
+          "selected_backend_preserved": true,
+          "declared_report_delivered": true,
+          "baseline_mean_150": true,
+          "current_mean_180": true,
+          "all_decisions_use_rules": true,
+          "remote_zero": true
+        }
+      },
+      {
+        "name": "agent-rules-rejected-before-inference",
+        "http_status": 400,
+        "checks": {
+          "unsupported_combination_rejected": true
+        }
+      }
+    ]
+  },
+  "page": {
+    "http_status": 200,
+    "served_sha256": "4888af1e2e4d0d1451f0fe3d58ba1ec4e22c4e2285bf815dae0efb426d42b390",
+    "version": "0.6.0",
+    "offline": true
+  },
+  "runtime_and_launchers_unchanged_sha256": {
+    "agent.py": "f179abef75a14e43ffafb3e0eb712c9dfadc22a8724cfc538a7e4c08add2d10b",
+    "core.py": "84f26e4370671b2bd852e33ef29c80d658626eafb521356d0c3cd720ee472c00",
+    "local_models.py": "c5aef9334d69b325efdf2ca3b773b6912462a5f8ca836b99c746fabfa7951f4d",
+    "app.py": "088e46be75f0e34da073c8c241265280edc12a7cbc46f0328b6024cde029ef75",
+    "config.json": "4c00be7a5f546c2d2e8782591bd3e2790cb7199a1739c60e309eede1a9933663",
+    "workflow.py": "e78dbe0429b2848381d609806c8210121d6c7612317722ba04966ab6dccde031",
+    "services.py": "67eefd0c2fcee5f5c43fd5baa7cebd650972860c3f65b3e762dc83b9b4dc8d10",
+    "delivery.py": "a51a9657b760d902e7c48168574749f64f47cc88dde9c46bcec3bd12e3e36c99",
+    "task_store.py": "f989d5bc224e7f475423dbe31dee284596793d542de65e8f6c6dc9c89e284d0f",
+    "model_paths.py": "4d358928402762463659a4d4fb5179fd61fa949da64c38907442a54ed27118e1",
+    "request_normalization.py": "45ef456a6c93cf5d163ab2a03825ca430ac64c5e10c69e3e240724273ed66b4a",
+    "answer_quality.py": "024144eb2168044a4241623a529fd3fbe46abc426ecd48373c0d4fe78a4dbbcf",
+    "task_contract.py": "25b3e61a38f79cbc7cf0201e2290e44171a43cea2b090deb268add9ea889a169",
+    "offline_environment.py": "dc07fe454e99b5bea95d139dec3ac7b57b5369f0420e56aa62f60d261f41e8a2",
+    "knowledge.json": "cb88305aceef9c3cb35ece83f8c1a4522a3cfc13806524683524de23089c94bb",
+    "demo_data.py": "386f1a43d3e6d6221e3d067648e2246def8a9f28ab18681c1a182119e5fb74de",
+    "models/model-lock.json": "082055cc3011a2094f0a176511413673f6c42807f5540fa39d90665f2591220c",
+    "start.ps1": "d313c8354ca7e353b328d3c3c84b2b6385ab0a170179368fe192b56d1809ea6b",
+    "open.ps1": "5e8af5df2e4898c4400326abec6effbb8e73ae36bd73276c0e6ec698f5ebd8e8",
+    "stop.ps1": "4bc70c8e1ff03181e75e5c69cba7dc4885c40f22585730a29ee9e75abbe26a0c",
+    "打开工作台.cmd": "9b27243e4e42e854028083dd429eb4037ac526d9b91a0e170f2e035627298aa0"
+  },
+  "crlf_aware_diff_check_exit": 0,
+  "semantic_accuracy": null,
+  "browser_visual_verified": false,
+  "git_mutations": false,
+  "suggested_commit": "修复决策方式切换与历史后端恢复"
+}

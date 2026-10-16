@@ -1,0 +1,10 @@
+{
+  "mode": "agent",
+  "backend": "anyjev",
+  "goal": "1. 计算 (18+24)/6\n2. 计算 (9+15)*2",
+  "input": "",
+  "parameters": {},
+  "validation": {},
+  "allow_remote": false,
+  "network_available": false
+}

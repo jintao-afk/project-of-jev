@@ -1,0 +1,3168 @@
+{
+  "version": "0.6.0",
+  "release": "offline research R1",
+  "recorded_at_utc": "2026-10-15T10:36:12.075455+00:00",
+  "purpose": "functional development acceptance; no independent holdout or effectiveness comparison",
+  "model_identity": "independent AnyJev 0.3.0 + Qwen3-1.7B; not commercial Jev",
+  "semantic_accuracy": null,
+  "remote_attempts": 0,
+  "validation": {
+    "unit": {
+      "passed": 51,
+      "log": "logs/validation-r1-final.log"
+    },
+    "ui": {
+      "passed": 41,
+      "log": "logs/ui-validation-2026-10-15T10-28-15-166Z.json",
+      "browser_visual_verified": false
+    },
+    "launcher": {
+      "checks": 5,
+      "log": "logs/launcher-validation-20261015-182816.json",
+      "actual_cmd_chain": true,
+      "browser_navigation_exercised": false
+    },
+    "real_cases": 7,
+    "independent_numeric_audit": {
+      "declared_contract_passed": true,
+      "checks": {
+        "delivered": true,
+        "offline": true,
+        "verify_before_finish": true,
+        "baseline.csv:independent_numbers_rows_and_hash": true,
+        "current.csv:independent_numbers_rows_and_hash": true,
+        "comparison": true
+      },
+      "semantic_verified": false,
+      "advisory_review": "not_applicable"
+    }
+  },
+  "top_level_counts": {
+    "raw_capability_or_control_choices": {
+      "calculator": 4,
+      "finish": 4,
+      "local_text": 2,
+      "text_stats": 2,
+      "dataset_report": 1,
+      "retrieve": 1,
+      "stop": 1
+    },
+    "input_source_choices": 3,
+    "model_route_reviews": 0,
+    "program_route_adjustments": 1,
+    "actual_invocations": {
+      "calculator": 4,
+      "local_text": 3,
+      "text_stats": 2,
+      "dataset_report": 1
+    },
+    "scope": "top level only; CSV child workflow separately preserved, not double counted; counts are not accuracy"
+  },
+  "cases": [
+    {
+      "name": "explicit-arithmetic",
+      "request": {
+        "mode": "agent",
+        "goal": "1. 计算 (31-7)/3\n2. 计算 (2.5+1.5)*4",
+        "input": ""
+      },
+      "run_id": "dbf6ac5f57c94f25894eda8bed670a2f",
+      "task_id": "dbf6ac5f57c94f25894eda8bed670a2f",
+      "revision": 1,
+      "status": "needs_review",
+      "execution_complete": true,
+      "task_complete": false,
+      "semantic_accuracy": null,
+      "total_ms": 12881.98,
+      "timing_scope": "engine execution, not end-to-end user download",
+      "checks": {
+        "no_remote": true,
+        "executed": true,
+        "values_8_16": true
+      },
+      "downloads": {
+        "report.md": {
+          "bytes": 844,
+          "sha256": "e6724c7370dce47791a181ee61f898285679b9d736410e8638e3d705044677e5"
+        },
+        "report.json": {
+          "bytes": 14529,
+          "sha256": "8cc6a6251e265486d8564aa0e9fd761e80b10a83758ce8da6552dd91319bd05b"
+        }
+      },
+      "decision_calls": 3,
+      "route_reviews": 0,
+      "raw_model_choices": [
+        {
+          "event": "decision",
+          "elapsed_ms": 12260.1,
+          "step": 1,
+          "subtask_id": "s1",
+          "choice": "calculator",
+          "duration_ms": 12255.21,
+          "probabilities": {
+            "calculator": 0.9999999974312941,
+            "local_text": 4.4243165965895585e-12,
+            "retrieve": 4.5130576841965866e-10,
+            "knowledge_qa": 5.542611826913084e-11,
+            "replan": 1.8320406484011118e-09,
+            "stop": 2.2550900022358177e-10
+          },
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "level": "L0",
+          "prior": "content_free",
+          "calibrated": false,
+          "prompt_version": "chinese-capability-routing-v4",
+          "bias_correction": true,
+          "cold_start": true,
+          "load_ms": 10654.09,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 3944.0,
+            "cuda_peak_allocated_mb": 3930.4,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.9999999969175529
+        },
+        {
+          "event": "decision",
+          "elapsed_ms": 12515.59,
+          "step": 2,
+          "subtask_id": "s2",
+          "choice": "calculator",
+          "duration_ms": 253.33,
+          "probabilities": {
+            "calculator": 0.9999999956236179,
+            "local_text": 4.021652016403591e-12,
+            "retrieve": 8.129641330327532e-10,
+            "knowledge_qa": 1.2361038482352684e-10,
+            "replan": 2.927593487455517e-09,
+            "stop": 5.081925273668339e-10
+          },
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "level": "L0",
+          "prior": "content_free",
+          "calibrated": false,
+          "prompt_version": "chinese-capability-routing-v4",
+          "bias_correction": true,
+          "cold_start": false,
+          "load_ms": 0,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 3944.0,
+            "cuda_peak_allocated_mb": 3932.05,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.9999999947483414
+        },
+        {
+          "event": "decision",
+          "elapsed_ms": 12881.95,
+          "step": 3,
+          "subtask_id": null,
+          "choice": "finish",
+          "duration_ms": 366.18,
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "calibrated": false,
+          "probabilities": {
+            "finish": 0.9999954804830734,
+            "stop": 4.519516926645455e-06
+          },
+          "prompt_version": "general-agent-choice-v1",
+          "cold_start": false,
+          "duration_with_load_ms": 365.56,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4006.0,
+            "cuda_peak_allocated_mb": 3960.65,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.9999909609661468
+        }
+      ],
+      "source_choices": [],
+      "finalized_choices": [
+        {
+          "event": "route_finalized",
+          "elapsed_ms": 12260.1,
+          "step": 1,
+          "initial_choice": "calculator",
+          "choice": "calculator",
+          "reviewed": false
+        },
+        {
+          "event": "route_finalized",
+          "elapsed_ms": 12515.6,
+          "step": 2,
+          "initial_choice": "calculator",
+          "choice": "calculator",
+          "reviewed": false
+        },
+        {
+          "event": "route_finalized",
+          "elapsed_ms": 12881.95,
+          "step": 3,
+          "initial_choice": "finish",
+          "choice": "finish",
+          "reviewed": false
+        }
+      ],
+      "program_adjustments": [],
+      "invocations": [
+        {
+          "event": "invocation_started",
+          "elapsed_ms": 12260.18,
+          "step": 1,
+          "subtask_id": "s1",
+          "action": "calculator",
+          "parameters": {
+            "expression": "(31-7)/3"
+          }
+        },
+        {
+          "event": "invocation_finished",
+          "elapsed_ms": 12260.26,
+          "step": 1,
+          "subtask_id": "s1",
+          "action": "calculator",
+          "call_success": true,
+          "duration_ms": 0.1,
+          "validation": {
+            "status": "needs_review",
+            "semantic_verified": false,
+            "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+          },
+          "available_ram_mb": 15437
+        },
+        {
+          "event": "invocation_started",
+          "elapsed_ms": 12515.67,
+          "step": 2,
+          "subtask_id": "s2",
+          "action": "calculator",
+          "parameters": {
+            "expression": "(2.5+1.5)*4"
+          }
+        },
+        {
+          "event": "invocation_finished",
+          "elapsed_ms": 12515.74,
+          "step": 2,
+          "subtask_id": "s2",
+          "action": "calculator",
+          "call_success": true,
+          "duration_ms": 0.1,
+          "validation": {
+            "status": "needs_review",
+            "semantic_verified": false,
+            "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+          },
+          "available_ram_mb": 15436
+        }
+      ],
+      "input_bindings": {
+        "s1": "$input",
+        "s2": "$input"
+      },
+      "subtask_results": {
+        "s1": {
+          "goal": "计算 (31-7)/3",
+          "service": "calculator",
+          "result": {
+            "value": 8.0,
+            "expression": "(31-7)/3"
+          },
+          "validation": {
+            "status": "needs_review",
+            "semantic_verified": false,
+            "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+          },
+          "input_provenance": {
+            "source": "$input",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "run_id": "dbf6ac5f57c94f25894eda8bed670a2f",
+            "retained_on_continue": false
+          }
+        },
+        "s2": {
+          "goal": "计算 (2.5+1.5)*4",
+          "service": "calculator",
+          "result": {
+            "value": 16.0,
+            "expression": "(2.5+1.5)*4"
+          },
+          "validation": {
+            "status": "needs_review",
+            "semantic_verified": false,
+            "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+          },
+          "input_provenance": {
+            "source": "$input",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "run_id": "dbf6ac5f57c94f25894eda8bed670a2f",
+            "retained_on_continue": false
+          }
+        }
+      },
+      "result": {
+        "text": "【s1】计算 (31-7)/3\n8.0\n\n【s2】计算 (2.5+1.5)*4\n16.0",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "failures_or_limits": [],
+      "resource_samples": [
+        {
+          "elapsed_ms": 0.08,
+          "event": "run_started",
+          "available_ram_mb": 20942
+        },
+        {
+          "elapsed_ms": 12260.1,
+          "event": "decision",
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 3944.0,
+            "cuda_peak_allocated_mb": 3930.4,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        },
+        {
+          "elapsed_ms": 12260.26,
+          "event": "invocation_finished",
+          "available_ram_mb": 15437
+        },
+        {
+          "elapsed_ms": 12515.59,
+          "event": "decision",
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 3944.0,
+            "cuda_peak_allocated_mb": 3932.05,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        },
+        {
+          "elapsed_ms": 12515.74,
+          "event": "invocation_finished",
+          "available_ram_mb": 15436
+        },
+        {
+          "elapsed_ms": 12881.95,
+          "event": "decision",
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4006.0,
+            "cuda_peak_allocated_mb": 3960.65,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        }
+      ],
+      "remote_attempts": 0,
+      "raw_log": "D:\\1 jev\\jev-edge-prototype\\logs\\dbf6ac5f57c94f25894eda8bed670a2f.json",
+      "delivery": {
+        "integrity_verified": true,
+        "scope": "artifact_bytes_and_record_only; answer quality remains separately declared",
+        "partial": false
+      }
+    },
+    {
+      "name": "summary-to-count",
+      "request": {
+        "mode": "agent",
+        "goal": "1. 总结原文\n2. 统计上一步总结结果的字符数",
+        "input": "巡检记录共有8项。2项缺少照片，尚未补齐。原因尚未确认。"
+      },
+      "run_id": "4ac0b6cf0722472a872eeff107a7082e",
+      "task_id": "4ac0b6cf0722472a872eeff107a7082e",
+      "revision": 1,
+      "status": "needs_review",
+      "execution_complete": true,
+      "task_complete": false,
+      "semantic_accuracy": null,
+      "total_ms": 2137.48,
+      "timing_scope": "engine execution, not end-to-end user download",
+      "checks": {
+        "no_remote": true,
+        "executed": true,
+        "summary_to_count": true,
+        "source_quote_correspondence_only": true
+      },
+      "downloads": {
+        "report.md": {
+          "bytes": 1086,
+          "sha256": "7903f3ecf502e9b853d30060076590b3d3b35363c180a2c6caec3c84d41a0b2b"
+        },
+        "report.json": {
+          "bytes": 20290,
+          "sha256": "bbff0ee2199e0e48b393ca4b309d0753a0071f0e98027d06d6a105e777aa2626"
+        }
+      },
+      "decision_calls": 4,
+      "route_reviews": 0,
+      "raw_model_choices": [
+        {
+          "event": "decision",
+          "elapsed_ms": 1000.28,
+          "step": 1,
+          "subtask_id": "s1",
+          "choice": "local_text",
+          "duration_ms": 996.54,
+          "probabilities": {
+            "text_stats": 0.003462079056398627,
+            "local_text": 0.7790275059435897,
+            "retrieve": 0.005536474969071002,
+            "knowledge_qa": 0.0004196798387321975,
+            "replan": 0.0017623082135333566,
+            "stop": 0.20979195197867512
+          },
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "level": "L0",
+          "prior": "content_free",
+          "calibrated": false,
+          "prompt_version": "chinese-capability-routing-v4",
+          "bias_correction": true,
+          "cold_start": false,
+          "load_ms": 0,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4006.0,
+            "cuda_peak_allocated_mb": 3960.65,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.7348330071323077
+        },
+        {
+          "event": "decision",
+          "elapsed_ms": 2000.39,
+          "step": 2,
+          "subtask_id": "s2",
+          "choice": "text_stats",
+          "duration_ms": 258.75,
+          "probabilities": {
+            "text_stats": 0.9999999992110714,
+            "local_text": 3.0824247699021695e-12,
+            "retrieve": 2.8502971720727255e-10,
+            "knowledge_qa": 2.232474952771566e-11,
+            "replan": 4.08735481683908e-10,
+            "stop": 6.975618265731135e-11
+          },
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "level": "L0",
+          "prior": "content_free",
+          "calibrated": false,
+          "prompt_version": "chinese-capability-routing-v4",
+          "bias_correction": true,
+          "cold_start": false,
+          "load_ms": 0,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4006.0,
+            "cuda_peak_allocated_mb": 3960.65,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.9999999990532857
+        },
+        {
+          "event": "decision",
+          "elapsed_ms": 2137.44,
+          "step": 3,
+          "subtask_id": null,
+          "choice": "finish",
+          "duration_ms": 136.91,
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "calibrated": false,
+          "probabilities": {
+            "finish": 0.999780410767844,
+            "stop": 0.0002195892321560005
+          },
+          "prompt_version": "general-agent-choice-v1",
+          "cold_start": false,
+          "duration_with_load_ms": 136.41,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4006.0,
+            "cuda_peak_allocated_mb": 3972.56,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.9995608215356879
+        }
+      ],
+      "source_choices": [
+        {
+          "event": "input_source_decision",
+          "elapsed_ms": 1739.69,
+          "subtask_id": "s2",
+          "choice": "$s1",
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "calibrated": false,
+          "probabilities": {
+            "$input": 8.161614282316002e-11,
+            "$s1": 0.999999999918384
+          },
+          "prompt_version": "general-agent-choice-v1",
+          "cold_start": false,
+          "duration_with_load_ms": 294.42,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4006.0,
+            "cuda_peak_allocated_mb": 3960.65,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.9999999998367679
+        }
+      ],
+      "finalized_choices": [
+        {
+          "event": "route_finalized",
+          "elapsed_ms": 1000.28,
+          "step": 1,
+          "initial_choice": "local_text",
+          "choice": "local_text",
+          "reviewed": false
+        },
+        {
+          "event": "route_finalized",
+          "elapsed_ms": 2000.4,
+          "step": 2,
+          "initial_choice": "text_stats",
+          "choice": "text_stats",
+          "reviewed": false
+        },
+        {
+          "event": "route_finalized",
+          "elapsed_ms": 2137.44,
+          "step": 3,
+          "initial_choice": "finish",
+          "choice": "finish",
+          "reviewed": false
+        }
+      ],
+      "program_adjustments": [],
+      "invocations": [
+        {
+          "event": "invocation_started",
+          "elapsed_ms": 1000.28,
+          "step": 1,
+          "subtask_id": "s1",
+          "action": "local_text",
+          "parameters": {
+            "text": "巡检记录共有8项。2项缺少照片，尚未补齐。原因尚未确认。"
+          }
+        },
+        {
+          "event": "invocation_finished",
+          "elapsed_ms": 1444.7,
+          "step": 1,
+          "subtask_id": "s1",
+          "action": "local_text",
+          "call_success": true,
+          "duration_ms": 444.36,
+          "validation": {
+            "status": "needs_review",
+            "semantic_verified": false,
+            "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+          },
+          "available_ram_mb": 15254
+        },
+        {
+          "event": "invocation_started",
+          "elapsed_ms": 2000.4,
+          "step": 2,
+          "subtask_id": "s2",
+          "action": "text_stats",
+          "parameters": {
+            "text": "原文要点（完整句摘录）：\n“巡检记录共有8项。” [1]\n“2项缺少照片，尚未补齐。” [1]\n“原因尚未确认。” [1]"
+          }
+        },
+        {
+          "event": "invocation_finished",
+          "elapsed_ms": 2000.49,
+          "step": 2,
+          "subtask_id": "s2",
+          "action": "text_stats",
+          "call_success": true,
+          "duration_ms": 0.05,
+          "validation": {
+            "status": "needs_review",
+            "semantic_verified": false,
+            "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+          },
+          "available_ram_mb": 15250
+        }
+      ],
+      "input_bindings": {
+        "s1": "$input",
+        "s2": "$s1"
+      },
+      "subtask_results": {
+        "s1": {
+          "goal": "总结原文",
+          "service": "local_text",
+          "result": {
+            "text": "原文要点（完整句摘录）：\n“巡检记录共有8项。” [1]\n“2项缺少照片，尚未补齐。” [1]\n“原因尚未确认。” [1]",
+            "truncated": false,
+            "model": "Qwen/Qwen3-1.7B",
+            "usage": {
+              "input_tokens": 212,
+              "output_tokens": 13
+            },
+            "answer_mode": "verified_source_quotes",
+            "evidence": [
+              {
+                "source_id": "user_input",
+                "source_number": 1,
+                "quote": "巡检记录共有8项。",
+                "sentence_number": 1
+              },
+              {
+                "source_id": "user_input",
+                "source_number": 1,
+                "quote": "2项缺少照片，尚未补齐。",
+                "sentence_number": 2
+              },
+              {
+                "source_id": "user_input",
+                "source_number": 1,
+                "quote": "原因尚未确认。",
+                "sentence_number": 3
+              }
+            ],
+            "selection_output": "{\"selected\": [1, 2, 3]}",
+            "evidence_selection": {
+              "model_selected": [
+                1,
+                2,
+                3
+              ],
+              "program_required": [
+                2,
+                3
+              ],
+              "final_selected": [
+                1,
+                2,
+                3
+              ],
+              "policy": "preserve_qualifier_sentences"
+            },
+            "evidence_scope": "user_input_only",
+            "quality": {
+              "status": "source_spans_verified",
+              "method": "complete_source_unit_selection_v1",
+              "semantic_verified": false,
+              "limitations": "程序保证原句来源对应；相关性、充分性和资料自身正确性仍需独立核查。"
+            },
+            "generation_attempts": [
+              {
+                "attempt": 1,
+                "kind": "evidence_selection",
+                "raw_text": "{\"selected\": [1, 2, 3]}",
+                "duration_ms": 442.91,
+                "usage": {
+                  "input_tokens": 212,
+                  "output_tokens": 13
+                },
+                "quality": {
+                  "status": "source_spans_verified",
+                  "method": "complete_source_unit_selection_v1",
+                  "semantic_verified": false,
+                  "limitations": "程序保证原句来源对应；相关性、充分性和资料自身正确性仍需独立核查。"
+                },
+                "truncated": false
+              }
+            ],
+            "resources": {
+              "cuda_available": true,
+              "cuda_allocated_mb": 3884.38,
+              "cuda_reserved_mb": 4006.0,
+              "cuda_peak_allocated_mb": 3960.65,
+              "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+            }
+          },
+          "validation": {
+            "status": "needs_review",
+            "semantic_verified": false,
+            "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+          },
+          "input_provenance": {
+            "source": "$input",
+            "sha256": "cb82d997b9c604a675e97d3826859b583ded690bcf8c0d3aa8f439348b493520",
+            "run_id": "4ac0b6cf0722472a872eeff107a7082e",
+            "retained_on_continue": false
+          }
+        },
+        "s2": {
+          "goal": "统计上一步总结结果的字符数",
+          "service": "text_stats",
+          "result": {
+            "characters": 61,
+            "nonempty_lines": 4,
+            "whitespace_words": 7
+          },
+          "validation": {
+            "status": "needs_review",
+            "semantic_verified": false,
+            "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+          },
+          "input_provenance": {
+            "source": "$s1",
+            "sha256": "498b73fee443350679080760d2acec1553af5638125cd8b2c00e37deb8bde663",
+            "run_id": "4ac0b6cf0722472a872eeff107a7082e",
+            "retained_on_continue": false
+          }
+        }
+      },
+      "result": {
+        "text": "【s1】总结原文\n原文要点（完整句摘录）：\n“巡检记录共有8项。” [1]\n“2项缺少照片，尚未补齐。” [1]\n“原因尚未确认。” [1]\n\n【s2】统计上一步总结结果的字符数\n{\"characters\": 61, \"nonempty_lines\": 4, \"whitespace_words\": 7}",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "failures_or_limits": [],
+      "resource_samples": [
+        {
+          "elapsed_ms": 0.06,
+          "event": "run_started",
+          "available_ram_mb": 15439
+        },
+        {
+          "elapsed_ms": 1000.28,
+          "event": "decision",
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4006.0,
+            "cuda_peak_allocated_mb": 3960.65,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        },
+        {
+          "elapsed_ms": 1444.7,
+          "event": "invocation_finished",
+          "available_ram_mb": 15254
+        },
+        {
+          "elapsed_ms": 1739.69,
+          "event": "input_source_decision",
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4006.0,
+            "cuda_peak_allocated_mb": 3960.65,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        },
+        {
+          "elapsed_ms": 2000.39,
+          "event": "decision",
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4006.0,
+            "cuda_peak_allocated_mb": 3960.65,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        },
+        {
+          "elapsed_ms": 2000.49,
+          "event": "invocation_finished",
+          "available_ram_mb": 15250
+        },
+        {
+          "elapsed_ms": 2137.44,
+          "event": "decision",
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4006.0,
+            "cuda_peak_allocated_mb": 3972.56,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        }
+      ],
+      "remote_attempts": 0,
+      "raw_log": "D:\\1 jev\\jev-edge-prototype\\logs\\4ac0b6cf0722472a872eeff107a7082e.json",
+      "delivery": {
+        "integrity_verified": true,
+        "scope": "artifact_bytes_and_record_only; answer quality remains separately declared",
+        "partial": false
+      }
+    },
+    {
+      "name": "csv-to-summary-to-count",
+      "request": {
+        "mode": "agent",
+        "backend": "anyjev",
+        "goal": "1. 分析CSV附件并生成数据报告\n2. 总结上一步报告，保留数据缺失、非法值和限制说明\n3. 统计上一步总结结果的字符数",
+        "input": "",
+        "dataset": {
+          "input_dir": "r1-check-20261015-102534-717384",
+          "files": [
+            "baseline.csv",
+            "current.csv"
+          ],
+          "value_column": "latency_ms",
+          "status_column": "status",
+          "threshold": "200",
+          "include_suggestions": false
+        }
+      },
+      "run_id": "53d509f30dbd4528b9eaeea462b66364",
+      "task_id": "53d509f30dbd4528b9eaeea462b66364",
+      "revision": 1,
+      "status": "needs_review",
+      "execution_complete": true,
+      "task_complete": false,
+      "semantic_accuracy": null,
+      "total_ms": 8688.69,
+      "timing_scope": "engine execution, not end-to-end user download",
+      "checks": {
+        "no_remote": true,
+        "executed": true,
+        "csv_registered_service": true,
+        "input_chain": true,
+        "count_actual_summary": true,
+        "baseline.csv": true,
+        "current.csv": true,
+        "mean_delta": true
+      },
+      "downloads": {
+        "report.md": {
+          "bytes": 2462,
+          "sha256": "0292c26a7be8c9bdf1c296e6d2adeaa2b7c3cf6ae17bc774b1f652461c571ef2"
+        },
+        "report.json": {
+          "bytes": 64091,
+          "sha256": "f55bbb96c80f5309dc45c43acf35d8abcdbdd01d149b8016b3c9213d5861c20a"
+        }
+      },
+      "decision_calls": 6,
+      "route_reviews": 0,
+      "raw_model_choices": [
+        {
+          "event": "decision",
+          "elapsed_ms": 999.14,
+          "step": 1,
+          "subtask_id": "s1",
+          "choice": "dataset_report",
+          "duration_ms": 996.05,
+          "probabilities": {
+            "local_text": 5.9496898102139395e-12,
+            "retrieve": 8.982749721254947e-11,
+            "knowledge_qa": 1.1990559640616028e-10,
+            "dataset_report": 0.9999999988006943,
+            "replan": 9.767333300511538e-10,
+            "stop": 6.889524010231917e-12
+          },
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "level": "L0",
+          "prior": "content_free",
+          "calibrated": false,
+          "prompt_version": "chinese-capability-routing-v4",
+          "bias_correction": true,
+          "cold_start": false,
+          "load_ms": 0,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4006.0,
+            "cuda_peak_allocated_mb": 3972.56,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.9999999985608332
+        },
+        {
+          "event": "decision",
+          "elapsed_ms": 6812.63,
+          "step": 2,
+          "subtask_id": "s2",
+          "choice": "retrieve",
+          "duration_ms": 418.97,
+          "probabilities": {
+            "text_stats": 0.16748192399595577,
+            "local_text": 0.23039793691931462,
+            "retrieve": 0.5880562884801058,
+            "knowledge_qa": 0.007849460615827277,
+            "replan": 0.006143671493485274,
+            "stop": 7.071849531123876e-05
+          },
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "level": "L0",
+          "prior": "content_free",
+          "calibrated": false,
+          "prompt_version": "chinese-capability-routing-v4",
+          "bias_correction": true,
+          "cold_start": false,
+          "load_ms": 0,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4152.0,
+            "cuda_peak_allocated_mb": 4035.04,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.505667546176127
+        },
+        {
+          "event": "decision",
+          "elapsed_ms": 8379.86,
+          "step": 3,
+          "subtask_id": "s3",
+          "choice": "text_stats",
+          "duration_ms": 415.75,
+          "probabilities": {
+            "text_stats": 0.9999999685419502,
+            "local_text": 2.262638552938882e-11,
+            "retrieve": 1.0100112746084138e-08,
+            "knowledge_qa": 1.0659615828932972e-09,
+            "replan": 1.8792127092653663e-08,
+            "stop": 1.4772220046946967e-09
+          },
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "level": "L0",
+          "prior": "content_free",
+          "calibrated": false,
+          "prompt_version": "chinese-capability-routing-v4",
+          "bias_correction": true,
+          "cold_start": false,
+          "load_ms": 0,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4204.0,
+            "cuda_peak_allocated_mb": 4049.15,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.9999999622503402
+        },
+        {
+          "event": "decision",
+          "elapsed_ms": 8688.64,
+          "step": 4,
+          "subtask_id": null,
+          "choice": "finish",
+          "duration_ms": 308.65,
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "calibrated": false,
+          "probabilities": {
+            "finish": 0.9999905066871553,
+            "stop": 9.49331284475084e-06
+          },
+          "prompt_version": "general-agent-choice-v1",
+          "cold_start": false,
+          "duration_with_load_ms": 307.96,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4280.0,
+            "cuda_peak_allocated_mb": 4104.09,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.9999810133743106
+        }
+      ],
+      "source_choices": [
+        {
+          "event": "input_source_decision",
+          "elapsed_ms": 6391.56,
+          "subtask_id": "s2",
+          "choice": "$s1",
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "calibrated": false,
+          "probabilities": {
+            "$input": 2.2334041291328598e-08,
+            "$s1": 0.9999999776659587
+          },
+          "prompt_version": "general-agent-choice-v1",
+          "cold_start": false,
+          "duration_with_load_ms": 350.81,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4152.0,
+            "cuda_peak_allocated_mb": 4035.04,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.9999999553319174
+        },
+        {
+          "event": "input_source_decision",
+          "elapsed_ms": 7961.64,
+          "subtask_id": "s3",
+          "choice": "$s2",
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "calibrated": false,
+          "probabilities": {
+            "$input": 4.154947473373243e-12,
+            "$s1": 1.8841734474629594e-10,
+            "$s2": 0.9999999998074277
+          },
+          "prompt_version": "general-agent-choice-v1",
+          "cold_start": false,
+          "duration_with_load_ms": 655.75,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4204.0,
+            "cuda_peak_allocated_mb": 4049.15,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.9999999997111414
+        }
+      ],
+      "finalized_choices": [
+        {
+          "event": "route_finalized",
+          "elapsed_ms": 999.14,
+          "step": 1,
+          "initial_choice": "dataset_report",
+          "choice": "dataset_report",
+          "reviewed": false
+        },
+        {
+          "event": "route_finalized",
+          "elapsed_ms": 6812.65,
+          "step": 2,
+          "initial_choice": "retrieve",
+          "choice": "local_text",
+          "reviewed": true
+        },
+        {
+          "event": "route_finalized",
+          "elapsed_ms": 8379.86,
+          "step": 3,
+          "initial_choice": "text_stats",
+          "choice": "text_stats",
+          "reviewed": false
+        },
+        {
+          "event": "route_finalized",
+          "elapsed_ms": 8688.64,
+          "step": 4,
+          "initial_choice": "finish",
+          "choice": "finish",
+          "reviewed": false
+        }
+      ],
+      "program_adjustments": [
+        {
+          "event": "controller_override",
+          "elapsed_ms": 6812.65,
+          "step": 2,
+          "original_choice": "retrieve",
+          "choice": "local_text",
+          "reason": "原文变换必须处理当前绑定资料，不能用计数或重新检索替代。",
+          "method": "supplied_text_source_policy"
+        }
+      ],
+      "invocations": [
+        {
+          "event": "invocation_started",
+          "elapsed_ms": 999.74,
+          "step": 1,
+          "subtask_id": "s1",
+          "action": "dataset_report",
+          "parameters": {
+            "dataset": {
+              "input_dir": "r1-check-20261015-102534-717384",
+              "files": [
+                "baseline.csv",
+                "current.csv"
+              ],
+              "value_column": "latency_ms",
+              "status_column": "status",
+              "threshold": "200",
+              "include_suggestions": false
+            }
+          }
+        },
+        {
+          "event": "invocation_finished",
+          "elapsed_ms": 6040.19,
+          "step": 1,
+          "subtask_id": "s1",
+          "action": "dataset_report",
+          "call_success": true,
+          "duration_ms": 5040.99,
+          "validation": {
+            "status": "needs_review",
+            "semantic_verified": false,
+            "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+          },
+          "available_ram_mb": 15201
+        },
+        {
+          "event": "invocation_started",
+          "elapsed_ms": 6812.66,
+          "step": 2,
+          "subtask_id": "s2",
+          "action": "local_text",
+          "parameters": {
+            "text": "以下数值来自本次文件分析；状态计数不是答案正确率。\n文件baseline.csv共有4条记录，其中有效数值2条，缺失1条，非法值1条，均值150.000000，中位数150.000000。\n文件current.csv共有4条记录，其中有效数值4条，缺失0条，非法值0条，均值180.000000，中位数180.000000。\n第二份减第一份：记录数差0，均值差30.000000。\n控制器仅保留有上限的明细预览；省略数量明确标注，全部状态和行明细以已核验CSV成果为准。"
+          }
+        },
+        {
+          "event": "invocation_finished",
+          "elapsed_ms": 7304.26,
+          "step": 2,
+          "subtask_id": "s2",
+          "action": "local_text",
+          "call_success": true,
+          "duration_ms": 491.55,
+          "validation": {
+            "status": "needs_review",
+            "semantic_verified": false,
+            "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+          },
+          "available_ram_mb": 15204
+        },
+        {
+          "event": "invocation_started",
+          "elapsed_ms": 8379.87,
+          "step": 3,
+          "subtask_id": "s3",
+          "action": "text_stats",
+          "parameters": {
+            "text": "原文要点（完整句摘录）：\n“以下数值来自本次文件分析；状态计数不是答案正确率。” [1]\n“文件baseline.csv共有4条记录，其中有效数值2条，缺失1条，非法值1条，均值150.000000，中位数150.000000。” [1]\n“文件current.csv共有4条记录，其中有效数值4条，缺失0条，非法值0条，均值180.000000，中位数180.000000。” [1]\n“第二份减第一份：记录数差0，均值差30.000000。” [1]\n“控制器仅保留有上限的明细预览；省略数量明确标注，全部状态和行明细以已核验CSV成果为准。” [1]"
+          }
+        },
+        {
+          "event": "invocation_finished",
+          "elapsed_ms": 8379.95,
+          "step": 3,
+          "subtask_id": "s3",
+          "action": "text_stats",
+          "call_success": true,
+          "duration_ms": 0.04,
+          "validation": {
+            "status": "needs_review",
+            "semantic_verified": false,
+            "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+          },
+          "available_ram_mb": 15197
+        }
+      ],
+      "input_bindings": {
+        "s1": "$input",
+        "s2": "$s1",
+        "s3": "$s2"
+      },
+      "subtask_results": {
+        "s1": {
+          "goal": "分析CSV附件并生成数据报告",
+          "service": "dataset_report",
+          "result": {
+            "text": "以下数值来自本次文件分析；状态计数不是答案正确率。\n文件baseline.csv共有4条记录，其中有效数值2条，缺失1条，非法值1条，均值150.000000，中位数150.000000。\n文件current.csv共有4条记录，其中有效数值4条，缺失0条，非法值0条，均值180.000000，中位数180.000000。\n第二份减第一份：记录数差0，均值差30.000000。\n控制器仅保留有上限的明细预览；省略数量明确标注，全部状态和行明细以已核验CSV成果为准。",
+            "statistics": {
+              "baseline.csv": {
+                "rows": 4,
+                "numeric_rows": 2,
+                "missing_rows": [
+                  4
+                ],
+                "invalid_rows": [
+                  5
+                ],
+                "minimum": "120.000000",
+                "maximum": "180.000000",
+                "mean": "150.000000",
+                "median": "150.000000",
+                "status_counts": {
+                  "bad": 1,
+                  "missing": 1,
+                  "ok": 2
+                },
+                "numeric_scope": "only finite numeric cells; missing/invalid cells separately disclosed",
+                "status_meaning": "literal field counts, not semantic correctness or task success"
+              },
+              "current.csv": {
+                "rows": 4,
+                "numeric_rows": 4,
+                "missing_rows": [],
+                "invalid_rows": [],
+                "minimum": "90.000000",
+                "maximum": "270.000000",
+                "mean": "180.000000",
+                "median": "180.000000",
+                "status_counts": {
+                  "needs_review": 1,
+                  "ok": 3
+                },
+                "numeric_scope": "only finite numeric cells; missing/invalid cells separately disclosed",
+                "status_meaning": "literal field counts, not semantic correctness or task success"
+              }
+            },
+            "comparison": {
+              "first": "baseline.csv",
+              "second": "current.csv",
+              "rows_delta": 0,
+              "mean_delta": "30.000000",
+              "status_counts": {
+                "baseline.csv": {
+                  "bad": 1,
+                  "missing": 1,
+                  "ok": 2
+                },
+                "current.csv": {
+                  "needs_review": 1,
+                  "ok": 3
+                }
+              },
+              "scope": "第二份减第一份的描述性差异；样本或负载可能不同，不证明因果、性能优势或答案质量。"
+            },
+            "threshold_checks": {
+              "baseline.csv": {
+                "operator": ">",
+                "threshold": "200",
+                "count": 0,
+                "matches": [],
+                "missing_rows": [
+                  4
+                ],
+                "invalid_rows": [
+                  5
+                ]
+              },
+              "current.csv": {
+                "operator": ">",
+                "threshold": "200",
+                "count": 2,
+                "matches": [
+                  {
+                    "source_row": 4,
+                    "value": "210"
+                  },
+                  {
+                    "source_row": 5,
+                    "value": "270"
+                  }
+                ],
+                "missing_rows": [],
+                "invalid_rows": []
+              }
+            },
+            "detail_scope": {
+              "kind": "bounded_controller_preview",
+              "list_limit": 50,
+              "status_entry_limit": 20,
+              "status_utf8_bytes_limit": 4000,
+              "full_details": [
+                {
+                  "name": "report.md",
+                  "url": "/v1/artifacts/3744b8e9512e40daa0e95c9cba873be1/report.md"
+                },
+                {
+                  "name": "report.json",
+                  "url": "/v1/artifacts/3744b8e9512e40daa0e95c9cba873be1/report.json"
+                }
+              ],
+              "omissions": "Fields ending _omitted explicitly count omitted entries; original verified artifacts are complete."
+            },
+            "artifacts": [
+              {
+                "name": "report.md",
+                "url": "/v1/artifacts/3744b8e9512e40daa0e95c9cba873be1/report.md"
+              },
+              {
+                "name": "report.json",
+                "url": "/v1/artifacts/3744b8e9512e40daa0e95c9cba873be1/report.json"
+              }
+            ],
+            "workflow_run": {
+              "run_id": "3744b8e9512e40daa0e95c9cba873be1",
+              "mode": "workflow",
+              "backend": "anyjev",
+              "status": "completed",
+              "task_complete": true,
+              "completion_scope": "deterministic_dataset_contract",
+              "invocation_attempts": 11,
+              "successful_calls": 11,
+              "route_reviews": 0,
+              "artifact_repairs": 0,
+              "remote_attempts": 0,
+              "total_ms": 5031.63,
+              "semantic_accuracy": null,
+              "record_scope": "summary_only; full decisions, failures and numerical details remain in original log/artifacts",
+              "log_file": "D:\\1 jev\\jev-edge-prototype\\logs\\3744b8e9512e40daa0e95c9cba873be1.json",
+              "log_reference": {
+                "path": "D:\\1 jev\\jev-edge-prototype\\logs\\3744b8e9512e40daa0e95c9cba873be1.json",
+                "sha256": "4011c54eb70a6d5044ef2bce604049702349448f718dcad20f17a9a08cb0487c"
+              },
+              "decision_calls": 11,
+              "trace": [
+                {
+                  "event": "decision",
+                  "elapsed_ms": 311.87,
+                  "step": 1,
+                  "duration_ms": 311.72,
+                  "backend": "anyjev",
+                  "choice": "inspect"
+                },
+                {
+                  "event": "route_finalized",
+                  "elapsed_ms": 311.87,
+                  "step": 1,
+                  "initial_choice": "inspect",
+                  "choice": "inspect",
+                  "reviewed": false,
+                  "review_changed_choice": false
+                },
+                {
+                  "event": "invocation_started",
+                  "elapsed_ms": 311.88,
+                  "step": 1,
+                  "action": "inspect"
+                },
+                {
+                  "event": "invocation_finished",
+                  "elapsed_ms": 312.99,
+                  "step": 1,
+                  "action": "inspect",
+                  "call_success": true,
+                  "duration_ms": 1.12
+                },
+                {
+                  "event": "decision",
+                  "elapsed_ms": 810.63,
+                  "step": 2,
+                  "duration_ms": 497.61,
+                  "backend": "anyjev",
+                  "choice": "load_0"
+                },
+                {
+                  "event": "route_finalized",
+                  "elapsed_ms": 810.63,
+                  "step": 2,
+                  "initial_choice": "load_0",
+                  "choice": "load_0",
+                  "reviewed": false,
+                  "review_changed_choice": false
+                },
+                {
+                  "event": "invocation_started",
+                  "elapsed_ms": 810.64,
+                  "step": 2,
+                  "action": "load_0"
+                },
+                {
+                  "event": "invocation_finished",
+                  "elapsed_ms": 813.19,
+                  "step": 2,
+                  "action": "load_0",
+                  "call_success": true,
+                  "duration_ms": 2.55
+                },
+                {
+                  "event": "decision",
+                  "elapsed_ms": 1307.38,
+                  "step": 3,
+                  "duration_ms": 494.16,
+                  "backend": "anyjev",
+                  "choice": "load_1"
+                },
+                {
+                  "event": "route_finalized",
+                  "elapsed_ms": 1307.39,
+                  "step": 3,
+                  "initial_choice": "load_1",
+                  "choice": "load_1",
+                  "reviewed": false,
+                  "review_changed_choice": false
+                },
+                {
+                  "event": "invocation_started",
+                  "elapsed_ms": 1307.39,
+                  "step": 3,
+                  "action": "load_1"
+                },
+                {
+                  "event": "invocation_finished",
+                  "elapsed_ms": 1309.78,
+                  "step": 3,
+                  "action": "load_1",
+                  "call_success": true,
+                  "duration_ms": 2.38
+                },
+                {
+                  "event": "decision",
+                  "elapsed_ms": 1831.62,
+                  "step": 4,
+                  "duration_ms": 521.81,
+                  "backend": "anyjev",
+                  "choice": "stats_0"
+                },
+                {
+                  "event": "route_finalized",
+                  "elapsed_ms": 1831.62,
+                  "step": 4,
+                  "initial_choice": "stats_0",
+                  "choice": "stats_0",
+                  "reviewed": false,
+                  "review_changed_choice": false
+                },
+                {
+                  "event": "invocation_started",
+                  "elapsed_ms": 1831.62,
+                  "step": 4,
+                  "action": "stats_0"
+                },
+                {
+                  "event": "invocation_finished",
+                  "elapsed_ms": 1831.74,
+                  "step": 4,
+                  "action": "stats_0",
+                  "call_success": true,
+                  "duration_ms": 0.12
+                },
+                {
+                  "event": "decision",
+                  "elapsed_ms": 2388.45,
+                  "step": 5,
+                  "duration_ms": 556.68,
+                  "backend": "anyjev",
+                  "choice": "threshold_0"
+                },
+                {
+                  "event": "route_finalized",
+                  "elapsed_ms": 2388.46,
+                  "step": 5,
+                  "initial_choice": "threshold_0",
+                  "choice": "threshold_0",
+                  "reviewed": false,
+                  "review_changed_choice": false
+                },
+                {
+                  "event": "invocation_started",
+                  "elapsed_ms": 2388.46,
+                  "step": 5,
+                  "action": "threshold_0"
+                },
+                {
+                  "event": "invocation_finished",
+                  "elapsed_ms": 2388.49,
+                  "step": 5,
+                  "action": "threshold_0",
+                  "call_success": true,
+                  "duration_ms": 0.03
+                },
+                {
+                  "event": "decision",
+                  "elapsed_ms": 2741.04,
+                  "step": 6,
+                  "duration_ms": 352.52,
+                  "backend": "anyjev",
+                  "choice": "stats_1"
+                },
+                {
+                  "event": "route_finalized",
+                  "elapsed_ms": 2741.04,
+                  "step": 6,
+                  "initial_choice": "stats_1",
+                  "choice": "stats_1",
+                  "reviewed": false,
+                  "review_changed_choice": false
+                },
+                {
+                  "event": "invocation_started",
+                  "elapsed_ms": 2741.05,
+                  "step": 6,
+                  "action": "stats_1"
+                },
+                {
+                  "event": "invocation_finished",
+                  "elapsed_ms": 2741.11,
+                  "step": 6,
+                  "action": "stats_1",
+                  "call_success": true,
+                  "duration_ms": 0.07
+                },
+                {
+                  "event": "decision",
+                  "elapsed_ms": 3363.2,
+                  "step": 7,
+                  "duration_ms": 621.78,
+                  "backend": "anyjev",
+                  "choice": "threshold_1"
+                },
+                {
+                  "event": "route_finalized",
+                  "elapsed_ms": 3363.21,
+                  "step": 7,
+                  "initial_choice": "threshold_1",
+                  "choice": "threshold_1",
+                  "reviewed": false,
+                  "review_changed_choice": false
+                },
+                {
+                  "event": "invocation_started",
+                  "elapsed_ms": 3363.21,
+                  "step": 7,
+                  "action": "threshold_1"
+                },
+                {
+                  "event": "invocation_finished",
+                  "elapsed_ms": 3363.24,
+                  "step": 7,
+                  "action": "threshold_1",
+                  "call_success": true,
+                  "duration_ms": 0.03
+                },
+                {
+                  "event": "decision",
+                  "elapsed_ms": 3781.31,
+                  "step": 8,
+                  "duration_ms": 417.79,
+                  "backend": "anyjev",
+                  "choice": "compare"
+                },
+                {
+                  "event": "route_finalized",
+                  "elapsed_ms": 3781.31,
+                  "step": 8,
+                  "initial_choice": "compare",
+                  "choice": "compare",
+                  "reviewed": false,
+                  "review_changed_choice": false
+                },
+                {
+                  "event": "invocation_started",
+                  "elapsed_ms": 3781.31,
+                  "step": 8,
+                  "action": "compare"
+                },
+                {
+                  "event": "invocation_finished",
+                  "elapsed_ms": 3781.36,
+                  "step": 8,
+                  "action": "compare",
+                  "call_success": true,
+                  "duration_ms": 0.05
+                },
+                {
+                  "event": "decision",
+                  "elapsed_ms": 4177.63,
+                  "step": 9,
+                  "duration_ms": 395.84,
+                  "backend": "anyjev",
+                  "choice": "write"
+                },
+                {
+                  "event": "route_finalized",
+                  "elapsed_ms": 4177.63,
+                  "step": 9,
+                  "initial_choice": "write",
+                  "choice": "write",
+                  "reviewed": false,
+                  "review_changed_choice": false
+                },
+                {
+                  "event": "invocation_started",
+                  "elapsed_ms": 4177.64,
+                  "step": 9,
+                  "action": "write"
+                },
+                {
+                  "event": "invocation_finished",
+                  "elapsed_ms": 4187.43,
+                  "step": 9,
+                  "action": "write",
+                  "call_success": true,
+                  "duration_ms": 9.79
+                },
+                {
+                  "event": "decision",
+                  "elapsed_ms": 4588.74,
+                  "step": 10,
+                  "duration_ms": 401.27,
+                  "backend": "anyjev",
+                  "choice": "verify"
+                },
+                {
+                  "event": "route_finalized",
+                  "elapsed_ms": 4588.74,
+                  "step": 10,
+                  "initial_choice": "verify",
+                  "choice": "verify",
+                  "reviewed": false,
+                  "review_changed_choice": false
+                },
+                {
+                  "event": "invocation_started",
+                  "elapsed_ms": 4588.74,
+                  "step": 10,
+                  "action": "verify"
+                },
+                {
+                  "event": "invocation_finished",
+                  "elapsed_ms": 4591.78,
+                  "step": 10,
+                  "action": "verify",
+                  "call_success": true,
+                  "duration_ms": 3.04
+                },
+                {
+                  "event": "decision",
+                  "elapsed_ms": 5028.27,
+                  "step": 11,
+                  "duration_ms": 436.46,
+                  "backend": "anyjev",
+                  "choice": "finish"
+                },
+                {
+                  "event": "route_finalized",
+                  "elapsed_ms": 5028.27,
+                  "step": 11,
+                  "initial_choice": "finish",
+                  "choice": "finish",
+                  "reviewed": false,
+                  "review_changed_choice": false
+                },
+                {
+                  "event": "invocation_started",
+                  "elapsed_ms": 5028.28,
+                  "step": 11,
+                  "action": "finish"
+                },
+                {
+                  "event": "invocation_finished",
+                  "elapsed_ms": 5031.61,
+                  "step": 11,
+                  "action": "finish",
+                  "call_success": true,
+                  "duration_ms": 3.33
+                }
+              ],
+              "trace_total": 44,
+              "trace_omitted": 0,
+              "artifacts": [
+                {
+                  "name": "report.md",
+                  "url": "/v1/artifacts/3744b8e9512e40daa0e95c9cba873be1/report.md"
+                },
+                {
+                  "name": "report.json",
+                  "url": "/v1/artifacts/3744b8e9512e40daa0e95c9cba873be1/report.json"
+                }
+              ]
+            },
+            "quality": {
+              "status": "deterministic_dataset_contract",
+              "semantic_verified": false
+            }
+          },
+          "validation": {
+            "status": "needs_review",
+            "semantic_verified": false,
+            "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+          },
+          "input_provenance": {
+            "source": "$input",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "run_id": "53d509f30dbd4528b9eaeea462b66364",
+            "retained_on_continue": false
+          }
+        },
+        "s2": {
+          "goal": "总结上一步报告，保留数据缺失、非法值和限制说明",
+          "service": "local_text",
+          "result": {
+            "text": "原文要点（完整句摘录）：\n“以下数值来自本次文件分析；状态计数不是答案正确率。” [1]\n“文件baseline.csv共有4条记录，其中有效数值2条，缺失1条，非法值1条，均值150.000000，中位数150.000000。” [1]\n“文件current.csv共有4条记录，其中有效数值4条，缺失0条，非法值0条，均值180.000000，中位数180.000000。” [1]\n“第二份减第一份：记录数差0，均值差30.000000。” [1]\n“控制器仅保留有上限的明细预览；省略数量明确标注，全部状态和行明细以已核验CSV成果为准。” [1]",
+            "truncated": false,
+            "model": "Qwen/Qwen3-1.7B",
+            "usage": {
+              "input_tokens": 425,
+              "output_tokens": 16
+            },
+            "answer_mode": "verified_source_quotes",
+            "evidence": [
+              {
+                "source_id": "user_input",
+                "source_number": 1,
+                "quote": "以下数值来自本次文件分析；状态计数不是答案正确率。",
+                "sentence_number": 1
+              },
+              {
+                "source_id": "user_input",
+                "source_number": 1,
+                "quote": "文件baseline.csv共有4条记录，其中有效数值2条，缺失1条，非法值1条，均值150.000000，中位数150.000000。",
+                "sentence_number": 2
+              },
+              {
+                "source_id": "user_input",
+                "source_number": 1,
+                "quote": "文件current.csv共有4条记录，其中有效数值4条，缺失0条，非法值0条，均值180.000000，中位数180.000000。",
+                "sentence_number": 3
+              },
+              {
+                "source_id": "user_input",
+                "source_number": 1,
+                "quote": "第二份减第一份：记录数差0，均值差30.000000。",
+                "sentence_number": 4
+              },
+              {
+                "source_id": "user_input",
+                "source_number": 1,
+                "quote": "控制器仅保留有上限的明细预览；省略数量明确标注，全部状态和行明细以已核验CSV成果为准。",
+                "sentence_number": 5
+              }
+            ],
+            "selection_output": "{\"selected\": [2, 3, 4, 5]}",
+            "evidence_selection": {
+              "model_selected": [
+                2,
+                3,
+                4,
+                5
+              ],
+              "program_required": [
+                1,
+                5
+              ],
+              "final_selected": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "policy": "preserve_qualifier_sentences"
+            },
+            "evidence_scope": "user_input_only",
+            "quality": {
+              "status": "source_spans_verified",
+              "method": "complete_source_unit_selection_v1",
+              "semantic_verified": false,
+              "limitations": "程序保证原句来源对应；相关性、充分性和资料自身正确性仍需独立核查。"
+            },
+            "generation_attempts": [
+              {
+                "attempt": 1,
+                "kind": "evidence_selection",
+                "raw_text": "{\"selected\": [2, 3, 4, 5]}",
+                "duration_ms": 490.5,
+                "usage": {
+                  "input_tokens": 425,
+                  "output_tokens": 16
+                },
+                "quality": {
+                  "status": "source_spans_verified",
+                  "method": "complete_source_unit_selection_v1",
+                  "semantic_verified": false,
+                  "limitations": "程序保证原句来源对应；相关性、充分性和资料自身正确性仍需独立核查。"
+                },
+                "truncated": false
+              }
+            ],
+            "resources": {
+              "cuda_available": true,
+              "cuda_allocated_mb": 3884.38,
+              "cuda_reserved_mb": 4152.0,
+              "cuda_peak_allocated_mb": 4035.04,
+              "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+            }
+          },
+          "validation": {
+            "status": "needs_review",
+            "semantic_verified": false,
+            "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+          },
+          "input_provenance": {
+            "source": "$s1",
+            "sha256": "8f36987cf6c5b30db37d0160f14a98e3b3b021e126a09285d1f25b7acc071ede",
+            "run_id": "53d509f30dbd4528b9eaeea462b66364",
+            "retained_on_continue": false
+          }
+        },
+        "s3": {
+          "goal": "统计上一步总结结果的字符数",
+          "service": "text_stats",
+          "result": {
+            "characters": 278,
+            "nonempty_lines": 6,
+            "whitespace_words": 11
+          },
+          "validation": {
+            "status": "needs_review",
+            "semantic_verified": false,
+            "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+          },
+          "input_provenance": {
+            "source": "$s2",
+            "sha256": "d200be596748c8438845263a348be83850bc304f780fceb364b119b40e17593a",
+            "run_id": "53d509f30dbd4528b9eaeea462b66364",
+            "retained_on_continue": false
+          }
+        }
+      },
+      "result": {
+        "text": "【s1】分析CSV附件并生成数据报告\n以下数值来自本次文件分析；状态计数不是答案正确率。\n文件baseline.csv共有4条记录，其中有效数值2条，缺失1条，非法值1条，均值150.000000，中位数150.000000。\n文件current.csv共有4条记录，其中有效数值4条，缺失0条，非法值0条，均值180.000000，中位数180.000000。\n第二份减第一份：记录数差0，均值差30.000000。\n控制器仅保留有上限的明细预览；省略数量明确标注，全部状态和行明细以已核验CSV成果为准。\n\n【s2】总结上一步报告，保留数据缺失、非法值和限制说明\n原文要点（完整句摘录）：\n“以下数值来自本次文件分析；状态计数不是答案正确率。” [1]\n“文件baseline.csv共有4条记录，其中有效数值2条，缺失1条，非法值1条，均值150.000000，中位数150.000000。” [1]\n“文件current.csv共有4条记录，其中有效数值4条，缺失0条，非法值0条，均值180.000000，中位数180.000000。” [1]\n“第二份减第一份：记录数差0，均值差30.000000。” [1]\n“控制器仅保留有上限的明细预览；省略数量明确标注，全部状态和行明细以已核验CSV成果为准。” [1]\n\n【s3】统计上一步总结结果的字符数\n{\"characters\": 278, \"nonempty_lines\": 6, \"whitespace_words\": 11}",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "failures_or_limits": [],
+      "resource_samples": [
+        {
+          "elapsed_ms": 0.06,
+          "event": "run_started",
+          "available_ram_mb": 15257
+        },
+        {
+          "elapsed_ms": 999.14,
+          "event": "decision",
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4006.0,
+            "cuda_peak_allocated_mb": 3972.56,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        },
+        {
+          "elapsed_ms": 6040.19,
+          "event": "invocation_finished",
+          "available_ram_mb": 15201
+        },
+        {
+          "elapsed_ms": 6391.56,
+          "event": "input_source_decision",
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4152.0,
+            "cuda_peak_allocated_mb": 4035.04,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        },
+        {
+          "elapsed_ms": 6812.63,
+          "event": "decision",
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4152.0,
+            "cuda_peak_allocated_mb": 4035.04,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        },
+        {
+          "elapsed_ms": 7304.26,
+          "event": "invocation_finished",
+          "available_ram_mb": 15204
+        },
+        {
+          "elapsed_ms": 7961.64,
+          "event": "input_source_decision",
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4204.0,
+            "cuda_peak_allocated_mb": 4049.15,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        },
+        {
+          "elapsed_ms": 8379.86,
+          "event": "decision",
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4204.0,
+            "cuda_peak_allocated_mb": 4049.15,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        },
+        {
+          "elapsed_ms": 8379.95,
+          "event": "invocation_finished",
+          "available_ram_mb": 15197
+        },
+        {
+          "elapsed_ms": 8688.64,
+          "event": "decision",
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4280.0,
+            "cuda_peak_allocated_mb": 4104.09,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        }
+      ],
+      "remote_attempts": 0,
+      "raw_log": "D:\\1 jev\\jev-edge-prototype\\logs\\53d509f30dbd4528b9eaeea462b66364.json",
+      "delivery": {
+        "integrity_verified": true,
+        "scope": "artifact_bytes_and_record_only; answer quality remains separately declared",
+        "partial": false
+      }
+    },
+    {
+      "name": "unsupported-device",
+      "request": {
+        "mode": "agent",
+        "goal": "连接我家的摄像头，查看此刻客厅是否有人，并关闭客厅灯。",
+        "input": ""
+      },
+      "run_id": "66cfdd3b46554aceadc1e0805d2a7a77",
+      "task_id": "66cfdd3b46554aceadc1e0805d2a7a77",
+      "revision": 1,
+      "status": "stopped",
+      "execution_complete": false,
+      "task_complete": false,
+      "semantic_accuracy": null,
+      "total_ms": 544.01,
+      "timing_scope": "engine execution, not end-to-end user download",
+      "checks": {
+        "no_remote": true,
+        "stopped_without_actuation": true
+      },
+      "downloads": {
+        "report.md": {
+          "bytes": 853,
+          "sha256": "c4fbb321c791880f3f6542d4f9e9f5bc7d4d5370f01cd5ac48c07f04f35dcbed"
+        },
+        "report.json": {
+          "bytes": 5208,
+          "sha256": "070e31773e18dccfaad622103b5a2a2b5f3f3f1475165443966e9451657716cb"
+        }
+      },
+      "decision_calls": 1,
+      "route_reviews": 0,
+      "raw_model_choices": [
+        {
+          "event": "decision",
+          "elapsed_ms": 543.99,
+          "step": 0,
+          "choice": "stop",
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "calibrated": false,
+          "probabilities": {
+            "plan": 0.08295898848029187,
+            "clarify": 0.0010891732945132956,
+            "stop": 0.9159518382251949
+          },
+          "prompt_version": "general-agent-choice-v1",
+          "cold_start": false,
+          "duration_with_load_ms": 542.42,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4280.0,
+            "cuda_peak_allocated_mb": 4104.09,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.8739277573377922
+        }
+      ],
+      "source_choices": [],
+      "finalized_choices": [
+        {
+          "event": "route_finalized",
+          "elapsed_ms": 544.0,
+          "step": 0,
+          "initial_choice": "stop",
+          "choice": "stop",
+          "reviewed": false
+        }
+      ],
+      "program_adjustments": [],
+      "invocations": [],
+      "input_bindings": {},
+      "subtask_results": {},
+      "result": {
+        "text": "决策模块判断当前离线能力不足，已停止；未执行设备或联网操作。",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "failures_or_limits": [
+        {
+          "event": "run_interrupted",
+          "elapsed_ms": 544.0,
+          "error": "决策模块判断当前离线能力不足，已停止；未执行设备或联网操作。"
+        }
+      ],
+      "resource_samples": [
+        {
+          "elapsed_ms": 0.06,
+          "event": "run_started",
+          "available_ram_mb": 15196
+        },
+        {
+          "elapsed_ms": 543.99,
+          "event": "decision",
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4280.0,
+            "cuda_peak_allocated_mb": 4104.09,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        }
+      ],
+      "remote_attempts": 0,
+      "raw_log": "D:\\1 jev\\jev-edge-prototype\\logs\\66cfdd3b46554aceadc1e0805d2a7a77.json",
+      "delivery": {
+        "integrity_verified": true,
+        "scope": "artifact_bytes_and_record_only; answer quality remains separately declared",
+        "partial": true
+      }
+    },
+    {
+      "name": "legacy-single-calculation",
+      "request": {
+        "goal": "计算 (23+17)/5",
+        "backend": "anyjev",
+        "validation": {
+          "expected_value": 8
+        }
+      },
+      "run_id": "583a81d14a8440369bd0cfb800294af7",
+      "task_id": "583a81d14a8440369bd0cfb800294af7",
+      "revision": 1,
+      "status": "completed",
+      "execution_complete": true,
+      "task_complete": true,
+      "semantic_accuracy": null,
+      "total_ms": 578.19,
+      "timing_scope": "engine execution, not end-to-end user download",
+      "checks": {
+        "no_remote": true,
+        "declared_value": true
+      },
+      "downloads": {
+        "report.md": {
+          "bytes": 577,
+          "sha256": "13cfb2ceafcdfdeba2ed80c8a3e244cc2c5761baa332dc1a631da49d36ea63a3"
+        },
+        "report.json": {
+          "bytes": 15136,
+          "sha256": "52d4ec6395c41c0af241360349a0ff5661109035b1825e1288c879ae811d767b"
+        }
+      },
+      "decision_calls": null,
+      "route_reviews": 0,
+      "raw_model_choices": [
+        {
+          "event": "decision",
+          "elapsed_ms": 578.02,
+          "step": 1,
+          "duration_ms": 574.22,
+          "probabilities": {
+            "calculator": 0.9999999988190899,
+            "local_text": 8.04908145951641e-12,
+            "knowledge_qa": 9.415828093455083e-10,
+            "stop": 2.3127828399118768e-10
+          },
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "level": "L0",
+          "prior": "content_free",
+          "calibrated": false,
+          "prompt_version": "chinese-capability-routing-v4",
+          "bias_correction": true,
+          "cold_start": false,
+          "load_ms": 0,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4280.0,
+            "cuda_peak_allocated_mb": 4104.09,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.9999999984254532,
+          "choice": "calculator"
+        }
+      ],
+      "source_choices": [],
+      "finalized_choices": [
+        {
+          "event": "route_finalized",
+          "elapsed_ms": 578.05,
+          "step": 1,
+          "initial_choice": "calculator",
+          "choice": "calculator",
+          "reviewed": false,
+          "note": "初始、复核、程序约束分别记录；不等于实际执行成功"
+        }
+      ],
+      "program_adjustments": [],
+      "invocations": [
+        {
+          "event": "invocation_started",
+          "elapsed_ms": 578.11,
+          "step": 1,
+          "action": "calculator",
+          "parameters": {
+            "expression": "(23+17)/5"
+          }
+        },
+        {
+          "event": "invocation_finished",
+          "elapsed_ms": 578.18,
+          "step": 1,
+          "action": "calculator",
+          "call_success": true,
+          "duration_ms": 0.09,
+          "validation": {
+            "status": "passed",
+            "declared_checks_passed": true,
+            "semantic_verified": true,
+            "scope": "deterministic_tool_result",
+            "reason": "确定性工具结果按声明真值核对"
+          },
+          "available_ram_mb": 15196
+        }
+      ],
+      "input_bindings": null,
+      "subtask_results": null,
+      "result": {
+        "value": 8.0,
+        "expression": "(23+17)/5"
+      },
+      "failures_or_limits": [],
+      "resource_samples": [
+        {
+          "elapsed_ms": 0.44,
+          "event": "run_started",
+          "available_ram_mb": 15196
+        },
+        {
+          "elapsed_ms": 3.78,
+          "event": "candidates_filtered",
+          "available_ram_mb": 15196
+        },
+        {
+          "elapsed_ms": 578.02,
+          "event": "decision",
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4280.0,
+            "cuda_peak_allocated_mb": 4104.09,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        },
+        {
+          "elapsed_ms": 578.18,
+          "event": "invocation_finished",
+          "available_ram_mb": 15196
+        }
+      ],
+      "remote_attempts": 0,
+      "raw_log": "D:\\1 jev\\jev-edge-prototype\\logs\\583a81d14a8440369bd0cfb800294af7.json",
+      "delivery": {
+        "integrity_verified": true,
+        "scope": "artifact_bytes_and_record_only; answer quality remains separately declared",
+        "partial": false
+      }
+    },
+    {
+      "name": "pause-for-material",
+      "request": {
+        "mode": "agent",
+        "backend": "anyjev",
+        "goal": "1. 计算 (31-7)/3\n2. 翻译补充资料为中文",
+        "input": ""
+      },
+      "run_id": "ac2bfb2fcf3748db9eca89fe62bec695",
+      "task_id": "ac2bfb2fcf3748db9eca89fe62bec695",
+      "revision": 1,
+      "status": "waiting_input",
+      "execution_complete": false,
+      "task_complete": false,
+      "semantic_accuracy": null,
+      "total_ms": 260.42,
+      "timing_scope": "engine execution, not end-to-end user download",
+      "checks": {
+        "no_remote": true,
+        "waiting": true,
+        "first_result_preserved": true,
+        "pending_s2": true
+      },
+      "downloads": {
+        "report.md": {
+          "bytes": 1013,
+          "sha256": "34a92883d0ae3f006c16fdd20aa3a6a23c52acf38759c25c98a443733fbdfaeb"
+        },
+        "report.json": {
+          "bytes": 9751,
+          "sha256": "ed68d464bdca66536693441c28e9228616e738905f28018ddb923a17dc208fba"
+        }
+      },
+      "decision_calls": 1,
+      "route_reviews": 0,
+      "raw_model_choices": [
+        {
+          "event": "decision",
+          "elapsed_ms": 260.12,
+          "step": 1,
+          "subtask_id": "s1",
+          "choice": "calculator",
+          "duration_ms": 257.09,
+          "probabilities": {
+            "calculator": 0.9999999974312941,
+            "local_text": 4.4243165965895585e-12,
+            "retrieve": 4.5130576841965866e-10,
+            "knowledge_qa": 5.542611826913084e-11,
+            "replan": 1.8320406484011118e-09,
+            "stop": 2.2550900022358177e-10
+          },
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "level": "L0",
+          "prior": "content_free",
+          "calibrated": false,
+          "prompt_version": "chinese-capability-routing-v4",
+          "bias_correction": true,
+          "cold_start": false,
+          "load_ms": 0,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4280.0,
+            "cuda_peak_allocated_mb": 4104.09,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.9999999969175529
+        }
+      ],
+      "source_choices": [],
+      "finalized_choices": [
+        {
+          "event": "route_finalized",
+          "elapsed_ms": 260.13,
+          "step": 1,
+          "initial_choice": "calculator",
+          "choice": "calculator",
+          "reviewed": false
+        }
+      ],
+      "program_adjustments": [],
+      "invocations": [
+        {
+          "event": "invocation_started",
+          "elapsed_ms": 260.19,
+          "step": 1,
+          "subtask_id": "s1",
+          "action": "calculator",
+          "parameters": {
+            "expression": "(31-7)/3"
+          }
+        },
+        {
+          "event": "invocation_finished",
+          "elapsed_ms": 260.26,
+          "step": 1,
+          "subtask_id": "s1",
+          "action": "calculator",
+          "call_success": true,
+          "duration_ms": 0.09,
+          "validation": {
+            "status": "needs_review",
+            "semantic_verified": false,
+            "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+          },
+          "available_ram_mb": 15193
+        }
+      ],
+      "input_bindings": {
+        "s1": "$input",
+        "s2": "$input"
+      },
+      "subtask_results": {
+        "s1": {
+          "goal": "计算 (31-7)/3",
+          "service": "calculator",
+          "result": {
+            "value": 8.0,
+            "expression": "(31-7)/3"
+          },
+          "validation": {
+            "status": "needs_review",
+            "semantic_verified": false,
+            "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+          },
+          "input_provenance": {
+            "source": "$input",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "run_id": "ac2bfb2fcf3748db9eca89fe62bec695",
+            "retained_on_continue": false
+          }
+        }
+      },
+      "result": {
+        "text": "【s1】计算 (31-7)/3\n8.0",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "failures_or_limits": [
+        {
+          "event": "controller_waiting_input",
+          "elapsed_ms": 260.41,
+          "reason": "子任务s2缺少待处理原文，请补充资料后继续；已完成步骤将保留。",
+          "material_kind": "text"
+        }
+      ],
+      "resource_samples": [
+        {
+          "elapsed_ms": 0.08,
+          "event": "run_started",
+          "available_ram_mb": 15194
+        },
+        {
+          "elapsed_ms": 260.12,
+          "event": "decision",
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4280.0,
+            "cuda_peak_allocated_mb": 4104.09,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        },
+        {
+          "elapsed_ms": 260.26,
+          "event": "invocation_finished",
+          "available_ram_mb": 15193
+        }
+      ],
+      "remote_attempts": 0,
+      "raw_log": "D:\\1 jev\\jev-edge-prototype\\logs\\ac2bfb2fcf3748db9eca89fe62bec695.json",
+      "delivery": {
+        "integrity_verified": true,
+        "scope": "artifact_bytes_and_record_only; answer quality remains separately declared",
+        "partial": true
+      }
+    },
+    {
+      "name": "continuation",
+      "request": {
+        "input": "The inspection is scheduled for Friday at 10:00. The room has not been decided."
+      },
+      "run_id": "f2917b8963aa48f58e32b16f1af22bf3",
+      "task_id": "ac2bfb2fcf3748db9eca89fe62bec695",
+      "revision": 2,
+      "status": "needs_review",
+      "execution_complete": true,
+      "task_complete": false,
+      "semantic_accuracy": null,
+      "total_ms": 13290.55,
+      "timing_scope": "engine execution, not end-to-end user download",
+      "checks": {
+        "same_task_new_revision": true,
+        "execution_complete": true,
+        "no_calculator_replay": true,
+        "old_value_unchanged": true,
+        "old_provenance_preserved": true,
+        "no_remote": true,
+        "unverified_semantics": true
+      },
+      "downloads": {
+        "report.md": {
+          "bytes": 912,
+          "sha256": "263a8217bc3bad73c1ccc003419b89cab987d007616e0272cd0851e1f4736944"
+        },
+        "report.json": {
+          "bytes": 14856,
+          "sha256": "9019895f6e05af53144dc74bd897501bf2d1f68e99f5e890c4431aae549824a0"
+        }
+      },
+      "decision_calls": 2,
+      "route_reviews": 0,
+      "raw_model_choices": [
+        {
+          "event": "decision",
+          "elapsed_ms": 12310.47,
+          "step": 1,
+          "subtask_id": "s2",
+          "choice": "local_text",
+          "duration_ms": 12306.58,
+          "probabilities": {
+            "text_stats": 1.5025724678632179e-05,
+            "local_text": 0.9996440088198102,
+            "retrieve": 0.0002988930814052625,
+            "knowledge_qa": 4.5147736321512145e-06,
+            "replan": 3.500014995341115e-05,
+            "stop": 2.5574505203903146e-06
+          },
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "level": "L0",
+          "prior": "content_free",
+          "calibrated": false,
+          "prompt_version": "chinese-capability-routing-v4",
+          "bias_correction": true,
+          "cold_start": true,
+          "load_ms": 10679.05,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 3942.0,
+            "cuda_peak_allocated_mb": 3932.15,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.9995728105837722
+        },
+        {
+          "event": "decision",
+          "elapsed_ms": 13290.52,
+          "step": 2,
+          "subtask_id": null,
+          "choice": "finish",
+          "duration_ms": 400.2,
+          "backend": "anyjev",
+          "model": "Qwen/Qwen3-1.7B",
+          "calibrated": false,
+          "probabilities": {
+            "finish": 0.9999923120670898,
+            "stop": 7.687932910140914e-06
+          },
+          "prompt_version": "general-agent-choice-v1",
+          "cold_start": false,
+          "duration_with_load_ms": 399.63,
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4018.0,
+            "cuda_peak_allocated_mb": 3966.92,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          },
+          "confidence": 0.9999846241341797
+        }
+      ],
+      "source_choices": [],
+      "finalized_choices": [
+        {
+          "event": "route_finalized",
+          "elapsed_ms": 12310.47,
+          "step": 1,
+          "initial_choice": "local_text",
+          "choice": "local_text",
+          "reviewed": false
+        },
+        {
+          "event": "route_finalized",
+          "elapsed_ms": 13290.52,
+          "step": 2,
+          "initial_choice": "finish",
+          "choice": "finish",
+          "reviewed": false
+        }
+      ],
+      "program_adjustments": [],
+      "invocations": [
+        {
+          "event": "invocation_started",
+          "elapsed_ms": 12310.48,
+          "step": 1,
+          "subtask_id": "s2",
+          "action": "local_text",
+          "parameters": {
+            "text": "The inspection is scheduled for Friday at 10:00. The room has not been decided."
+          }
+        },
+        {
+          "event": "invocation_finished",
+          "elapsed_ms": 12890.27,
+          "step": 1,
+          "subtask_id": "s2",
+          "action": "local_text",
+          "call_success": true,
+          "duration_ms": 579.73,
+          "validation": {
+            "status": "needs_review",
+            "semantic_verified": false,
+            "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+          },
+          "available_ram_mb": 15118
+        }
+      ],
+      "input_bindings": {
+        "s1": "$input",
+        "s2": "$input"
+      },
+      "subtask_results": {
+        "s1": {
+          "goal": "计算 (31-7)/3",
+          "service": "calculator",
+          "result": {
+            "value": 8.0,
+            "expression": "(31-7)/3"
+          },
+          "validation": {
+            "status": "needs_review",
+            "semantic_verified": false,
+            "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+          },
+          "input_provenance": {
+            "source": "$input",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "run_id": "ac2bfb2fcf3748db9eca89fe62bec695",
+            "retained_on_continue": true
+          }
+        },
+        "s2": {
+          "goal": "翻译补充资料为中文",
+          "service": "local_text",
+          "result": {
+            "text": "检查将于周五上午10点进行。房间尚未决定。",
+            "truncated": false,
+            "model": "Qwen/Qwen3-1.7B",
+            "usage": {
+              "input_tokens": 373,
+              "output_tokens": 14
+            },
+            "quality": {
+              "method": "literal_and_field_state_contract_v2",
+              "status": "unverified",
+              "issues": [],
+              "semantic_verified": false,
+              "limitations": "检查有限数字、时间、邮箱、背景、字段未知状态和否定关系；不能证明语义等价或完整事实性。"
+            },
+            "evidence_scope": "model_knowledge_or_user_input",
+            "task_kind": "translation",
+            "generation_attempts": [
+              {
+                "attempt": 1,
+                "raw_text": "检查将于周五上午10点进行。房间尚未决定。",
+                "duration_ms": 578.7,
+                "usage": {
+                  "input_tokens": 373,
+                  "output_tokens": 14
+                },
+                "quality": {
+                  "method": "literal_and_field_state_contract_v2",
+                  "status": "unverified",
+                  "issues": [],
+                  "semantic_verified": false,
+                  "limitations": "检查有限数字、时间、邮箱、背景、字段未知状态和否定关系；不能证明语义等价或完整事实性。"
+                },
+                "truncated": false
+              }
+            ],
+            "recovery": {
+              "attempted": false,
+              "retry_limit": 0,
+              "guard_passed_after_retry": false,
+              "semantic_verified": false
+            },
+            "resources": {
+              "cuda_available": true,
+              "cuda_allocated_mb": 3884.38,
+              "cuda_reserved_mb": 4018.0,
+              "cuda_peak_allocated_mb": 3966.92,
+              "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+            }
+          },
+          "validation": {
+            "status": "needs_review",
+            "semantic_verified": false,
+            "reason": "调用返回且未触发有限保护；子任务是否满足语义要求仍待核查。"
+          },
+          "input_provenance": {
+            "source": "$input",
+            "sha256": "0618f1ee73a9cc632dfc74566e64efc2f1a31bc077f1140e6cd173ca4e5f4827",
+            "run_id": "f2917b8963aa48f58e32b16f1af22bf3",
+            "retained_on_continue": false
+          }
+        }
+      },
+      "result": {
+        "text": "【s1】计算 (31-7)/3\n8.0\n\n【s2】翻译补充资料为中文\n检查将于周五上午10点进行。房间尚未决定。",
+        "quality": {
+          "status": "unverified_agent_results",
+          "semantic_verified": false
+        }
+      },
+      "failures_or_limits": [],
+      "resource_samples": [
+        {
+          "elapsed_ms": 0.12,
+          "event": "run_started",
+          "available_ram_mb": 21019
+        },
+        {
+          "elapsed_ms": 12310.47,
+          "event": "decision",
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 3942.0,
+            "cuda_peak_allocated_mb": 3932.15,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        },
+        {
+          "elapsed_ms": 12890.27,
+          "event": "invocation_finished",
+          "available_ram_mb": 15118
+        },
+        {
+          "elapsed_ms": 13290.52,
+          "event": "decision",
+          "resources": {
+            "cuda_available": true,
+            "cuda_allocated_mb": 3884.38,
+            "cuda_reserved_mb": 4018.0,
+            "cuda_peak_allocated_mb": 3966.92,
+            "scope": "worker torch allocator; peak cumulative since load, not device total or energy"
+          }
+        }
+      ],
+      "remote_attempts": 0,
+      "raw_log": "D:\\1 jev\\jev-edge-prototype\\logs\\f2917b8963aa48f58e32b16f1af22bf3.json",
+      "delivery": {
+        "integrity_verified": true,
+        "scope": "artifact_bytes_and_record_only; answer quality remains separately declared",
+        "partial": false
+      }
+    }
+  ],
+  "csv_child_workflow": {
+    "run_id": "3744b8e9512e40daa0e95c9cba873be1",
+    "mode": "workflow",
+    "backend": "anyjev",
+    "status": "completed",
+    "task_complete": true,
+    "completion_scope": "deterministic_dataset_contract",
+    "invocation_attempts": 11,
+    "successful_calls": 11,
+    "route_reviews": 0,
+    "artifact_repairs": 0,
+    "remote_attempts": 0,
+    "total_ms": 5031.63,
+    "semantic_accuracy": null,
+    "record_scope": "summary_only; full decisions, failures and numerical details remain in original log/artifacts",
+    "log_file": "D:\\1 jev\\jev-edge-prototype\\logs\\3744b8e9512e40daa0e95c9cba873be1.json",
+    "log_reference": {
+      "path": "D:\\1 jev\\jev-edge-prototype\\logs\\3744b8e9512e40daa0e95c9cba873be1.json",
+      "sha256": "4011c54eb70a6d5044ef2bce604049702349448f718dcad20f17a9a08cb0487c"
+    },
+    "decision_calls": 11,
+    "trace": [
+      {
+        "event": "decision",
+        "elapsed_ms": 311.87,
+        "step": 1,
+        "duration_ms": 311.72,
+        "backend": "anyjev",
+        "choice": "inspect"
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 311.87,
+        "step": 1,
+        "initial_choice": "inspect",
+        "choice": "inspect",
+        "reviewed": false,
+        "review_changed_choice": false
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 311.88,
+        "step": 1,
+        "action": "inspect"
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 312.99,
+        "step": 1,
+        "action": "inspect",
+        "call_success": true,
+        "duration_ms": 1.12
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 810.63,
+        "step": 2,
+        "duration_ms": 497.61,
+        "backend": "anyjev",
+        "choice": "load_0"
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 810.63,
+        "step": 2,
+        "initial_choice": "load_0",
+        "choice": "load_0",
+        "reviewed": false,
+        "review_changed_choice": false
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 810.64,
+        "step": 2,
+        "action": "load_0"
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 813.19,
+        "step": 2,
+        "action": "load_0",
+        "call_success": true,
+        "duration_ms": 2.55
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 1307.38,
+        "step": 3,
+        "duration_ms": 494.16,
+        "backend": "anyjev",
+        "choice": "load_1"
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 1307.39,
+        "step": 3,
+        "initial_choice": "load_1",
+        "choice": "load_1",
+        "reviewed": false,
+        "review_changed_choice": false
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 1307.39,
+        "step": 3,
+        "action": "load_1"
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 1309.78,
+        "step": 3,
+        "action": "load_1",
+        "call_success": true,
+        "duration_ms": 2.38
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 1831.62,
+        "step": 4,
+        "duration_ms": 521.81,
+        "backend": "anyjev",
+        "choice": "stats_0"
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 1831.62,
+        "step": 4,
+        "initial_choice": "stats_0",
+        "choice": "stats_0",
+        "reviewed": false,
+        "review_changed_choice": false
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 1831.62,
+        "step": 4,
+        "action": "stats_0"
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 1831.74,
+        "step": 4,
+        "action": "stats_0",
+        "call_success": true,
+        "duration_ms": 0.12
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 2388.45,
+        "step": 5,
+        "duration_ms": 556.68,
+        "backend": "anyjev",
+        "choice": "threshold_0"
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 2388.46,
+        "step": 5,
+        "initial_choice": "threshold_0",
+        "choice": "threshold_0",
+        "reviewed": false,
+        "review_changed_choice": false
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 2388.46,
+        "step": 5,
+        "action": "threshold_0"
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 2388.49,
+        "step": 5,
+        "action": "threshold_0",
+        "call_success": true,
+        "duration_ms": 0.03
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 2741.04,
+        "step": 6,
+        "duration_ms": 352.52,
+        "backend": "anyjev",
+        "choice": "stats_1"
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 2741.04,
+        "step": 6,
+        "initial_choice": "stats_1",
+        "choice": "stats_1",
+        "reviewed": false,
+        "review_changed_choice": false
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 2741.05,
+        "step": 6,
+        "action": "stats_1"
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 2741.11,
+        "step": 6,
+        "action": "stats_1",
+        "call_success": true,
+        "duration_ms": 0.07
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 3363.2,
+        "step": 7,
+        "duration_ms": 621.78,
+        "backend": "anyjev",
+        "choice": "threshold_1"
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 3363.21,
+        "step": 7,
+        "initial_choice": "threshold_1",
+        "choice": "threshold_1",
+        "reviewed": false,
+        "review_changed_choice": false
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 3363.21,
+        "step": 7,
+        "action": "threshold_1"
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 3363.24,
+        "step": 7,
+        "action": "threshold_1",
+        "call_success": true,
+        "duration_ms": 0.03
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 3781.31,
+        "step": 8,
+        "duration_ms": 417.79,
+        "backend": "anyjev",
+        "choice": "compare"
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 3781.31,
+        "step": 8,
+        "initial_choice": "compare",
+        "choice": "compare",
+        "reviewed": false,
+        "review_changed_choice": false
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 3781.31,
+        "step": 8,
+        "action": "compare"
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 3781.36,
+        "step": 8,
+        "action": "compare",
+        "call_success": true,
+        "duration_ms": 0.05
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 4177.63,
+        "step": 9,
+        "duration_ms": 395.84,
+        "backend": "anyjev",
+        "choice": "write"
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 4177.63,
+        "step": 9,
+        "initial_choice": "write",
+        "choice": "write",
+        "reviewed": false,
+        "review_changed_choice": false
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 4177.64,
+        "step": 9,
+        "action": "write"
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 4187.43,
+        "step": 9,
+        "action": "write",
+        "call_success": true,
+        "duration_ms": 9.79
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 4588.74,
+        "step": 10,
+        "duration_ms": 401.27,
+        "backend": "anyjev",
+        "choice": "verify"
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 4588.74,
+        "step": 10,
+        "initial_choice": "verify",
+        "choice": "verify",
+        "reviewed": false,
+        "review_changed_choice": false
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 4588.74,
+        "step": 10,
+        "action": "verify"
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 4591.78,
+        "step": 10,
+        "action": "verify",
+        "call_success": true,
+        "duration_ms": 3.04
+      },
+      {
+        "event": "decision",
+        "elapsed_ms": 5028.27,
+        "step": 11,
+        "duration_ms": 436.46,
+        "backend": "anyjev",
+        "choice": "finish"
+      },
+      {
+        "event": "route_finalized",
+        "elapsed_ms": 5028.27,
+        "step": 11,
+        "initial_choice": "finish",
+        "choice": "finish",
+        "reviewed": false,
+        "review_changed_choice": false
+      },
+      {
+        "event": "invocation_started",
+        "elapsed_ms": 5028.28,
+        "step": 11,
+        "action": "finish"
+      },
+      {
+        "event": "invocation_finished",
+        "elapsed_ms": 5031.61,
+        "step": 11,
+        "action": "finish",
+        "call_success": true,
+        "duration_ms": 3.33
+      }
+    ],
+    "trace_total": 44,
+    "trace_omitted": 0,
+    "artifacts": [
+      {
+        "name": "report.md",
+        "url": "/v1/artifacts/3744b8e9512e40daa0e95c9cba873be1/report.md"
+      },
+      {
+        "name": "report.json",
+        "url": "/v1/artifacts/3744b8e9512e40daa0e95c9cba873be1/report.json"
+      }
+    ]
+  },
+  "language_review": {
+    "reviewer": "Codex developer, separate from tested local Qwen; not external human double annotation or blind evaluation",
+    "method": "bounded source/meaning review of the recorded outputs; not substring or nonempty-output semantic scoring",
+    "scope": "only the enumerated facts, no aggregate semantic accuracy",
+    "items": [
+      {
+        "case": "summary-to-count",
+        "source": "巡检记录共有8项。2项缺少照片，尚未补齐。原因尚未确认。",
+        "actual_output": "原文要点（完整句摘录）：\n“巡检记录共有8项。” [1]\n“2项缺少照片，尚未补齐。” [1]\n“原因尚未确认。” [1]",
+        "evidence_selection": {
+          "model_selected": [
+            1,
+            2,
+            3
+          ],
+          "program_required": [
+            2,
+            3
+          ],
+          "final_selected": [
+            1,
+            2,
+            3
+          ],
+          "policy": "preserve_qualifier_sentences"
+        },
+        "reviewed_facts": {
+          "total_eight": true,
+          "two_missing_photos": true,
+          "still_not_completed": true,
+          "cause_unconfirmed": true
+        },
+        "limitation": "complete-sentence extraction preserves facts here but does not establish good compression or general summarization quality"
+      },
+      {
+        "case": "continuation",
+        "source": "The inspection is scheduled for Friday at 10:00. The room has not been decided.",
+        "actual_output": "检查将于周五上午10点进行。房间尚未决定。",
+        "reviewed_facts": {
+          "Friday_at_10": true,
+          "room_undecided": true,
+          "no_added_room_or_reason_in_this_output": true
+        },
+        "limitation": "one short translation; cannot establish general translation factuality"
+      },
+      {
+        "case": "csv-to-summary-to-count",
+        "source": "以下数值来自本次文件分析；状态计数不是答案正确率。\n文件baseline.csv共有4条记录，其中有效数值2条，缺失1条，非法值1条，均值150.000000，中位数150.000000。\n文件current.csv共有4条记录，其中有效数值4条，缺失0条，非法值0条，均值180.000000，中位数180.000000。\n第二份减第一份：记录数差0，均值差30.000000。\n控制器仅保留有上限的明细预览；省略数量明确标注，全部状态和行明细以已核验CSV成果为准。",
+        "actual_output": "原文要点（完整句摘录）：\n“以下数值来自本次文件分析；状态计数不是答案正确率。” [1]\n“文件baseline.csv共有4条记录，其中有效数值2条，缺失1条，非法值1条，均值150.000000，中位数150.000000。” [1]\n“文件current.csv共有4条记录，其中有效数值4条，缺失0条，非法值0条，均值180.000000，中位数180.000000。” [1]\n“第二份减第一份：记录数差0，均值差30.000000。” [1]\n“控制器仅保留有上限的明细预览；省略数量明确标注，全部状态和行明细以已核验CSV成果为准。” [1]",
+        "evidence_selection": {
+          "model_selected": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "program_required": [
+            1,
+            5
+          ],
+          "final_selected": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "policy": "preserve_qualifier_sentences"
+        },
+        "reviewed_facts": {
+          "baseline_valid_two_missing_one_invalid_one": true,
+          "current_valid_four": true,
+          "means_150_180_delta_30": true,
+          "status_counts_not_accuracy_preserved_by_program": true,
+          "preview_scope_limit_preserved": true
+        },
+        "limitation": "does not replace full numerical artifacts; negative qualifier required by program, not selected independently by the local model"
+      }
+    ],
+    "semantic_accuracy": null
+  },
+  "boundary_http": {
+    "changed_download_http": 409,
+    "path_escape_http": 400,
+    "private_state_injection_http": 400,
+    "foreign_host_http": 403
+  },
+  "restart": {
+    "previous_server_pid": 35380,
+    "current_server_pid": 36392
+  },
+  "extra_assertions": {
+    "old_checkpoint_sha_unchanged": true,
+    "completed_continuation_http_400": true,
+    "scope": "asserted by verify_release.py before PASS; raw HTTP bytes not separately captured"
+  },
+  "samples": {
+    "reports/r1-example-delivery.md": {
+      "source": "workspace/runs/53d509f30dbd4528b9eaeea462b66364/report.md",
+      "sha256": "0292c26a7be8c9bdf1c296e6d2adeaa2b7c3cf6ae17bc774b1f652461c571ef2",
+      "data_kind": "synthetic R1 demonstration, not measured performance"
+    },
+    "reports/r1-example-csv.md": {
+      "source": "workspace/runs/3744b8e9512e40daa0e95c9cba873be1/report.md",
+      "sha256": "61f43cfa32211d6f68d3a958e31c5c2dff36702d2e13770395585ecb605ad03c",
+      "data_kind": "synthetic R1 demonstration, not measured performance"
+    }
+  },
+  "evidence_sha256": {
+    "logs/r1-acceptance-20261015-102616-198072.json": "4e018979376b581977c1cf01bbed54543d314aed491821a23e6d1f416e0ed3de",
+    "logs/r1-numeric-audit-20261015-102814-995366.json": "884e176d200dd381031b19a7a7d638c9fe7791667b272f24edc55715390868b2",
+    "logs/validation-r1-final.log": "9b6a0ace09e68c583bfda79d50dc70007ed411210dab910679422d48e4df7797",
+    "logs/ui-validation-2026-10-15T10-28-15-166Z.json": "83dca7aede68f716e917728522ad91e53511a934368e638536e3cb8fddbc92da",
+    "logs/launcher-validation-20261015-182816.json": "da06e90488bacf9dd49e25fd37fdcd30e01199c19e3eea40d8df44087ff2afb1",
+    "logs/r1-final-verification.log": "1ee968d66545fb92699cd165313c79e172409d5951a9524d63ee399de497364f",
+    "logs/3744b8e9512e40daa0e95c9cba873be1.json": "4011c54eb70a6d5044ef2bce604049702349448f718dcad20f17a9a08cb0487c"
+  },
+  "read_only_handoff_audit": {
+    "v040_snapshot_files_matching": 19,
+    "v050_snapshot_files_matching": 20,
+    "historical_holdout_and_fixtures_unchanged": true,
+    "crlf_aware_diff_check_exit": 0,
+    "no_unignored_model_environment_log_or_private_workspace": true,
+    "service_version": "0.6.0",
+    "offline": true,
+    "homepage_http": 200,
+    "reviewer": "separate Codex review agent, read-only"
+  },
+  "limitations": [
+    "numbered requirements supplied by user, not autonomous planning",
+    "free-goal planning/replanning experimental",
+    "natural-language semantics and coverage require review",
+    "no browser visual verification",
+    "no target-device or domain validation",
+    "no native Harness integration",
+    "D-drive virtual environment depends on D:\\Anaconda; Git alone is not a machine image"
+  ]
+}

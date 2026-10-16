@@ -1,0 +1,28 @@
+[
+  {
+    "case": "d-advisory",
+    "backend": "anyjev",
+    "record": "workflow-dev-anyjev-20261015-135526-149962.json",
+    "record_sha256": "7d5e426fece062f581ffd28f0aebc23c87498d48776bbb205cf513f5d6a090a0",
+    "actual_checks": [
+      "需要核查的问题"
+    ],
+    "reviewer": "Codex evidence-based inspection, not tested Qwen",
+    "verdict": "fail",
+    "scope": "usefulness and task satisfaction of optional suggestions",
+    "reason": "模型复制结构示例中的占位文字，没有提出针对缺失行、非法数值或状态含义的可执行核查问题；结构合格不等于建议有效。"
+  },
+  {
+    "case": "d-advisory",
+    "backend": "rules",
+    "record": "workflow-dev-rules-20261015-135551-019836.json",
+    "record_sha256": "009d744a5d5bf068645fdda47d96d3982ad0d4e7562ef5f619416f2074f1ecbb",
+    "actual_checks": [
+      "需要核查的问题"
+    ],
+    "reviewer": "Codex evidence-based inspection, not tested Qwen",
+    "verdict": "fail",
+    "scope": "usefulness and task satisfaction of optional suggestions",
+    "reason": "模型复制结构示例中的占位文字，没有提出针对缺失行、非法数值或状态含义的可执行核查问题；结构合格不等于建议有效。"
+  }
+]

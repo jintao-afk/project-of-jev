@@ -1,0 +1,14 @@
+{
+  "mode": "agent",
+  "backend": "anyjev",
+  "goal": "1. 分析CSV附件并生成数据报告\n2. 总结上一步报告，保留数据缺失、非法值和限制说明\n3. 统计上一步总结结果的字符数",
+  "input": "",
+  "dataset": {
+    "input_dir": "r1-demo",
+    "files": ["baseline.csv", "current.csv"],
+    "value_column": "latency_ms",
+    "status_column": "status",
+    "threshold": "200",
+    "include_suggestions": false
+  }
+}

@@ -1,0 +1,6 @@
+value,status
+1.1,returned
+2.2,needs_review
+,missing
+NaN,invalid
+-0.3,returned

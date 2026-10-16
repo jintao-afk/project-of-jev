@@ -1,0 +1,33 @@
+{
+  "version": "0.4.0",
+  "frozen_at_utc": "2026-10-15T06:01:40.986672+00:00",
+  "holdout_sha256": "2a6f73137447161cfff72287cc99e23fda079f5b53dd683329e30ec8470f54fa",
+  "implementation_sha256": {
+    "workflow.py": "986d8c46fa845f35b2703d5eeca11520a8a0906a6b3bc925cb4b56a6b9fc7540",
+    "core.py": "248ef03fa287b223844739b4665f071c7ebf61c1ce82fd2b1a681c176c1d36ef",
+    "local_models.py": "6a431811d976b68bbbbc755843f777d34a977eb757ed281509258be4d7741903",
+    "app.py": "cbe19a5be97e161666814e99196bb291cb8fb3799393770a5854372bc4667b71",
+    "ui.html": "f33994f103f8a5d241be171b099f1d76ad6edf0126f65990d307f711d948ca9a",
+    "config.json": "a28e9560e85ba2388cc5179466eb4962901af3418f7af5168a90d64b7d1063ee",
+    "answer_quality.py": "024144eb2168044a4241623a529fd3fbe46abc426ecd48373c0d4fe78a4dbbcf",
+    "task_contract.py": "25b3e61a38f79cbc7cf0201e2290e44171a43cea2b090deb268add9ea889a169",
+    "model_paths.py": "4d358928402762463659a4d4fb5179fd61fa949da64c38907442a54ed27118e1",
+    "offline_environment.py": "dc07fe454e99b5bea95d139dec3ac7b57b5369f0420e56aa62f60d261f41e8a2",
+    "models/model-lock.json": "082055cc3011a2094f0a176511413673f6c42807f5540fa39d90665f2591220c",
+    "evaluate_workflow.py": "1c069e0c9ee0bcf74a53997b4bce4089b984b5af5870d729d9ec0a78fa489571",
+    "start.ps1": "d313c8354ca7e353b328d3c3c84b2b6385ab0a170179368fe192b56d1809ea6b",
+    "stop.ps1": "4bc70c8e1ff03181e75e5c69cba7dc4885c40f22585730a29ee9e75abbe26a0c",
+    "open.ps1": "5e8af5df2e4898c4400326abec6effbb8e73ae36bd73276c0e6ec698f5ebd8e8",
+    "打开工作台.cmd": "9b27243e4e42e854028083dd429eb4037ac526d9b91a0e170f2e035627298aa0",
+    "tests/test_workflow.py": "9db494d9076fa869bd0a4c3755a12821cfa032c120dc5d896f1cba60893ef49a",
+    "tests/ui_replay.cjs": "c0b3ca7eacaeb685ef15b5354fafe1618015231654f269feb9837cba9eb7ce1c",
+    "tests/fixtures/ui-responses.json": "700cd673fd11f131d9e8a68092258a10f47b2bbe875585e97dc29a3c293c9e4b"
+  },
+  "fixture_sha256": {
+    "tests/fixtures/workflow-final/after.csv": "12350b47fe0a557862363f118105eaa9951576b83065fe1bd83ff8293eae24fd",
+    "tests/fixtures/workflow-final/amounts.csv": "644486be4ec1ce3dc056d30a6f917ed856d0af90608d3707a4c1ae27248d2b11",
+    "tests/fixtures/workflow-final/before.csv": "6bef375199adb5d6aeffb60b4cd4f79360b3608bdf209e1b783d32db5c1b3266",
+    "tests/fixtures/workflow-final/missing.csv": "be5a2be5a86c7205ac0a539695c9eb93438fd117995f863ce7793393b061823b"
+  },
+  "policy": "Small developer-authored holdout; do not tune this frozen version on results; semantic accuracy remains separate."
+}

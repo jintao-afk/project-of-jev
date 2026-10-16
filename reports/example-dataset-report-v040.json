@@ -1,0 +1,128 @@
+{
+  "run_id": "a714132a7f0c42c3952f0d9928862c2c",
+  "goal": "分析两份历史运行记录，比较耗时和状态分布，检查超过阈值的记录，生成可核查报告。",
+  "contract": {
+    "input_dir": "demo",
+    "files": null,
+    "value_column": "total_ms",
+    "status_column": "status",
+    "threshold": "2000",
+    "include_suggestions": false
+  },
+  "created_at_utc": "2026-10-15T06:05:14.763731+00:00",
+  "decision_backend": "anyjev",
+  "model_identity": "independent AnyJev + Qwen; not commercial Jev",
+  "source_files": {
+    "baseline.csv": {
+      "sha256": "083fae9ed3c706620f056810e6196ccf87a4701043808f87c6b30ac5daf7d08d",
+      "rows": 16
+    },
+    "current.csv": {
+      "sha256": "05e7a3f8e44d69287044c07162564847304de4692b4b5a962551dc9277cc25c6",
+      "rows": 16
+    }
+  },
+  "statistics": {
+    "baseline.csv": {
+      "rows": 16,
+      "numeric_rows": 16,
+      "missing_rows": [],
+      "invalid_rows": [],
+      "minimum": "111.230000",
+      "maximum": "36848.040000",
+      "mean": "3274.656875",
+      "median": "690.345000",
+      "status_counts": {
+        "completed": 1,
+        "needs_review": 11,
+        "stopped": 4
+      },
+      "numeric_scope": "only finite numeric cells; missing/invalid cells separately disclosed",
+      "status_meaning": "literal field counts, not semantic correctness or task success"
+    },
+    "current.csv": {
+      "rows": 16,
+      "numeric_rows": 16,
+      "missing_rows": [],
+      "invalid_rows": [],
+      "minimum": "0.440000",
+      "maximum": "12628.410000",
+      "mean": "1821.498750",
+      "median": "1080.150000",
+      "status_counts": {
+        "completed": 1,
+        "needs_review": 13,
+        "stopped": 2
+      },
+      "numeric_scope": "only finite numeric cells; missing/invalid cells separately disclosed",
+      "status_meaning": "literal field counts, not semantic correctness or task success"
+    }
+  },
+  "threshold_checks": {
+    "baseline.csv": {
+      "operator": ">",
+      "threshold": "2000",
+      "count": 3,
+      "matches": [
+        {
+          "source_row": 2,
+          "value": "36848.04"
+        },
+        {
+          "source_row": 11,
+          "value": "2221.94"
+        },
+        {
+          "source_row": 16,
+          "value": "4780.64"
+        }
+      ],
+      "missing_rows": [],
+      "invalid_rows": []
+    },
+    "current.csv": {
+      "operator": ">",
+      "threshold": "2000",
+      "count": 3,
+      "matches": [
+        {
+          "source_row": 2,
+          "value": "12628.41"
+        },
+        {
+          "source_row": 7,
+          "value": "2699.74"
+        },
+        {
+          "source_row": 16,
+          "value": "2236.75"
+        }
+      ],
+      "missing_rows": [],
+      "invalid_rows": []
+    }
+  },
+  "comparison": {
+    "first": "baseline.csv",
+    "second": "current.csv",
+    "rows_delta": 0,
+    "mean_delta": "-1453.158125",
+    "status_counts": {
+      "baseline.csv": {
+        "completed": 1,
+        "needs_review": 11,
+        "stopped": 4
+      },
+      "current.csv": {
+        "completed": 1,
+        "needs_review": 13,
+        "stopped": 2
+      }
+    },
+    "scope": "第二份减第一份的描述性差异；样本或负载可能不同，不证明因果、性能优势或答案质量。"
+  },
+  "notes": {},
+  "model_suggestions": null,
+  "semantic_verified": false,
+  "scope": "结构化CSV分析条件；不自动验证自然语言额外要求或模型建议，不将状态计数视为答案正确率。"
+}

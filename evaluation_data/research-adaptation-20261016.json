@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-16",
+  "protocol": "evidence-repair-v2",
+  "purpose": "development-stage handoff; no independent semantic accuracy claim",
+  "files": {
+    "agent.py": "57a31e14f96f96d3abc9623dbe973d7c2616eb24ff084d50939d4bf353e6388f",
+    "research_control.py": "2539b08a8e5ab2fd3c1fe244decc2ada7a5dd1688ffe3c8be1e9314b9a46f369",
+    "task_store.py": "62fb129281a9d921387f50c7fa43ed9d6fe3a91ed63eda42d1b3badfc2406c34",
+    "tests/test_agent.py": "5122231d35bbb52ee0c8a2b0ae6e2b1000036f24ff9bebaa78e13314bf6acbc2",
+    "tests/test_feedback.py": "8ba5c059504979269237a99f7415b71250415aa0e9e209fd7e9fbbdce2ef0fc1",
+    "tests/test_research_control.py": "5f5a1f185436d9ef6c8da9d6b4e13ca9510af0a30655e306e220319989b63f7b",
+    "verify_research.py": "e360a075ee615b1fec2d04e55bd5e964664679b72a4cb35d1aee20c10805eebd",
+    "reports/research-adaptation-20261016.md": "5436a73eb571751636f568dc795a51c5122c0cddc11d49d13bba9f004743f045"
+  },
+  "evidence": {
+    "logs/research-tests-final-20261016.txt": "702730a2194926e579cada517be61bcc65e11c1b824dc37fbe0c2ad7d80afdbf",
+    "logs/research-smoke-20261016-120608-234193.json": "f69b913af65f9a5d65f61d66f783a25d102193210b139c8516b4f5cfabde417a",
+    "logs/research-http-final-20261016.json": "6cf4cc07513c0cec60c9189da6a60c570d0801b0bfec8691e4bf1f2ab4597238"
+  },
+  "previous_sources": {
+    "evaluation_data/snapshots/pre-research-20261016/agent.py": "c31265bb0880ac2251315ece114084f6c2681c31e191d5b82d767d889e6b1864",
+    "evaluation_data/snapshots/pre-research-20261016/manifest.json": "16f15727f18bb2c7c7fdb0b4ed95313f8a64a015aff8a77aa83d2b92dbd04c30",
+    "evaluation_data/snapshots/pre-research-20261016/task_store.py": "f989d5bc224e7f475423dbe31dee284596793d542de65e8f6c6dc9c89e284d0f",
+    "evaluation_data/snapshots/pre-research-20261016/tests/test_agent.py": "9f7212ffbbd52caa5ea1e10349bc921d5820fdd0172b1cbe340e045bbcbb53a0",
+    "evaluation_data/snapshots/pre-research-20261016/tests/test_feedback.py": "87bf956d8fb5804c96c148d0b98d54e68fe2d06651077cd71cade0e47f178889"
+  },
+  "results": [
+    {
+      "case": "arithmetic",
+      "run_id": "423e1ca7ef804380922f825eac2d4084",
+      "status": "needs_review",
+      "ms": 14590.68,
+      "remote": 0
+    },
+    {
+      "case": "rewrite",
+      "run_id": "3ad381d5ad794fd98bfa0ffd98a8744a",
+      "status": "needs_review",
+      "ms": 2382.38,
+      "remote": 0
+    },
+    {
+      "case": "summary",
+      "run_id": "5825d09748f94b3298cb18d69bfb8c28",
+      "status": "stopped",
+      "ms": 907.95,
+      "remote": 0
+    },
+    {
+      "case": "reference",
+      "run_id": "61319541ce1a4a92b3bc95670d68495d",
+      "status": "needs_review",
+      "ms": 1372.79,
+      "remote": 0
+    },
+    {
+      "case": "injected_failure",
+      "run_id": "16c48cb330f441e5ac173229bef40041",
+      "status": "stopped",
+      "ms": 1416.55,
+      "remote": 0
+    }
+  ],
+  "known_failures": [
+    "rewrite introduced uncertainty into a definite headcount; not caught by partial checks",
+    "summary stopped before invocation",
+    "injected tool failure stopped safely, not recovered"
+  ],
+  "semantic_accuracy": null
+}

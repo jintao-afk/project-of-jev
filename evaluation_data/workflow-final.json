@@ -1,0 +1,9 @@
+{
+  "split":"holdout",
+  "cases":[
+    {"id":"h-amounts","goal":"统计金额字段并披露数据质量，输出报告。","input_dir":"holdout-amounts","fixtures":["tests/fixtures/workflow-final/amounts.csv"],"value_column":"amount","status_column":"category","expected":"report"},
+    {"id":"h-compare","goal":"对比两份数值记录，检查严格超过阈值的行，输出报告。","input_dir":"holdout-compare","fixtures":["tests/fixtures/workflow-final/before.csv","tests/fixtures/workflow-final/after.csv"],"files":["before.csv","after.csv"],"value_column":"amount","status_column":"category","threshold":"0.0000005","expected":"report"},
+    {"id":"h-missing-column","goal":"分析金额并生成报告。","input_dir":"holdout-missing","fixtures":["tests/fixtures/workflow-final/missing.csv"],"value_column":"amount","status_column":"category","expected":"missing_column_stop"},
+    {"id":"h-no-files","goal":"分析目录资料并交付报告。","input_dir":"holdout-empty","fixtures":[],"value_column":"amount","status_column":"category","expected":"missing_files_stop"}
+  ]
+}

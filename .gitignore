@@ -11,3 +11,12 @@ __pycache__/
 *.py[cod]
 .env.*
 reports/*.zip
+workspace/runs/
+workspace/tasks/
+workspace/inbox/*
+!workspace/inbox/demo/
+workspace/inbox/demo/*
+!workspace/inbox/demo/README.md
+!workspace/inbox/demo/baseline.csv
+!workspace/inbox/demo/current.csv
+!workspace/inbox/demo/provenance.json
